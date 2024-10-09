@@ -1,0 +1,106 @@
+.scroll-container-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Center nav buttons vertically */
+  width: 100%;
+  z-index: 900; /* Lower than header but higher than main content */
+  background-color: rgb(255, 255, 255);
+  /* background-color: aqua; */
+  }
+
+.scroll-container {
+  display: flex;
+  position: fixed;
+  /* left:67%; */
+  /* top:15%; */
+  left: 8%; 
+  top: 13%;
+  overflow-x: auto;
+  gap: 10px;
+  white-space: nowrap;
+   width:85vw; 
+   z-index: 900; /* Lower than header but higher than main content */
+  /* width: 29vw; */
+  /* background-color: blue; */
+  overflow-y: hidden;
+ 
+}
+
+.scroll-container.menu-open {
+  width:70vw; 
+  left:22%;
+
+}
+
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.scroll-container {
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+.scroll-container{
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.button {
+  background-color: #e6e8ea;
+  border: none;
+  color: black;
+  min-width: 150px; /* Ensure buttons have a minimum width */
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  min-width: 60px; /* Minimum width to maintain button size */
+  max-width: 200px; /* Maximum width to prevent excessive stretching */
+  flex: 0 0 auto; /* Prevent flex item from growing or shrinking */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.nav-button {
+  position: fixed;
+  width:50px;
+  height:50px;
+  /* top:13.6%; */
+  top: 11.6%;
+  background-color: white; 
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.nav-button:hover {
+  background-color: #e6e8ea;
+}
+
+.prev-button {
+  left: 5%;
+}
+
+.prev-button.menu-open {
+  left: 19%;
+}
+.next-button.menu-open {
+  right: 3%;
+}
+
+.next-button {
+  right: 3%;
+}
+
+/* .nav-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #000;
+  }
+   */

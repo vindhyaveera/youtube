@@ -1,0 +1,73 @@
+.scroll-container-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Center nav buttons vertically */
+  width: 100%;
+}
+
+.scroll-container {
+  display: flex;
+  position: fixed;
+  left: 8%;
+  top: 13%;
+  overflow-x: auto;
+  gap: 10px;
+  white-space: nowrap;
+  background-color: #f9f9f9;
+  width: 85vw;
+  overflow-y: hidden;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.scroll-container {
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.button {
+  background-color: #e6e8ea;
+  border: none;
+  color: black;
+  min-width: 150px; /* Ensure buttons have a minimum width */
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  min-width: 100px; /* Minimum width to maintain button size */
+  max-width: 200px; /* Maximum width to prevent excessive stretching */
+  flex: 0 0 auto; /* Prevent flex item from growing or shrinking */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav-button {
+  position: fixed;
+  top: 13%;
+  /* background-color: #e6e8ea; */
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.prev-button {
+  left: 5%;
+}
+
+.next-button {
+  right: 5%;
+}
+
+/* .nav-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #000;
+  }
+   */

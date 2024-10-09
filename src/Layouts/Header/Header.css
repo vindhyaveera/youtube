@@ -1,0 +1,157 @@
+.container {
+  width: 97.5vw;
+  height: 10vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+}
+
+.start {
+  width: 15vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.startinner {
+  width: 80%;
+  height: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.center {
+  width: 65vw;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* background-color: blueviolet;    */
+}
+.searchbox {
+  width: 70%;
+  height: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbox input {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 1px solid grey;
+  padding: 15px;
+}
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.searchimg {
+  position: absolute;
+  right: 0px;
+  top: 1%;
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid grey;
+  background-color: lightgrey;
+  border-top-right-radius: 50px; /* Top right corner rounded */
+  border-bottom-right-radius: 50px; /* Bottom right corner rounded */
+}
+.searchbox-audio {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: aqua;  */
+}
+.audiochild {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background-color: lightgray;
+}
+.end {
+  width: 20vw;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  /* background-color: brown; */
+}
+.profileimg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+}
+.end button{
+  border:none;
+  background-color: white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.open-form-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.admin-form {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+}
+
+.admin-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form label {
+  margin-bottom: 10px;
+}
+
+.admin-form button {
+  margin-top: 10px;
+}
+.navbar {
+  display: none;
+}
+
+.navbar.open {
+  display: block;
+}

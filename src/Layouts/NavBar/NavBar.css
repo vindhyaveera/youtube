@@ -1,0 +1,48 @@
+.navbar {
+  width: 18%;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  z-index: 1500;
+  position: fixed;
+  top: 70px;
+}
+.navbarchild {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 20%;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: bisque; */
+}
+.row {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  padding: 5px;
+}
+.bottomline {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+p {
+  font-size: 13px;
+}
+.custom-hr {
+  border: 0.0001px solid lightgrey;
+  width: 100%;
+}
+.row:hover {
+  background-color: lightgrey;
+}

@@ -1,0 +1,45 @@
+.main-content {
+  width: 100vw;
+  position: absolute;
+  top: 150px;
+  left: 7%;
+  /* margin-left: 7%; /* Width of the sidebar
+  /* margin-top: 150px; Height of the header  */
+  /* height: auto; */
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  /* background-color: aqua; */
+  background-color: rgb(255, 255, 255);
+}
+.main-content.menu-open {
+  /* position: relative; */
+  width: 87vw;
+  left: 20% !important;
+} 
+
+
+.bigvideogrid {
+  width: 90%;
+  height: auto;
+  display: grid;
+  grid-column-gap: 10px; /* 20px gap between columns */
+  grid-row-gap: 70px; /* 15px gap between rows */
+  grid-template-columns: repeat(3, 1fr);
+  /* background-color: rgb(140, 0, 255); */
+}
+
+/* .bigvideogrid.menu-open {
+  position: relative;
+  width: 79vw;
+  left: 11%;
+} */
+
+.bigvideodata2 {
+  margin-top: 40px;
+  /* background-color: blue; */
+}
+
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+}

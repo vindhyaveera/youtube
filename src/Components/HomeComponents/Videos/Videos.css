@@ -1,0 +1,23 @@
+.videos {
+  width: 35vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Single column layout */
+ 
+}
+
+.scrollmenu {
+  top:90px ;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 10; /*Ensure it appears above other content */ 
+  
+}
+
+.video {
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 5;
+  height: auto;
+  margin-top: 0px;
+}

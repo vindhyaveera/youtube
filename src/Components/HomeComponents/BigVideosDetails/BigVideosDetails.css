@@ -1,0 +1,218 @@
+.maincontent {
+  width: 100vw;
+  margin-left: 2%; /* Width of the sidebar*/
+  margin-top: 100px; /*Height of the header  */
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  position: relative;
+  overflow-y: scroll;
+  height: auto;
+}
+
+.left-content {
+  width: 63vw;
+  height: auto;
+  display: flex;
+  display:flex;
+  flex-direction: column;
+  gap:20px;
+  flex-direction: column;
+  border-radius: 10px;
+  /* background-color: rgb(20, 20, 209);  */
+  /* position: absolute; */
+  overflow-y: hidden;
+  left: 0;
+  top: 0;
+  color: black;
+}
+
+
+video {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px; /* Rounded corners */
+  overflow: hidden;
+}
+.desc {
+  width: 63vw;
+  padding: 10px;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+    /* background-color: blue;  */
+  color: black;
+}
+.roundimage {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.desc-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 1px;
+  /* background-color: aqua; */
+}
+.left-desc {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  gap: 12px;
+  /* background-color: rgb(3, 15, 15);  */
+}
+.right-desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  gap: 10px;
+}
+.image-button1 {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+.separator {
+  width: 1px;
+  height: 20px; /* Match this to the height of the images */
+  background-color: grey; /* Color of the vertical line */
+  
+}
+.image-button {
+  display: flex;
+  justify-content: start;
+  /* padding: 0px 15px; */
+  padding: 3px;
+  border-radius: 50px;
+  height: 35px;
+  width: 35%;
+  align-items: center;
+  gap: 5px;
+
+  background-color: lightgrey;
+  border: 0.1px solid lightgrey;
+}
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1; /* Take up more space */
+}
+.dislikes {
+  display: flex;
+  gap:5px;
+  align-items: center;
+}
+.image-button2 {
+  /* padding: 5px 5px; */
+  background-color: lightgrey;
+  border: 0.1px solid lightgrey;
+  border-radius: 50px;
+  height: 35px; /* Increase this value to make the button taller */
+  width: 25%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  border-radius: 50px;
+  align-items: center;
+}
+.image-button3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 35%;
+  height: 35px; /* Adjust this value to set the desired height */
+  /* padding: 5px 5px; */
+  border-radius: 50px;
+  background-color: lightgrey;
+  border: 0.1px solid lightgrey;
+}
+.image-button-dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: lightgrey;
+  border: 0.1px solid lightgrey;
+  border-radius: 50px;
+}
+.video-description {
+  max-height: 300px; /* or any height you prefer */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.video-description.collapsed {
+  max-height: 50%;
+  overflow: hidden;
+  /* background-color: aqua; */
+  background-color: lightgrey;
+}
+
+.video-description.expanded {
+  /* max-height:100vh; */
+  max-height: none;
+  background-color: lightgrey;
+  line-height: 2.6; /* Adjust the value to increase or decrease spacing */
+}
+
+.video-description p {
+  margin: 0 0 10px; /* Add margin to space paragraphs */
+}
+
+.video-description a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.more-button {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+.comments{
+  width:100%;
+  height:auto;
+  display:flex;
+  /* background-color: blue; */
+  gap:20px;
+}
+.comments img{
+  width:25px;
+  height:25px;
+
+}
+.headcomments{
+  display:flex;
+  gap:10px;
+}
+.headcomments img{
+  width:40px;
+  height:40px;
+  border-radius: 50px;
+}
+.headcomments input{
+  width:100%;
+ border:none;
+ border-bottom:0.3px solid lightgrey;
+}
+.sidescrollmenu {
+  width:100%;
+  overflow: hidden;
+  /* width: 35vw; Match this with the width of the video */
+  margin-top: 100px; /* Adjust this space as needed */
+  /* Ensure it is positioned correctly above the video component */
+}
+

@@ -1,0 +1,89 @@
+/* PopupForm.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 60vw;
+  height: 100vh;
+  max-width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.checkinput {
+  display: flex;
+  align-items: center; /* Center the checkbox vertically */
+  margin-top: 5px; /* Space between label and checkbox */
+}
+
+.check {
+  margin-left: 0; /* Adjust as needed for spacing */
+}
+
+
+
+
+form textarea {
+  height: 100px; /* Adjust based on your preference */
+  resize: vertical;
+}
+
+form button[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+}

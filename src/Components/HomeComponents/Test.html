@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Scroll with Icon Buttons</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* .scroll-container-wrapper {
+      position: relative;
+    } */
+
+    .scroll-container {
+      display: flex;
+      position:fixed;
+      left:7%;
+      top:13%;
+      overflow-x: auto;
+      gap: 10px;
+      white-space: nowrap;
+      background-color: #f9f9f9;
+      width: 90vw;;
+      overflow-y: hidden;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none; /* Hide scrollbar in WebKit browsers */
+    }
+
+    .scroll-container {
+      scrollbar-width: none; /* Hide scrollbar in Firefox */
+    }
+
+    .button {
+      background-color: #e6e8ea;
+      border: none;
+      color: #000;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-button {
+      position: fixed;
+      top: 13%;
+      /* transform: translateY(-50%); */
+      background-color: #e6e8ea; 
+      border: none;
+      /* font-size: 16px; */
+      cursor: pointer;
+      border-radius: 50%;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .prev-button {
+      left:5%;
+    }
+
+    .next-button {
+      right: 0;
+    
+    }
+
+    .nav-button i {
+      font-size: 16px;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-container-wrapper">
+    <button class="nav-button prev-button">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="scroll-container" id="scrollContainer">
+      <button class="button">ALL</button>
+      <button class="button">Music</button>
+      <button class="button">News</button>
+      <button class="button">Vocabulary</button>
+      <button class="button">Live</button>
+      <button class="button">Mixes</button>
+      <button class="button">Astrological Signs</button>
+      <button class="button">Tamil television drama</button>
+      <button class="button">Indian classical dance</button>
+      <button class="button">Silk</button>
+      <button class="button">Rajinikanth</button>
+      <button class="button">ALL</button>
+      <button class="button">Music</button>
+      <button class="button">News</button>
+      <button class="button">Vocabulary</button>
+      <button class="button">Live</button>
+      <button class="button">Mixes</button>
+      <button class="button">Astrological Signs</button>
+      <button class="button">Tamil television drama</button>
+      <button class="button">Indian classical dance</button>
+      <button class="button">Silk</button>
+      <button class="button">Rajinikanth</button>
+
+      <button class="button">ALL</button>
+      <button class="button">Music</button>
+      <button class="button">News</button>
+      <button class="button">Vocabulary</button>
+      <button class="button">Live</button>
+      <button class="button">Mixes</button>
+      <button class="button">Astrological Signs</button>
+      <button class="button">Tamil television drama</button>
+      <button class="button">Indian classical dance</button>
+      <button class="button">Silk</button>
+      <button class="button">Rajinikanth</button>
+
+      <!-- Add more buttons as needed -->
+    </div>
+    <button class="nav-button next-button">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <script>
+    const scrollContainer = document.getElementById('scrollContainer');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+
+    prevButton.addEventListener('click', () => {
+      scrollContainer.scrollBy({
+        left: -200, // Adjust the scroll amount as needed
+        behavior: 'smooth'
+      });
+    });
+
+    nextButton.addEventListener('click', () => {
+      scrollContainer.scrollBy({
+        left: 200, // Adjust the scroll amount as needed
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
