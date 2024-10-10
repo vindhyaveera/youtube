@@ -1,7 +1,7 @@
 import React from "react";
 import "./BigVideosInfo.css";
 import { useSelector } from "react-redux";
-
+import img from '../../../src/assets/bigimg2.jpg'
 
 const BigVideosInfo = (props) => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
@@ -10,7 +10,7 @@ const BigVideosInfo = (props) => {
     <div>
       <div className="bigvideos">
       {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
-        <img className="bigimage" src={props.img} />
+        <img className="bigimage" src={img} />
         <div className="bigvideoscontent">
           <div className="round">
             <img className="roundimage" src={props.img} />

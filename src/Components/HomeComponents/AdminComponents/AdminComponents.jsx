@@ -55,35 +55,21 @@ const AdminComponents = ({ isVisible, onClose }) => {
   const handleFileUpload = (e, fieldName) => {
     const file = e.target.files[0];
     // Create the path based on the file name
-    const serverFilePath = `https://youtube-seven-livid.vercel.app/src/assets/${file.name}`;
 
     if (file) {
       // const fileUrl = URL.createObjectURL(file);
+      // const serverFilePath = `https://youtube-seven-livid.vercel.app/src/assets/${file.name}`;
+
       setFormData({
         ...formData,
-        [fieldName]: serverFilePath,
+        [fieldName]: file.name,
       });
       console.log(file);
       console.log(file.name);
+      
     }
   };
-  // const filePath = `/src/assets/${req.file.filename}`; // Adjust according to your setup
-
-  // const handleFileUpload = (e, fieldName) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     // Store the file object in Redux
-  //     setFormData({ ...formData, [fieldName]: file });
-  //     console.log(file);
-
-  //     // // Prepare to upload the file
-  //     // const formDataToUpload = new FormData();
-  //     // formDataToUpload.append(fieldName, file);
-
-  //     // // Call your upload function
-  //     // createUser(formDataToUpload);
-  //   }
-  // };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,6 +83,7 @@ const AdminComponents = ({ isVisible, onClose }) => {
     // Close the popup after submission
     handleClose();
   };
+
 
   async function createUser(formData) {
     // alert(".../")
