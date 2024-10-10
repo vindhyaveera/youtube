@@ -35,6 +35,7 @@ const assets = {
   video3: require("../../assets/video3.mp4"),
 };
 
+
 const videoSlice = createSlice({
   name: "videos",
   initialState: {

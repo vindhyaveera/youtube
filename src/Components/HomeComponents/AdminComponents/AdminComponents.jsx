@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { useDispatch } from "react-redux";
-import { setStatus} from "../../../features/videos/videoSlice";
+import { setStatus } from "../../../features/videos/videoSlice";
 
 import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Import the action
 import dotsSvg from "../../../assets/dots.svg";
@@ -54,11 +54,36 @@ const AdminComponents = ({ isVisible, onClose }) => {
 
   const handleFileUpload = (e, fieldName) => {
     const file = e.target.files[0];
+    // Create the path based on the file name
+    const serverFilePath = `https://youtube-seven-livid.vercel.app/src/assets/${file.name}`;
+
     if (file) {
-      const fileUrl = URL.createObjectURL(file);
-      setFormData({ ...formData, [fieldName]: fileUrl });
+      // const fileUrl = URL.createObjectURL(file);
+      setFormData({
+        ...formData,
+        [fieldName]: serverFilePath,
+      });
+      console.log(file);
+      console.log(file.name);
     }
   };
+  // const filePath = `/src/assets/${req.file.filename}`; // Adjust according to your setup
+
+  // const handleFileUpload = (e, fieldName) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     // Store the file object in Redux
+  //     setFormData({ ...formData, [fieldName]: file });
+  //     console.log(file);
+
+  //     // // Prepare to upload the file
+  //     // const formDataToUpload = new FormData();
+  //     // formDataToUpload.append(fieldName, file);
+
+  //     // // Call your upload function
+  //     // createUser(formDataToUpload);
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();

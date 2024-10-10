@@ -19,8 +19,7 @@ const BigVideos = () => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const status = useSelector((state) => state.videos.status);
   const dispatch = useDispatch();
-  
-  
+
   const bigvideosRef = useRef(null);
 
   useEffect(() => {
@@ -47,6 +46,14 @@ const BigVideos = () => {
 
       console.log(data.data);
       if (Array.isArray(data.data)) {
+        // const updatedData = data.data.map((video) => ({
+        //   ...video,
+        //   img: video.img.replace(
+        //     "http://localhost:3000",
+        //     "https://youtube-seven-livid.vercel.app"
+        //   ),
+        // }));
+
         dispatch(setBigVideoData(data.data)); // Set to the correct
         console.log(bigvideoData);
       } else {
