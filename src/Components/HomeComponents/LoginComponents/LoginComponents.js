@@ -12,6 +12,7 @@ const LoginForm = ({ onClose }) => {
     password: "",
   });
 
+  
   const toggleForm = () => {
     setIsRegister(!isRegister);
     setFormData({
@@ -76,6 +77,7 @@ const LoginForm = ({ onClose }) => {
     }
   }
 
+
   async function createUser(formData) {
     // alert(".../")
     setStatus("Please wait");
@@ -97,6 +99,7 @@ const LoginForm = ({ onClose }) => {
     }
   }
 
+  
   return (
     <div className="form-container">
       <h2>{isRegister ? "Register" : "Login"}</h2>

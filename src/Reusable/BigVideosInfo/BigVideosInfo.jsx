@@ -10,7 +10,7 @@ const BigVideosInfo = (props) => {
     <div>
       <div className="bigvideos">
       {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
-        <img className="bigimage" src={img} />
+        <img className="bigimage" src={props.img} />
         <div className="bigvideoscontent">
           <div className="round">
             <img className="roundimage" src={props.img} />
