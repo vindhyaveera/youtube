@@ -7,20 +7,20 @@ const BigVideosInfo = (props) => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   // const imagePath = require(`../../../src/assets/${props.img}`);
   
-  const imagePath = `${process.env.PUBLIC_URL}/assets/${props.img}`; // Ensure the image names match and the format is correct
-  const imagePath1 = `/assets/${props.img}`; // Ensure the image names match and the format is correct
+  const imagePath1 = `${process.env.PUBLIC_URL}/assets/${props.img}`;
+  const imagePath = `/assets/${props.img}`; 
 
 
   return (
     <div>
       <div className="bigvideos">
         {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
-        <img className="bigimage" src={imagePath1} />
+        <img className="bigimage" src={imagePath} />
         <div className="bigvideoscontent">
           <div className="round">
             <img
               className="roundimage"
-              src={imagePath1}
+              src={imagePath}
               alt="Image description"
             />
           </div>

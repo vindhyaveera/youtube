@@ -12,7 +12,6 @@ import "./AdminComponents.css"; // Create this CSS file for styling the popup
 const AdminComponents = ({ isVisible, onClose }) => {
   const dispatch = useDispatch();
   const userId = localStorage.getItem("id");
-  const [base64Image, setBase64Image] = useState("");
 
   const status = useSelector((state) => state.videos.status);
 
@@ -99,7 +98,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
         }
       );
       const data = await response.json();
-      setBase64Image(data.img); // Assuming `data.img` contains the base64 string
       console.log(data);
       dispatch(setStatus(data.message)); // Update status with the response message
     } catch (error) {
@@ -261,7 +259,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
                 className="check"
                 checked={formData.showButtons}
                 onChange={handleChange} // Update state on change
-
                 // onChange={(e) =>
                 //   // setFormData({ ...formData, showButtons: e.target.checked })
                 // }

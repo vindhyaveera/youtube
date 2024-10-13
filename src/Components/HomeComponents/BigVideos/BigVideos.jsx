@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setBigVideoData } from "../../../features/videos/videoSlice";
+import { setoriginalData } from "../../../features/videos/videoSlice";
 import { setStatus } from "../../../features/videos/videoSlice";
 // import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Import the action
 
@@ -14,21 +14,27 @@ import ShortsVideos from "../../HomeComponents/ShortsVideos/ShortsVideos";
 import { Link } from "react-router-dom";
 
 const BigVideos = () => {
-  const bigvideoData = useSelector((state) => state.videos.bigvideoData);
-  const bigvideoData_1 = useSelector((state) => state.videos.bigvideoData_1);
+  const videos = useSelector((state) => state.videos.originalData);
+  // const bigvideoData_1 = useSelector((state) => state.videos.bigvideoData_1);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const status = useSelector((state) => state.videos.status);
   const dispatch = useDispatch();
 
   const bigvideosRef = useRef(null);
 
+  // / Split the first 5 items into bigvideoData
+  const bigvideoData = videos.slice(0, 6);
+
+  // Split the next 5 items into bigvideoData1
+  const bigvideoData_1 = videos.slice(6);
+
   useEffect(() => {
     viewAllUser(); // Fetch data when component mounts
   }, []);
 
   useEffect(() => {
-    console.log("Updated bigvideoData:", bigvideoData);
-  }, [bigvideoData]); // This will log whenever bigvideoData changes
+    console.log("Updated bigvideoData:", videos);
+  }, [videos]); // This will log whenever bigvideoData changes
 
   async function viewAllUser() {
     // alert(".../")
@@ -46,12 +52,11 @@ const BigVideos = () => {
 
       console.log(data.data);
       if (Array.isArray(data.data)) {
-       
-        dispatch(setBigVideoData(data.data)); // Set to the correct
-        console.log(bigvideoData);
+        dispatch(setoriginalData(data.data)); // Set to the correct
+        console.log(videos);
       } else {
         console.error("Expected an array but received:", data.data);
-        dispatch(setBigVideoData([data.data])); // Handle unexpected data
+        dispatch(setoriginalData([data.data])); // Handle unexpected data
       }
       dispatch(setStatus(data.message)); // Update status with the response message
     } catch (error) {

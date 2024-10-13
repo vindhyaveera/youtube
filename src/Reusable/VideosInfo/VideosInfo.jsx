@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import "./VideosInfo.css";
 
 const VideosInfo = (props) => {
+  const imagePath = `/assets/${props.img}`;
+
   return (
     <div>
       <div className="videoinfo">
         <Link to={`/video/${props.id}`}>
-          <img className="image" src={props.img}></img>
+          <img className="image" src={imagePath}></img>
         </Link>
 
         <div className="image-desc">

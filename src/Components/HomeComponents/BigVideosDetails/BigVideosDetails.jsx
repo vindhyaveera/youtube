@@ -12,7 +12,7 @@ import img20 from "../../../assets/descimg5.svg";
 import img21 from "../../../assets/descimg6.svg";
 import img22 from "../../../assets/descimg7.svg";
 import Profile_img from "../../../assets/channels4_profile.jpg";
-import { selectCombinedVideoData } from "../../../features/videos/videoSlice";
+import { originalData } from "../../../features/videos/videoSlice";
 
 import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 
@@ -21,14 +21,15 @@ const BigVideosDetails = () => {
   // const combinedVideoData = useSelector(
   //   (state) => state.videos.selectCombinedVideoData
   // );
-   // const bigvideoData = useSelector((state) => state.videos.bigvideoData);
+  // const bigvideoData = useSelector((state) => state.videos.bigvideoData);
   // const video = bigvideoData[id]; // Use the ID to get the specific video
 
+  // const combinedVideoData = useSelector(selectCombinedVideoData);
 
-  const combinedVideoData = useSelector(selectCombinedVideoData);
-
-
-   const video = combinedVideoData[id];
+  const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
+  const video = combinedVideoData[id];
+  const imagePath = `/assets/${video.img}`;
+  const videoPath = `/assets/${video.source}`;
 
   const [showMore, setShowMore] = useState(false);
 
@@ -41,12 +42,13 @@ const BigVideosDetails = () => {
       <Header />
       <div className="maincontent">
         <div className="left-content">
-          <video controls autoPlay src={video.source}></video>
+          <video controls autoPlay src={videoPath}></video>
           <div className="desc">
             <h2>{video.name}</h2>
             <div className="desc-details">
               <div className="left-desc">
-                <img className="roundimage" src={video.img} />
+                <img className="roundimage" src={imagePath} />
+                
                 <div>
                   <h5>{video.channel}</h5>
                   <p>{video.subscribers}</p>

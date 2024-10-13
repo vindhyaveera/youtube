@@ -2,14 +2,15 @@ import React from "react";
 import "./Videos.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCombinedVideoData } from "../../../features/videos/videoSlice";
+import { originalData } from "../../../features/videos/videoSlice";
 import VideosInfo from "../../../Reusable/VideosInfo/VideosInfo";
 import ScrollMenuSmall from "../../../Layouts/ScrollMenuSmall/ScrollMenuSmall";
 import { Link } from "react-router-dom";
 
 const Videos = () => {
   const { id } = useParams(); // Get the dynamic ID from the URL
-  const combinedVideoData = useSelector(selectCombinedVideoData);
+  const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
+  
 
   return (
     <div>

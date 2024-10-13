@@ -35,141 +35,141 @@ const assets = {
   video3: require("../../assets/video3.mp4"),
 };
 
-
 const videoSlice = createSlice({
-  name: "videos",
-  initialState: {
-    bigvideoData: [],
+  name: "videos", 
+   initialState: {
+    // bigvideoData: [],
+    originalData: [],
 
-    bigvideoData_1: [
-      // Previous 6 entries...
-      {
-        img: assets.img7,
-        name: "Introduction to Python Programming",
-        desc: "A beginner's guide to coding in Python.",
-        dots: assets.img6,
-        rates: "2.3M views • 3 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img8,
-        name: "Top 5 Productivity Hacks for Remote Workers",
-        desc: "Boost your productivity with these simple tips.",
-        dots: assets.img6,
-        rates: "1.1M views • 2 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img9,
-        name: "Exploring the Wonders of Space",
-        desc: "Join us on a journey through the cosmos.",
-        dots: assets.img6,
-        rates: "950k views • 1 year ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img10,
-        name: "The Ultimate Guide to Investing in Stocks",
-        desc: "Learn how to make smart investments and grow your wealth.",
-        dots: assets.img6,
-        rates: "650k views • 4 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img11,
-        name: "Yoga for Beginners: Easy Poses to Start",
-        desc: "Improve flexibility and reduce stress with these beginner yoga poses.",
-        dots: assets.img6,
-        rates: "800k views • 2 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img12,
-        name: "Top 10 Must-Read Books for Entrepreneurs",
-        desc: "Discover the books that can inspire and guide etp journey.",
-        dots: assets.img6,
-        rates: "1.8M views • 5 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img13,
-        name: "Learning Data Science: A Step-by-Step Approach",
-        desc: "Master data science with practical examples and tutorials.",
-        dots: assets.img6,
-        rates: "1.6M views • 3 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img14,
-        name: "The Rise of Electric Vehicles",
-        desc: "How electric vehicles are shaping the future of transportation.",
-        dots: assets.img6,
-        rates: "1.2M views • 1 year ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-      {
-        img: assets.img15,
-        name: "Cooking with Spices: Flavorful Recipes to Try",
-        desc: "Enhance your meals with these spice-filled recipes.",
-        dots: assets.img6,
-        rates: "400k views • 4 years ago",
-        source: assets.video3,
-        channel: "Gourmet Chef",
-        subscribers: "3.2M subscribers",
-        likes: "12k",
-        dislikes: "400",
-        fullDescription:
-          "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-      },
-    ],
+    // bigvideoData_1: [
+    //   // Previous 6 entries...
+    //   {
+    //     img: assets.img7,
+    //     name: "Introduction to Python Programming",
+    //     desc: "A beginner's guide to coding in Python.",
+    //     dots: assets.img6,
+    //     rates: "2.3M views • 3 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img8,
+    //     name: "Top 5 Productivity Hacks for Remote Workers",
+    //     desc: "Boost your productivity with these simple tips.",
+    //     dots: assets.img6,
+    //     rates: "1.1M views • 2 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img9,
+    //     name: "Exploring the Wonders of Space",
+    //     desc: "Join us on a journey through the cosmos.",
+    //     dots: assets.img6,
+    //     rates: "950k views • 1 year ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img10,
+    //     name: "The Ultimate Guide to Investing in Stocks",
+    //     desc: "Learn how to make smart investments and grow your wealth.",
+    //     dots: assets.img6,
+    //     rates: "650k views • 4 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img11,
+    //     name: "Yoga for Beginners: Easy Poses to Start",
+    //     desc: "Improve flexibility and reduce stress with these beginner yoga poses.",
+    //     dots: assets.img6,
+    //     rates: "800k views • 2 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img12,
+    //     name: "Top 10 Must-Read Books for Entrepreneurs",
+    //     desc: "Discover the books that can inspire and guide etp journey.",
+    //     dots: assets.img6,
+    //     rates: "1.8M views • 5 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img13,
+    //     name: "Learning Data Science: A Step-by-Step Approach",
+    //     desc: "Master data science with practical examples and tutorials.",
+    //     dots: assets.img6,
+    //     rates: "1.6M views • 3 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img14,
+    //     name: "The Rise of Electric Vehicles",
+    //     desc: "How electric vehicles are shaping the future of transportation.",
+    //     dots: assets.img6,
+    //     rates: "1.2M views • 1 year ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    //   {
+    //     img: assets.img15,
+    //     name: "Cooking with Spices: Flavorful Recipes to Try",
+    //     desc: "Enhance your meals with these spice-filled recipes.",
+    //     dots: assets.img6,
+    //     rates: "400k views • 4 years ago",
+    //     source: assets.video3,
+    //     channel: "Gourmet Chef",
+    //     subscribers: "3.2M subscribers",
+    //     likes: "12k",
+    //     dislikes: "400",
+    //     fullDescription:
+    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
+    //   },
+    // ],
     shortvideoData: [
       {
         img: Img1,
@@ -225,17 +225,17 @@ const videoSlice = createSlice({
   },
 
   reducers: {
-    setBigVideoData(state, action) {
-      state.bigvideoData = action.payload;
+    setoriginalData(state, action) {
+      state.originalData = action.payload;
     },
     // New reducer to add video data dynamically
     addVideoData: (state, action) => {
-      state.bigvideoData.push(action.payload);
+      state.originalData.push(action.payload);
     },
 
-    setBigVideoData1(state, action) {
-      state.bigvideoData_1 = action.payload;
-    },
+    // setBigVideoData1(state, action) {
+    //   state.bigvideoData_1 = action.payload;
+    // },
 
     setShortVideoData1(state, action) {
       state.shortvideoData = action.payload;
@@ -259,14 +259,14 @@ const videoSlice = createSlice({
   },
 });
 
-export const selectCombinedVideoData = (state) => {
-  const combined = [
-    ...state.videos.bigvideoData,
-    ...state.videos.bigvideoData_1,
-  ];
-  console.log("Combined video data:", combined);
-  return combined;
-};
+// export const selectCombinedVideoData = (state) => {
+//   const combined = [
+//     ...state.videos.bigvideoData,
+//     ...state.videos.bigvideoData_1,
+//   ];
+//   console.log("Combined video data:", combined);
+//   return combined;
+// };
 
 // // Selector to combine both bigvideoData and bigvideoData_1
 // export const selectCombinedVideoData = (state) => [
@@ -275,14 +275,14 @@ export const selectCombinedVideoData = (state) => {
 // ];
 
 export const {
-  setBigVideoData,
-  setBigVideoData1,
+  setoriginalData,
   setShortVideoData,
   addVideoData,
   toggleMenu,
   closeMenu,
   openMenu,
   setStatus,
+  // setBigVideoData1,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;
