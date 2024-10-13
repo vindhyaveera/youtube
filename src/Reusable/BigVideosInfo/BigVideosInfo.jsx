@@ -8,21 +8,24 @@ const BigVideosInfo = (props) => {
   // const imagePath = require(`../../../src/assets/${props.img}`);
   
   const imagePath = `${process.env.PUBLIC_URL}/assets/${props.img}`; // Ensure the image names match and the format is correct
+  const imagePath1 = `/assets/${props.img}`; // Ensure the image names match and the format is correct
+
 
   return (
     <div>
       <div className="bigvideos">
         {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
-        <img className="bigimage" src={imagePath} />
+        <img className="bigimage" src={imagePath1} />
         <div className="bigvideoscontent">
           <div className="round">
             <img
               className="roundimage"
-              src={imagePath}
+              src={imagePath1}
               alt="Image description"
             />
           </div>
           <div className="bigvideosdesc">
+
             <h2>{props.name}</h2>
             <p>{props.desc}</p>
             <p>{props.rates}</p>
