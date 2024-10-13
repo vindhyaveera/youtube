@@ -37,6 +37,25 @@ const BigVideosDetails = () => {
     setShowMore(!showMore);
   };
 
+  const convertTextToHtml = (text) => {
+    // Replace newlines with <br> for line breaks
+    let formattedText = text.replace(/\n/g, "<br/>");
+
+    // Convert hashtags to clickable links
+    formattedText = formattedText.replace(
+      /#(\w+)/g,
+      '<a href="/hashtag/$1">#$1</a>'
+    );
+
+    // Convert URLs into clickable links
+    formattedText = formattedText.replace(
+      /(https?:\/\/[^\s]+)/g,
+      '<a href="$1" target="_blank">$1</a>'
+    );
+
+    return formattedText;
+  };
+
   return (
     <div>
       <Header />
@@ -48,7 +67,7 @@ const BigVideosDetails = () => {
             <div className="desc-details">
               <div className="left-desc">
                 <img className="roundimage" src={imagePath} />
-                
+
                 <div>
                   <h5>{video.channel}</h5>
                   <p>{video.subscribers}</p>
@@ -88,12 +107,14 @@ const BigVideosDetails = () => {
           >
             <div
               dangerouslySetInnerHTML={{
-                // __html: showMore ? video.fullDescription : truncatedDescription,
                 __html: showMore
-                  ? video.fullDescription
-                  : `${video.fullDescription.substring(0, 100)}...`,
+                  ? convertTextToHtml(video.fullDescription) // Use convertTextToHtml function for full content
+                  : `${convertTextToHtml(
+                      video.fullDescription.substring(0, 100)
+                    )}...`, // Truncated content
               }}
-            ></div>
+            />
+
             {/* // dangerouslySetInnerHTML={{ __html: video.fullDescription }}
             // {showMore ? video.fullDescription : `${video.fullDescription.substring(0, 100)}...`}> */}
             <button className="more-button" onClick={toggleDescription}>
