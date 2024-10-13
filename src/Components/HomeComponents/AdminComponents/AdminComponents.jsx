@@ -12,6 +12,7 @@ import "./AdminComponents.css"; // Create this CSS file for styling the popup
 const AdminComponents = ({ isVisible, onClose }) => {
   const dispatch = useDispatch();
   const userId = localStorage.getItem("id");
+  const [base64Image, setBase64Image] = useState("");
 
   const status = useSelector((state) => state.videos.status);
 
@@ -54,65 +55,21 @@ const AdminComponents = ({ isVisible, onClose }) => {
 
   const handleFileUpload = (e, fieldName) => {
     const file = e.target.files[0];
-    // Create the path based on the file name
-
-    // // Create a FileReader to read the file
-    // const reader = new FileReader();
-
-    // reader.onloadend = () => {
-    //   const base64String = reader.result; // This is the base64 string of the image
-    //   console.log(base64String);
-
-    //   // Now you can store this `base64String` in your database
-    // };
-
-    // reader.readAsDataURL(file); // Convert the image file to base64
 
     if (file) {
       const fileUrl = URL.createObjectURL(file);
+      // ${process.env.PUBLIC_URL}/media/
       //  const serverFilePath = `https://youtube-seven-livid.vercel.app/src/assets/${file.name}`;
+      // const serverFilePath = `https://localhost:3000/src/assets/${file.name}`;
 
       setFormData({
         ...formData,
-        [fieldName]: fileUrl,
+        [fieldName]: file.name,
       });
       console.log(file);
       console.log(file.name);
     }
   };
-
-  // const handleFileUpload = (e, fieldName) => {
-  //   const file = e.target.files[0];
-
-  //   if (file) {
-  //     const reader = new FileReader();
-
-  //     reader.onloadend = () => {
-  //       const base64String = reader.result; // This is the base64 string of the image
-
-  //       // Update form data with the base64 string (for saving to database)
-  //       setFormData({
-  //         ...formData,
-  //         [fieldName]: base64String, // Storing base64 string in form data
-  //       });
-
-  //       console.log(base64String); // Logging base64 string for debugging
-  //     };
-
-  //     reader.readAsDataURL(file); // Convert the image file to base64 for storing
-
-  //     // // Optionally, you can also set the temporary file URL to display the image immediately
-  //     // const fileUrl = URL.createObjectURL(file);
-
-  //     // // Use the temporary URL for local display (if needed)
-  //     // setFormData((prevFormData) => ({
-  //     //   ...prevFormData,
-  //     //   [`${fieldName}Preview`]: fileUrl, // Storing preview URL if needed
-  //     // }));
-
-  //     console.log(file.name); // Logging file name for debugging
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -142,6 +99,7 @@ const AdminComponents = ({ isVisible, onClose }) => {
         }
       );
       const data = await response.json();
+      setBase64Image(data.img); // Assuming `data.img` contains the base64 string
       console.log(data);
       dispatch(setStatus(data.message)); // Update status with the response message
     } catch (error) {

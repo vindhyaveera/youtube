@@ -1,19 +1,26 @@
 import React from "react";
 import "./BigVideosInfo.css";
 import { useSelector } from "react-redux";
-import img from '../../../src/assets/bigimg2.jpg'
+import img from "../../../src/assets/bigimg2.jpg";
 
 const BigVideosInfo = (props) => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
+  // const imagePath = require(`../../../src/assets/${props.img}`);
+  
+  const imagePath = `${process.env.PUBLIC_URL}/assets/${props.img}`; // Ensure the image names match and the format is correct
 
   return (
     <div>
       <div className="bigvideos">
-      {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
-        <img className="bigimage" src={props.img} />
+        {/* <div className={`bigvideos bigimage bigvideoscontent ${isMenuOpen ? "menu-open" : ""}`}> */}
+        <img className="bigimage" src={imagePath} />
         <div className="bigvideoscontent">
           <div className="round">
-            <img className="roundimage" src={props.img} />
+            <img
+              className="roundimage"
+              src={imagePath}
+              alt="Image description"
+            />
           </div>
           <div className="bigvideosdesc">
             <h2>{props.name}</h2>
