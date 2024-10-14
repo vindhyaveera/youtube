@@ -9,11 +9,12 @@ import "./SearchComponents.css";
 const SearchComponent = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query"); // Get the search query from the URL
+  const bigvideoData = useSelector((state) => state.videos.originalData);
+
+  const [videos, setVideos] = useState([...bigvideoData]);
 
   const [searchTerm, setSearchTerm] = useState(query || ""); // Initialize search term with query
-  const bigvideoData = useSelector((state) => state.videos.bigvideoData);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
-
 
   // Update search term when query changes
   useEffect(() => {
@@ -22,13 +23,21 @@ const SearchComponent = () => {
 
   console.log(searchTerm);
 
+  console.log("Data stored in bigvideoData", bigvideoData);
   // Filter videos based on the search term
-  const filteredVideos = bigvideoData.filter(
+  const filteredVideos = videos.filter(
     (video) =>
       video.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       video.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
       video.channel.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  console.log(filteredVideos);
+  // console.log(JSON.stringify(filteredVideos));
+  // console.log(bigvideoData);
+  // const filteredvideosJson = JSON.stringify(filteredVideos);
+  // console.log(JSON.stringify(bigvideoData));
+  console.log(filteredVideos.length);
 
   return (
     <div>
@@ -38,17 +47,23 @@ const SearchComponent = () => {
 
       <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
         {filteredVideos.length > 0 ? (
-          filteredVideos.map((video, index) => (
-            <div key={index} className="video-item">
-              <img src={video.img} alt={video.name} />
-              <div className={`video-content ${isMenuOpen ? "menu-open" : ""}`}>
-                <h3>{video.name}</h3>
-                <p>{video.desc}</p>
-                <p>{video.rates}</p>
-                <p>Channel: {video.channel}</p>
+          filteredVideos.map((video, index) => {
+            const imagePath = `/assets/${video.img}`;
+            // const videoPath = `/assets/${filteredVideos.source}`;
+            return (
+              <div key={index} className="video-item">
+                <img src={imagePath} alt={video.name} />
+                <div
+                  className={`video-content ${isMenuOpen ? "menu-open" : ""}`}
+                >
+                  <h3>{video.name}</h3>
+                  <p>{video.desc}</p>
+                  <p>{video.rates}</p>
+                  <p>Channel: {video.channel}</p>
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
           <p>No videos found</p>
         )}

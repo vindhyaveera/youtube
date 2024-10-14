@@ -2,7 +2,7 @@
   width: 100vw;
   position: absolute;
   top: 150px;
-  left: 7%;
+  left: 10%;
   /* margin-left: 7%; /* Width of the sidebar
   /* margin-top: 150px; Height of the header  */
   /* height: auto; */
@@ -13,8 +13,8 @@
 }
 .main-content.menu-open {
   /* position: relative; */
-  width: 87vw;
-  left: 20% !important;
+  width: 85vw;
+  left: 24% !important;
 } 
 
 

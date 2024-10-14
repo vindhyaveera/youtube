@@ -102,15 +102,21 @@ const BigVideos = () => {
         <ShortsVideos bigvideosRef={bigvideosRef} />
         <div ref={bigvideosRef} className="bigvideogrid bigvideodata2">
           {bigvideoData_1.map((video, index) => (
-            <BigVideosInfo
+            <Link
+              to={`/details/${index}`}
+              className="no-style-link"
               key={index}
-              img={video.img}
-              name={video.name}
-              desc={video.desc}
-              dots={video.dots}
-              rates={video.rates}
-              showButtons={video.showButtons}
-            />
+            >
+              <BigVideosInfo
+                key={index}
+                img={video.img}
+                name={video.name}
+                desc={video.desc}
+                dots={video.dots}
+                rates={video.rates}
+                showButtons={video.showButtons}
+              />
+            </Link>
           ))}
         </div>
       </div>
