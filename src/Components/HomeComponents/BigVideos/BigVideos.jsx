@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setoriginalData } from "../../../features/videos/videoSlice";
+import { setShortVideoData } from "../../../features/videos/videoSlice";
 import { setStatus } from "../../../features/videos/videoSlice";
 // import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Import the action
 
@@ -30,12 +31,14 @@ const BigVideos = () => {
 
   useEffect(() => {
     viewAllUser(); // Fetch data when component mounts
+    viewAllShorts()
   }, []);
 
   useEffect(() => {
     console.log("Updated bigvideoData:", videos);
   }, [videos]); // This will log whenever bigvideoData changes
 
+ 
   async function viewAllUser() {
     // alert(".../")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
@@ -65,6 +68,39 @@ const BigVideos = () => {
       alert("Failed to get bigvideos data");
     }
   }
+
+
+ 
+  async function viewAllShorts() {
+    // alert(".../")
+    dispatch(setStatus("Please wait")); // Set status to "Please wait"
+    try {
+      const response = await fetch("http://localhost:4000/shortsvideos/viewAll", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log("API Response:", data);
+      // Log the response to check its structure
+
+      console.log(data.data);
+      if (Array.isArray(data.data)) {
+        dispatch(setShortVideoData(data.data)); // Set to the correct
+        console.log(videos);
+      } else {
+        console.error("Expected an array but received:", data.data);
+        dispatch(setShortVideoData([data.data])); // Handle unexpected data
+      }
+      dispatch(setStatus(data.message)); // Update status with the response message
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to get bigvideos data");
+    }
+  }
+
 
   console.log(isMenuOpen);
 

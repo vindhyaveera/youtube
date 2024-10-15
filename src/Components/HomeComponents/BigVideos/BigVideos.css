@@ -2,19 +2,19 @@
   width: 100vw;
   position: absolute;
   top: 150px;
-  left: 10%;
+  left: 7%;
   /* margin-left: 7%; /* Width of the sidebar
   /* margin-top: 150px; Height of the header  */
   /* height: auto; */
   height: calc(100vh - 150px);
   overflow-y: auto;
-  /* background-color: aqua; */
+   /* background-color: aqua;  */
   background-color: rgb(255, 255, 255);
 }
 .main-content.menu-open {
   /* position: relative; */
   width: 85vw;
-  left: 24% !important;
+  left: 21%;
 } 
 
 

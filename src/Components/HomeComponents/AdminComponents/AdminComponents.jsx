@@ -60,7 +60,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
       // ${process.env.PUBLIC_URL}/media/
       //  const serverFilePath = `https://youtube-seven-livid.vercel.app/src/assets/${file.name}`;
       // const serverFilePath = `https://localhost:3000/src/assets/${file.name}`;
-
       setFormData({
         ...formData,
         [fieldName]: file.name,
@@ -70,18 +69,24 @@ const AdminComponents = ({ isVisible, onClose }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = (e, videoType) => {
     e.preventDefault();
 
-    //This is for database storage
-    createUser(formData);
-
-    //This is for redux global storage
-    // dispatch(addVideoData(formData)); // Dispatch action to add the video
+    // Handle logic based on video type
+    if (videoType === "big") {
+      createUser(formData); // For Bigvideos
+      // dispatch(addBigVideoData(formData)); // Dispatch for Redux
+    } else if (videoType === "short") {
+      createshorts(formData); // For Shortvideos
+      // dispatch(addShortVideoData(formData)); // Dispatch for Redux
+    }
 
     // Close the popup after submission
     handleClose();
   };
+
+
 
   async function createUser(formData) {
     // alert(".../")
@@ -106,6 +111,33 @@ const AdminComponents = ({ isVisible, onClose }) => {
       alert("Failed to store bigvideos data");
     }
   }
+
+  
+  async function createshorts(formData) {
+    // alert(".../")
+    dispatch(setStatus("Please wait")); // Set initial status
+    try {
+      const response = await fetch(
+        "http://localhost:4000/shortsvideos/createshortsvideos",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      dispatch(setStatus(data.message)); // Update status with the response message
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to store shortsvideos data");
+    }
+  }
+  
+
 
   const handleClose = () => {
     setFormData({
@@ -321,7 +353,12 @@ const AdminComponents = ({ isVisible, onClose }) => {
           </label>
           <br />
           <h1>{status}</h1>
-          <button type="submit">Add Data</button>
+          <button type="button" onClick={(e) => handleSubmit(e, "big")}>
+            Add Bigvideos
+          </button>
+          <button type="button" onClick={(e) => handleSubmit(e, "short")}>
+            Add Shortvideos
+          </button>
         </form>
       </div>
     </div>

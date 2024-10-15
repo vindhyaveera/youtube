@@ -2,10 +2,12 @@ import React from "react";
 import "./ShortsVideosInfo.css";
 
 const ShortsVideosInfo = (props) => {
+  const imagePath = `/assets/${props.img}`;
+
   return (
     <div>
       <div className="shortvideos">
-        <img className="shortimage" src={props.img} />
+        <img className="shortimage" src={imagePath} />
         <div className="shortvideoscontent">
           <div className="shortvideosdesc">
             <h3>{props.name}</h3>

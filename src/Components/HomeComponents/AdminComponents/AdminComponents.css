@@ -87,3 +87,18 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background-color: #45a049;
 }
+
+form button[type='button']{
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+form button[type="button"]:hover {
+  background-color: #3b30da;
+}

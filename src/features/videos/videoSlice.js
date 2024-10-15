@@ -36,8 +36,8 @@ const assets = {
 };
 
 const videoSlice = createSlice({
-  name: "videos", 
-   initialState: {
+  name: "videos",
+  initialState: {
     // bigvideoData: [],
     originalData: [],
 
@@ -170,56 +170,58 @@ const videoSlice = createSlice({
     //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
     //   },
     // ],
-    shortvideoData: [
-      {
-        img: Img1,
-        name: "Quick Cloud Tips - Boost Performance in 60 Seconds",
-        dots: Img6,
-        rates: "305k views • 4 years ago",
-      },
-      {
-        img: Img2,
-        name: "JavaScript Basics in Under a Minute",
-        dots: Img6,
-        rates: "1.2M views • 2 years ago",
-      },
-      {
-        img: Img3,
-        name: "CSS Tricks for Responsive Design 😀 Minute Guide",
-        dots: Img6,
-        rates: "850k views • 1 year ago",
-      },
-      {
-        img: Img4,
-        name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
-        dots: Img6,
-        rates: "500k views • 3 years ago",
-      },
-      {
-        img: Img5,
-        name: "SEO Tips for Fast Websites - 1 Minute Insight",
-        dots: Img6,
-        rates: "600k views • 5 months ago",
-      },
-      {
-        img: Img7,
-        name: "CSS Tricks for Responsive Design 😀 Minute Guide",
-        dots: Img6,
-        rates: "850k views • 1 year ago",
-      },
-      {
-        img: Img8,
-        name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
-        dots: Img6,
-        rates: "500k views • 3 years ago",
-      },
-      {
-        img: Img9,
-        name: "SEO Tips for Fast Websites - 1 Minute Insight",
-        dots: Img6,
-        rates: "600k views • 5 months ago",
-      },
-    ],
+    shortvideoData: [],
+
+    // shortvideoData: [
+    //   {
+    //     img: Img1,
+    //     name: "Quick Cloud Tips - Boost Performance in 60 Seconds",
+    //     dots: Img6,
+    //     rates: "305k views • 4 years ago",
+    //   },
+    //   {
+    //     img: Img2,
+    //     name: "JavaScript Basics in Under a Minute",
+    //     dots: Img6,
+    //     rates: "1.2M views • 2 years ago",
+    //   },
+    //   {
+    //     img: Img3,
+    //     name: "CSS Tricks for Responsive Design 😀 Minute Guide",
+    //     dots: Img6,
+    //     rates: "850k views • 1 year ago",
+    //   },
+    //   {
+    //     img: Img4,
+    //     name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
+    //     dots: Img6,
+    //     rates: "500k views • 3 years ago",
+    //   },
+    //   {
+    //     img: Img5,
+    //     name: "SEO Tips for Fast Websites - 1 Minute Insight",
+    //     dots: Img6,
+    //     rates: "600k views • 5 months ago",
+    //   },
+    //   {
+    //     img: Img7,
+    //     name: "CSS Tricks for Responsive Design 😀 Minute Guide",
+    //     dots: Img6,
+    //     rates: "850k views • 1 year ago",
+    //   },
+    //   {
+    //     img: Img8,
+    //     name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
+    //     dots: Img6,
+    //     rates: "500k views • 3 years ago",
+    //   },
+    //   {
+    //     img: Img9,
+    //     name: "SEO Tips for Fast Websites - 1 Minute Insight",
+    //     dots: Img6,
+    //     rates: "600k views • 5 months ago",
+    //   },
+    // ],
     menuOpen: false,
     status: "",
   },
@@ -237,7 +239,7 @@ const videoSlice = createSlice({
     //   state.bigvideoData_1 = action.payload;
     // },
 
-    setShortVideoData1(state, action) {
+    setShortVideoData(state, action) {
       state.shortvideoData = action.payload;
     },
 
