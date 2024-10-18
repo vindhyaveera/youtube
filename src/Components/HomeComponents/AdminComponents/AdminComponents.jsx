@@ -69,9 +69,14 @@ const AdminComponents = ({ isVisible, onClose }) => {
     }
   };
 
-  
   const handleSubmit = (e, videoType) => {
     e.preventDefault();
+
+    // Validate form fields before proceeding
+    if (!e.target.checkValidity()) {
+      console.log("Form is invalid");
+      return; // Exit if form is invalid
+    }
 
     // Handle logic based on video type
     if (videoType === "big") {
@@ -85,8 +90,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
     // Close the popup after submission
     handleClose();
   };
-
-
 
   async function createUser(formData) {
     // alert(".../")
@@ -112,7 +115,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
     }
   }
 
-  
   async function createshorts(formData) {
     // alert(".../")
     dispatch(setStatus("Please wait")); // Set initial status
@@ -136,8 +138,6 @@ const AdminComponents = ({ isVisible, onClose }) => {
       alert("Failed to store shortsvideos data");
     }
   }
-  
-
 
   const handleClose = () => {
     setFormData({
@@ -353,12 +353,8 @@ const AdminComponents = ({ isVisible, onClose }) => {
           </label>
           <br />
           <h1>{status}</h1>
-          <button type="button" onClick={(e) => handleSubmit(e, "big")}>
-            Add Bigvideos
-          </button>
-          <button type="button" onClick={(e) => handleSubmit(e, "short")}>
-            Add Shortvideos
-          </button>
+          <button type="submit">Add Bigvideos</button>
+          <button type="button" onClick={(e) => handleSubmit(e, "short")}>Add Shortvideos</button>
         </form>
       </div>
     </div>
