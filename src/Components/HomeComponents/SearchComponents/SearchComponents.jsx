@@ -52,7 +52,9 @@ const SearchComponent = () => {
             // const videoPath = `/assets/${filteredVideos.source}`;
             return (
               <div key={index} className="video-item">
-                <img src={imagePath} alt={video.name} />
+                <div className="leftvideo">
+                  <img src={imagePath} alt={video.name} />
+                </div>
                 <div
                   className={`video-content ${isMenuOpen ? "menu-open" : ""}`}
                 >

@@ -5,14 +5,17 @@
   position: absolute;
   top: 150px;
   left: 7%;
-  /* margin-left: 7%; /* Width of the sidebar
-  margin-top: 150px; Height of the header  */
-  height: calc(100vh - 150px);
+  /* height:100vh; */
+  /* margin-left: 7%; /* Width of the sidebar*/
+  /* margin-top: 150px;  /* Height of the header     */
+  height: calc(100vh- 150px);
   overflow-y: auto;
   gap: 50px;
   display: flex;
   flex-direction: column;
   padding: 10px;
+  z-index: 900;
+  background-color: white; 
 }
 
 .video-list.menu-open {
@@ -22,20 +25,35 @@
 
 .video-item {
   display: flex;
-  width: 100vw;
-  height: 50vh;
+  width: 89vw;
+  height: auto;
+  overflow: hidden;
   gap: 10px;
+  /* flex: 1 1 auto; Ensure the item can grow or shrink */
+
+  /* background-color: rgb(10, 177, 23); */
 }
 
+.leftvideo {
+  width: 50%;
+  height: 100%;
+  /* background-color: blue; */
+}
+
+
 .video-item img {
-  width: 45%;
+  width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 10px;
 }
+
 .video-content {
-  width: 40%;
+  width: 50%;
+  height: 100%;
+  /* background-color: brown; */
 }
+
 .video-content.menu-open {
   width: 30%;
 }
