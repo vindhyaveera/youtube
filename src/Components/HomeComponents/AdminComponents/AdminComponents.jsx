@@ -92,7 +92,7 @@ const AdminComponents = ({ isVisible, onClose }) => {
   };
 
   async function createUser(formData) {
-    // alert(".../") 
+    // alert(".../")
     dispatch(setStatus("Please wait")); // Set initial status
     try {
       const response = await fetch(
@@ -172,7 +172,7 @@ const AdminComponents = ({ isVisible, onClose }) => {
           ×
         </button>
         <h2>Admin Form</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e, "big")}>
           <label>
             Image Upload:
             <input
@@ -354,7 +354,9 @@ const AdminComponents = ({ isVisible, onClose }) => {
           <br />
           <h1>{status}</h1>
           <button type="submit">Add Bigvideos</button>
-          <button type="button" onClick={(e) => handleSubmit(e, "short")}>Add Shortvideos</button>
+          <button type="button" onClick={(e) => handleSubmit(e, "short")}>
+            Add Shortvideos
+          </button>
         </form>
       </div>
     </div>

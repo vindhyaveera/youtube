@@ -226,6 +226,7 @@ const videoSlice = createSlice({
     menuOpen: false,
     status: "",
   },
+  
 
   reducers: {
     setoriginalData(state, action) {
