@@ -18,10 +18,12 @@
   background-color: white; 
 }
 
+
 .video-list.menu-open {
   width: 87vw;
   left: 20% !important;
 }
+
 
 .video-item {
   display: flex;

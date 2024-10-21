@@ -29,16 +29,19 @@ const BigVideos = () => {
   // Split the next 5 items into bigvideoData1
   const bigvideoData_1 = videos.slice(6);
 
+  console.log("Original Data from redux array", videos);
+  console.log("Original array of bigvideodata", bigvideoData);
+  console.log("Original array of bigvideodata1", bigvideoData_1);
+
   useEffect(() => {
     viewAllUser(); // Fetch data when component mounts
-    viewAllShorts()
+    viewAllShorts();
   }, []);
 
   useEffect(() => {
     console.log("Updated bigvideoData:", videos);
   }, [videos]); // This will log whenever bigvideoData changes
 
- 
   async function viewAllUser() {
     // alert(".../")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
@@ -69,18 +72,19 @@ const BigVideos = () => {
     }
   }
 
-
- 
   async function viewAllShorts() {
     // alert(".../")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
-      const response = await fetch("http://localhost:4000/shortsvideos/viewAll", {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "http://localhost:4000/shortsvideos/viewAll",
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       console.log("API Response:", data);
       // Log the response to check its structure
@@ -101,8 +105,14 @@ const BigVideos = () => {
     }
   }
 
-
   console.log(isMenuOpen);
+  bigvideoData.map((video) => {
+    console.log("ID of Database", video.id);
+  });
+  bigvideoData_1.map((video) => {
+    console.log("ID of Database1", video.id);
+  });
+
 
   return (
     <div>
@@ -113,14 +123,14 @@ const BigVideos = () => {
       <div className={`main-content  ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="bigvideogrid">
           {Array.isArray(bigvideoData) && bigvideoData.length > 0 ? (
-            bigvideoData.map((video, index) => (
+            bigvideoData.map((video) => (
               <Link
-                to={`/details/${index}`}
+                to={`/details/${video.id}`}
                 className="no-style-link"
-                key={index}
+                // key={index}
               >
                 <BigVideosInfo
-                  key={index}
+                  key={video.id}
                   img={video.img}
                   name={video.name}
                   desc={video.desc}
@@ -137,14 +147,14 @@ const BigVideos = () => {
         </div>
         <ShortsVideos bigvideosRef={bigvideosRef} />
         <div ref={bigvideosRef} className="bigvideogrid bigvideodata2">
-          {bigvideoData_1.map((video, index) => (
+          {bigvideoData_1.map((video) => (
             <Link
-              to={`/details/${index}`}
+              to={`/details/${video.id}`}
               className="no-style-link"
-              key={index}
+              // key={index}
             >
               <BigVideosInfo
-                key={index}
+                key={video.id}
                 img={video.img}
                 name={video.name}
                 desc={video.desc}

@@ -27,15 +27,28 @@ const BigVideosDetails = () => {
   // const combinedVideoData = useSelector(selectCombinedVideoData);
 
   const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
-  const video = combinedVideoData[id];
+  //  // / Split the first 5 items into bigvideoData
+  //  const bigvideoData = combinedVideoData.slice(0, 6);
+
+  //  // Split the next 5 items into bigvideoData1
+  //  const bigvideoData_1 = combinedVideoData.slice(6);
+
+  // const video = combinedVideoData[id];
+
+  // Find the specific video by its id (convert id to a number if needed)
+  const video = combinedVideoData.find((video) => video.id === parseInt(id));
+
+
   const imagePath = `/assets/${video.img}`;
   const videoPath = `/assets/${video.source}`;
 
   const [showMore, setShowMore] = useState(false);
 
+  
   const toggleDescription = () => {
     setShowMore(!showMore);
   };
+  
 
   const convertTextToHtml = (text) => {
     // Replace newlines with <br> for line breaks
