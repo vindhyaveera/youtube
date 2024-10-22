@@ -35,7 +35,6 @@ const assets = {
   video3: require("../../assets/video3.mp4"),
 };
 
-
 const videoSlice = createSlice({
   name: "videos",
   initialState: {
@@ -173,6 +172,8 @@ const videoSlice = createSlice({
     // ],
     shortvideoData: [],
 
+    userVideos: [],
+
     // shortvideoData: [
     //   {
     //     img: Img1,
@@ -226,7 +227,6 @@ const videoSlice = createSlice({
     menuOpen: false,
     status: "",
   },
-  
 
   reducers: {
     setoriginalData(state, action) {
@@ -235,6 +235,10 @@ const videoSlice = createSlice({
     // New reducer to add video data dynamically
     addVideoData: (state, action) => {
       state.originalData.push(action.payload);
+    },
+
+    setuserVideos(state, action) {
+      state.userVideos = action.payload;
     },
 
     // setBigVideoData1(state, action) {
@@ -286,6 +290,7 @@ export const {
   closeMenu,
   openMenu,
   setStatus,
+  setuserVideos,
   // setBigVideoData1,
 } = videoSlice.actions;
 
