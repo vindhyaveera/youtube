@@ -9,7 +9,8 @@ import "./SearchComponents.css";
 const SearchComponent = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query"); // Get the search query from the URL
-  const bigvideoData = useSelector((state) => state.videos.originalData);
+  // const bigvideoData = useSelector((state) => state.videos.originalData);
+  const bigvideoData = useSelector((state) => state.videos.userVideos);
 
   const [videos, setVideos] = useState([...bigvideoData]);
 
@@ -23,7 +24,6 @@ const SearchComponent = () => {
 
   console.log(searchTerm);
 
-
   console.log("Data stored in bigvideoData", bigvideoData);
   // Filter videos based on the search term
   const filteredVideos = videos.filter(
@@ -33,14 +33,12 @@ const SearchComponent = () => {
       video.channel.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-
   console.log(filteredVideos);
   // console.log(JSON.stringify(filteredVideos));
   // console.log(bigvideoData);
   // const filteredvideosJson = JSON.stringify(filteredVideos);
   // console.log(JSON.stringify(bigvideoData));
   console.log(filteredVideos.length);
-
 
   return (
     <div>
@@ -59,8 +57,9 @@ const SearchComponent = () => {
                   <img src={imagePath} alt={video.name} />
                 </div>
                 <div
-                  className={`video-content ${isMenuOpen ? "menu-open" : ""}`}>
-                   <h3>{video.name}</h3>
+                  className={`video-content ${isMenuOpen ? "menu-open" : ""}`}
+                >
+                  <h3>{video.name}</h3>
                   <p>{video.desc}</p>
                   <p>{video.rates}</p>
                   <p>Channel: {video.channel}</p>
@@ -75,6 +74,5 @@ const SearchComponent = () => {
     </div>
   );
 };
-
 
 export default SearchComponent;
