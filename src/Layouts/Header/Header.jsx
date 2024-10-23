@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../../features/videos/videoSlice";
@@ -7,6 +7,7 @@ import AdminComponents from "../../Components/HomeComponents/AdminComponents/Adm
 import Profile_img from "../../assets/channels4_profile.jpg";
 import NavBar from "../NavBar/NavBar";
 import LoginForm from "../../Components/HomeComponents/LoginComponents/LoginComponents";
+import ProfileForm from '../../Components/HomeComponents/ProileForm/ProfileForm';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
@@ -14,10 +15,19 @@ const Header = () => {
 
   const [isVisible, setIsVisible] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleForm = () => {
     setIsFormVisible(!isFormVisible);
   };
+
+  useEffect(() => {
+    // Check if userid exists in localStorage
+    const userid = localStorage.getItem("id");
+    if (userid) {
+      setIsLoggedIn(true); // User is logged in
+    }
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -25,7 +35,7 @@ const Header = () => {
   console.log(isMenuOpen);
 
   const toggleFormVisibility = () => {
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
     if (token) {
       setIsVisible((prev) => !prev); // Toggle visibility of AdminComponents if token is present
     } else {
@@ -190,7 +200,13 @@ const Header = () => {
             src={Profile_img}
             onClick={toggleForm}
           ></img>
-          {isFormVisible && <LoginForm onClose={toggleForm} />}
+          {isFormVisible &&
+            (isLoggedIn ? (
+              <ProfileForm onClose={toggleForm} /> // Show profile form or other form
+            ) : (
+              <LoginForm onClose={toggleForm} /> // Show login form
+            ))}
+          {/* <LoginForm onClose={toggleForm} />} */}
         </div>
       </div>
       {/* {console.log(isMenuOpen)} // Add this inside the Header component to track state change */}
