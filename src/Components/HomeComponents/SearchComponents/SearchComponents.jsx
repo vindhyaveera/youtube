@@ -9,8 +9,9 @@ import "./SearchComponents.css";
 const SearchComponent = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query"); // Get the search query from the URL
-  // const bigvideoData = useSelector((state) => state.videos.originalData);
-  const bigvideoData = useSelector((state) => state.videos.userVideos);
+ 
+   const bigvideoData = useSelector((state) => state.videos.originalData);
+  // const bigvideoData = useSelector((state) => state.videos.userVideos);
 
   const [videos, setVideos] = useState([...bigvideoData]);
 
