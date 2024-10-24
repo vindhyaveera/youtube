@@ -46,7 +46,7 @@ const SearchComponent = () => {
       <Header />
       <Sidebar />
       <ScrollMenu />
-
+      
       <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video, index) => {
