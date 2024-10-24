@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setoriginalData,setuserVideos } from "../../../features/videos/videoSlice";
+import {
+  setoriginalData,
+  setuserVideos,
+  setuserShortsVideos,
+} from "../../../features/videos/videoSlice";
 import { setShortVideoData } from "../../../features/videos/videoSlice";
 import { setStatus } from "../../../features/videos/videoSlice";
 // import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Import the action
@@ -17,7 +21,6 @@ import { Link } from "react-router-dom";
 const BigVideos = () => {
   const videos = useSelector((state) => state.videos.originalData);
   const userVideos = useSelector((state) => state.videos.userVideos);
-
 
   const [userId, setUserId] = useState(localStorage.getItem("id")); // Get the initial userId from localStorage
 
@@ -35,7 +38,7 @@ const BigVideos = () => {
   // Split the next 5 items into bigvideoData1
   const bigvideoData_1 = videos.slice(6);
 
-  console.log("All USer Videos:",userVideos);
+  console.log("All User Videos:", userVideos);
   console.log("Original Data from redux array", videos);
   console.log("Original array of bigvideodata", bigvideoData);
   console.log("Original array of bigvideodata1", bigvideoData_1);
@@ -43,7 +46,9 @@ const BigVideos = () => {
   // useEffect to listen for changes in the userId and call getuserVideos whenever it changes
   useEffect(() => {
     if (userId) {
-      getuserVideos(); // Call the function when userId changes
+      getuserVideos();
+      getuserShortsVideos();
+      // Call the function when userId changes
     }
   }, [userId]); // Dependency array includes userId
 
@@ -63,12 +68,11 @@ const BigVideos = () => {
     };
   }, []);
 
-
   useEffect(() => {
     viewAllUser(); // Fetch data when component mounts
     viewAllShorts();
-    // getuserVideos();
-
+    getuserVideos();
+    getuserShortsVideos();
   }, []);
 
   useEffect(() => {
@@ -88,7 +92,7 @@ const BigVideos = () => {
       );
       const data = await response.json();
       // Check if the response contains the Bigvideosuser array
-      const bigUserVideos = data?.data?.Bigvideosuser; 
+      const bigUserVideos = data?.data?.Bigvideosuser;
       console.log("API Response from getuserVideos:", bigUserVideos);
       if (Array.isArray(bigUserVideos)) {
         dispatch(setuserVideos(bigUserVideos)); // Set to the correct
@@ -99,6 +103,34 @@ const BigVideos = () => {
       console.log(error.message);
       console.log(error);
       alert("Failed to get bigvideos data for user");
+    }
+  }
+  
+
+  async function getuserShortsVideos() {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/users//getuserShortsVideos/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      // Check if the response contains the Bigvideosuser array
+      const shortsUserVideos = data?.data?.Shortvideosuser;
+      console.log("API Response from getuserShortsVideos:", shortsUserVideos);
+      if (Array.isArray(shortsUserVideos)) {
+        dispatch(setuserShortsVideos(shortsUserVideos)); // Set to the correct
+      } else {
+        console.error("Expected an array but received:", data.data);
+      }
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to get shortsvideos data for user");
     }
   }
 

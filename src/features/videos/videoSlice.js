@@ -174,6 +174,8 @@ const videoSlice = createSlice({
 
     userVideos: [],
 
+    userShortsVideos:[],
+
     // shortvideoData: [
     //   {
     //     img: Img1,
@@ -241,6 +243,10 @@ const videoSlice = createSlice({
       state.userVideos = action.payload;
     },
 
+    setuserShortsVideos(state, action) {
+      state.userShortsVideos = action.payload;
+    },
+
     // setBigVideoData1(state, action) {
     //   state.bigvideoData_1 = action.payload;
     // },
@@ -291,6 +297,7 @@ export const {
   openMenu,
   setStatus,
   setuserVideos,
+  setuserShortsVideos,
   // setBigVideoData1,
 } = videoSlice.actions;
 
