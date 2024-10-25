@@ -35,7 +35,7 @@ const ProfileForm = ({ onClose }) => {
               );
             })
           ) : (
-            <p>No videos found</p>
+            <p>No Bigvideos found</p>
           )}
 
            {shortsvideoData.length > 0 ? (
@@ -57,7 +57,7 @@ const ProfileForm = ({ onClose }) => {
               );
             })
           ) : (
-            <p>No videos found</p>
+            <p>No Shortsvideos found</p>
           )}
 
 
