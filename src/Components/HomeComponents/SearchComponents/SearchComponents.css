@@ -8,23 +8,21 @@
   /* height:100vh; */
   /* margin-left: 7%; /* Width of the sidebar*/
   /* margin-top: 150px;  /* Height of the header     */
-  /* height: calc(100vh- 150px); */
-  height:auto;
+  height: calc(100vh- 150px);
+  /* height:auto; */
   overflow-y: auto;
   gap: 50px;
   display: flex;
   flex-direction: column;
   padding: 10px;
   z-index: 900;
-  background-color: white; 
+  background-color: white;
 }
-
 
 .video-list.menu-open {
   width: 87vw;
   left: 20% !important;
 }
-
 
 .video-item {
   display: flex;
@@ -42,7 +40,6 @@
   height: 100%;
   /* background-color: blue; */
 }
-
 
 .video-item img {
   width: 100%;
