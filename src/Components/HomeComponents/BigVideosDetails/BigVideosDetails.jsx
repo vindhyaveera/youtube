@@ -38,17 +38,45 @@ const BigVideosDetails = () => {
   // Find the specific video by its id (convert id to a number if needed)
   const video = combinedVideoData.find((video) => video.id === parseInt(id));
 
-
   const imagePath = `/assets/${video.img}`;
   const videoPath = `/assets/${video.source}`;
 
   const [showMore, setShowMore] = useState(false);
+  const [watchLaterMessage, setWatchLaterMessage] = useState("");
 
-  
   const toggleDescription = () => {
     setShowMore(!showMore);
   };
-  
+
+  const handleWatchLater = async function createUser() {
+    const userId = localStorage.getItem("id");
+    const videoId = id; // Assuming `video.id` is the current video's ID
+
+    try {
+      const response = await fetch(
+        "http://localhost:4000/watchlater/createwatch",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userId,
+            bigVideosId: videoId,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      alert("Added to Watch Later"); // Show success alert
+
+      setWatchLaterMessage(data.message);
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to store bigvideos data in watchlater");
+    }
+  };
 
   const convertTextToHtml = (text) => {
     // Replace newlines with <br> for line breaks
@@ -107,6 +135,11 @@ const BigVideosDetails = () => {
                   <img src={img20} />
                   downloads
                 </button>
+
+                <button class="image-button3" onClick={handleWatchLater}>
+                  Watch Later
+                </button>
+
                 <button class="image-button-dot">
                   <img src={img22} />
                 </button>

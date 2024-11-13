@@ -14,9 +14,9 @@
   width: 63vw;
   height: auto;
   display: flex;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
   flex-direction: column;
   border-radius: 10px;
   /* background-color: rgb(20, 20, 209);  */
@@ -26,7 +26,6 @@
   top: 0;
   color: black;
 }
-
 
 video {
   width: 100%;
@@ -41,7 +40,7 @@ video {
   display: flex;
   flex-direction: column;
   gap: 10px;
-    /* background-color: blue;  */
+  /* background-color: blue;  */
   color: black;
 }
 .roundimage {
@@ -71,7 +70,7 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
+  width: 55%;
   gap: 10px;
 }
 .image-button1 {
@@ -84,7 +83,6 @@ video {
   width: 1px;
   height: 20px; /* Match this to the height of the images */
   background-color: grey; /* Color of the vertical line */
-  
 }
 .image-button {
   display: flex;
@@ -108,7 +106,7 @@ video {
 }
 .dislikes {
   display: flex;
-  gap:5px;
+  gap: 5px;
   align-items: center;
 }
 .image-button2 {
@@ -124,6 +122,7 @@ video {
   border-radius: 50px;
   align-items: center;
 }
+
 .image-button3 {
   display: flex;
   justify-content: center;
@@ -135,7 +134,9 @@ video {
   border-radius: 50px;
   background-color: lightgrey;
   border: 0.1px solid lightgrey;
+  cursor: pointer;
 }
+
 .image-button-dot {
   display: flex;
   justify-content: center;
@@ -182,37 +183,35 @@ video {
   padding: 0;
   font-size: 14px;
 }
-.comments{
-  width:100%;
-  height:auto;
-  display:flex;
+.comments {
+  width: 100%;
+  height: auto;
+  display: flex;
   /* background-color: blue; */
-  gap:20px;
+  gap: 20px;
 }
-.comments img{
-  width:25px;
-  height:25px;
-
+.comments img {
+  width: 25px;
+  height: 25px;
 }
-.headcomments{
-  display:flex;
-  gap:10px;
+.headcomments {
+  display: flex;
+  gap: 10px;
 }
-.headcomments img{
-  width:40px;
-  height:40px;
+.headcomments img {
+  width: 40px;
+  height: 40px;
   border-radius: 50px;
 }
-.headcomments input{
-  width:100%;
- border:none;
- border-bottom:0.3px solid lightgrey;
+.headcomments input {
+  width: 100%;
+  border: none;
+  border-bottom: 0.3px solid lightgrey;
 }
 .sidescrollmenu {
-  width:100%;
+  width: 100%;
   overflow: hidden;
   /* width: 35vw; Match this with the width of the video */
   margin-top: 100px; /* Adjust this space as needed */
   /* Ensure it is positioned correctly above the video component */
 }
-

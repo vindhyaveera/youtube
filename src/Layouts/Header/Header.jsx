@@ -7,7 +7,7 @@ import AdminComponents from "../../Components/HomeComponents/AdminComponents/Adm
 import Profile_img from "../../assets/channels4_profile.jpg";
 import NavBar from "../NavBar/NavBar";
 import LoginForm from "../../Components/HomeComponents/LoginComponents/LoginComponents";
-import ProfileForm from '../../Components/HomeComponents/ProileForm/ProfileForm';
+import ProfileForm from "../../Components/HomeComponents/ProileForm/ProfileForm";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
@@ -22,12 +22,28 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // Check if userid exists in localStorage
-    const userid = localStorage.getItem("id");
-    if (userid) {
-      setIsLoggedIn(true); // User is logged in
-    }
-  }, []);
+    // Function to check if `id` exists in localStorage
+    const checkUserId = () => {
+      const userid = localStorage.getItem("id");
+      setIsLoggedIn(!!userid); // Set logged in state based on `id`
+
+      // // If `id` in localStorage changes, refresh the page
+      if (!!userid !== isLoggedIn) {
+        setIsLoggedIn(!!userid); // Update the state instead of reloading the page
+      }
+    };
+
+    // Initial check on component mount
+    checkUserId();
+
+    // Listen for changes to `localStorage`
+    window.addEventListener("storage", checkUserId);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("storage", checkUserId);
+    };
+  }, [isLoggedIn]);
 
   const dispatch = useDispatch();
 
