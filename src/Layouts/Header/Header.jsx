@@ -15,35 +15,12 @@ const Header = () => {
 
   const [isVisible, setIsVisible] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleForm = () => {
     setIsFormVisible(!isFormVisible);
   };
 
-  useEffect(() => {
-    // Function to check if `id` exists in localStorage
-    const checkUserId = () => {
-      const userid = localStorage.getItem("id");
-      setIsLoggedIn(!!userid); // Set logged in state based on `id`
-
-      // // If `id` in localStorage changes, refresh the page
-      if (!!userid !== isLoggedIn) {
-        setIsLoggedIn(!!userid); // Update the state instead of reloading the page
-      }
-    };
-
-    // Initial check on component mount
-    checkUserId();
-
-    // Listen for changes to `localStorage`
-    window.addEventListener("storage", checkUserId);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("storage", checkUserId);
-    };
-  }, [isLoggedIn]);
+ 
 
   const dispatch = useDispatch();
 
@@ -79,6 +56,10 @@ const Header = () => {
     dispatch(toggleMenu());
     // console.log(isMenuOpen)
   };
+
+  
+  const userid = localStorage.getItem("id");
+  console.log(userid);
 
   return (
     <div>
@@ -217,7 +198,7 @@ const Header = () => {
             onClick={toggleForm}
           ></img>
           {isFormVisible &&
-            (isLoggedIn ? (
+            (userid ? (
               <ProfileForm onClose={toggleForm} /> // Show profile form or other form
             ) : (
               <LoginForm onClose={toggleForm} /> // Show login form

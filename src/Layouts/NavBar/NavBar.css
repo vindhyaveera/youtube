@@ -28,6 +28,7 @@
   align-items: center;
   gap: 30px;
   padding: 5px;
+  cursor: pointer;
 }
 .bottomline {
   width: 100%;

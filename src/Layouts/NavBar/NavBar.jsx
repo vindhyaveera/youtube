@@ -1,12 +1,86 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setStatus } from "../../features/videos/videoSlice";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { setBigVideosIds } from "../../features/videos/videoSlice";
+import { setShortsIds } from "../../features/videos/videoSlice";
+
 import "./NavBar.css";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
+  const status = useSelector((state) => state.videos.status);
+
+  const handleWatchLaterClick = async function viewAllVideos() {
+    // alert(".../")
+    dispatch(setStatus("Please wait")); // Set status to "Please wait"
+    try {
+      const response = await fetch("http://localhost:4000/watchlater/viewAll", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log("API Response for watchlater:", data);
+      // Log the response to check its structure
+
+      if (data && Array.isArray(data.data)) {
+        // Extract unique bigVideosIds and shortVideosIds
+        const bigvideosIds = [
+          ...new Set(
+            data.data
+              .filter((item) => item.bigVideosId !== null) // Filter where bigVideosId is not null
+              .map((item) => item.bigVideosId) // Extract bigVideosId
+          ),
+        ];
+        const shortsIds = [
+          ...new Set(
+            data.data
+              .filter((item) => item.shortVideosId !== null) // Filter where shortVideosId is not null
+              .map((item) => item.shortVideosId) // Extract shortVideosId
+          ),
+        ];
+
+        // Dispatch the IDs to Redux
+        dispatch(setBigVideosIds(bigvideosIds));
+        dispatch(setShortsIds(shortsIds));
+
+        console.log("BigVideos IDs:", bigvideosIds);
+        console.log("Shorts IDs:", shortsIds);
+      } else {
+        console.error("Expected an array but received:", data.data);
+      }
+      console.log(data.data);
+      // if (Array.isArray(data.data)) {
+      //   dispatch(setoriginalData(data.data)); // Set to the correct
+      //   console.log(videos);
+      // } else {
+      //   console.error("Expected an array but received:", data.data);
+      //   dispatch(setoriginalData([data.data])); // Handle unexpected data
+      // }
+      dispatch(setStatus(data.message)); // Update status with the response message
+      navigate("/watchlater");
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to get bigvideos data");
+    }
+  };
+
   return (
     <div>
       <div className="navbar">
         <div className="navbarchild">
-          <div className="row">
+          <div
+            className="row"
+            onClick={() => {
+              navigate("/");
+              // alert("Watchlater is working");
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               enable-background="new 0 0 24 24"
@@ -52,7 +126,14 @@ const NavBar = () => {
           <div className="bottomline">
             <hr className="custom-hr" />
           </div>
-          <div className="row">
+          <div
+            className="row"
+            onClick={() => {
+              handleWatchLaterClick();
+              // navigate("/watchlater");
+              // alert("Watchlater is working");
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               enable-background="new 0 0 24 24"

@@ -10,6 +10,7 @@
   overflow-y: auto;
    /* background-color: aqua;  */
   background-color: rgb(255, 255, 255);
+  
 }
 .main-content.menu-open {
   /* position: relative; */
@@ -25,6 +26,10 @@
   grid-column-gap: 10px; /* 20px gap between columns */
   grid-row-gap: 70px; /* 15px gap between rows */
   grid-template-columns: repeat(3, 1fr);
+  font-family: Roboto,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+
   /* background-color: rgb(140, 0, 255); */
 }
 

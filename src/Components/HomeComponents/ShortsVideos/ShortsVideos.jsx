@@ -66,10 +66,10 @@ const ShortsVideos = ({ bigvideosRef }) => {
               <div className="img">
                 <img className="image" src={ShortImg} />
               </div>
-              <h2>Shorts</h2>
+              <h2 className="shorts">Shorts</h2>
             </div>
             <div className="img">
-              <img className="image" src={CloseImg} onClick={handleClose} />
+              <img className="closeimage" src={CloseImg} onClick={handleClose} />
             </div>
           </div>
           <div

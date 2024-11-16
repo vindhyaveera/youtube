@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Header from "../../../Layouts/Header/Header";
 import "./BigVideosDetails.css";
@@ -13,11 +14,15 @@ import img21 from "../../../assets/descimg6.svg";
 import img22 from "../../../assets/descimg7.svg";
 import Profile_img from "../../../assets/channels4_profile.jpg";
 import { originalData } from "../../../features/videos/videoSlice";
+import { toggleMenu } from "../../../features/videos/videoSlice";
 
 import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 
 const BigVideosDetails = () => {
   const { id } = useParams(); // Get the dynamic ID from the URL
+  const menuRef = useRef(null);
+  const dispatch = useDispatch();
+
   // const combinedVideoData = useSelector(
   //   (state) => state.videos.selectCombinedVideoData
   // );
@@ -25,6 +30,7 @@ const BigVideosDetails = () => {
   // const video = bigvideoData[id]; // Use the ID to get the specific video
 
   // const combinedVideoData = useSelector(selectCombinedVideoData);
+  const isMenuOpen = useSelector((state) => state.videos.menuOpen);
 
   const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
   //  // / Split the first 5 items into bigvideoData
@@ -47,6 +53,35 @@ const BigVideosDetails = () => {
   const toggleDescription = () => {
     setShowMore(!showMore);
   };
+
+  // Close menu when clicking outside
+  const handleClickOutside = (event) => {
+    const screenWidth = window.innerWidth;
+    const clickPosition = event.clientX;
+
+    // Prevent closing the menu if click is in the left 40% of the screen
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      clickPosition > screenWidth * 0.15 // Click is in the right 60% of the screen
+    ) {
+      dispatch(toggleMenu(false)); // Close the menu by setting `isMenuOpen` to false
+    }
+  };
+  
+
+  useEffect(() => {
+    // Toggle body scroll when menu opens or closes
+    if (isMenuOpen) {
+      document.body.classList.add("no-scroll"); // Disable scrolling
+    } else {
+      document.body.classList.remove("no-scroll"); // Enable scrolling
+    }
+    // Cleanup in case component unmounts while menu is open
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [isMenuOpen]); // Run whenever the `isMenuOpen` state changes
 
   const handleWatchLater = async function createUser() {
     const userId = localStorage.getItem("id");
@@ -98,9 +133,16 @@ const BigVideosDetails = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <div className="maincontent">
+    <div
+      onClick={handleClickOutside}
+      className={`app-container ${isMenuOpen ? "menu-open" : ""}`}
+    >
+      {/* <div className="maincontent" ref={navbarRef}> */}
+
+      <div
+        className={`maincontent ${isMenuOpen ? "disabled" : ""}`}
+        ref={menuRef}
+      >
         <div className="left-content">
           <video controls autoPlay src={videoPath}></video>
           <div className="desc">

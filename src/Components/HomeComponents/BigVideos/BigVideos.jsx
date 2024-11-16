@@ -9,11 +9,7 @@ import {
 import { setShortVideoData } from "../../../features/videos/videoSlice";
 import { setStatus } from "../../../features/videos/videoSlice";
 // import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Import the action
-
 import BigVideosInfo from "../../../Reusable/BigVideosInfo/BigVideosInfo";
-import Header from "../../../Layouts/Header/Header";
-import Sidebar from "../../../Layouts/Sidebar/Sidebar";
-import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 import "./BigVideos.css";
 import ShortsVideos from "../../HomeComponents/ShortsVideos/ShortsVideos";
 import { Link } from "react-router-dom";
@@ -105,7 +101,6 @@ const BigVideos = () => {
       alert("Failed to get bigvideos data for user");
     }
   }
-  
 
   async function getuserShortsVideos() {
     try {
@@ -207,9 +202,6 @@ const BigVideos = () => {
 
   return (
     <div>
-      <Header />
-      {!isMenuOpen && <Sidebar />}
-      <ScrollMenu />
       {/* <div className="main-content"> */}
       <div className={`main-content  ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="bigvideogrid">

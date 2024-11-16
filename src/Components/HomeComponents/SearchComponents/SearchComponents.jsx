@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Header from "../../../Layouts/Header/Header";
-import Sidebar from "../../../Layouts/Sidebar/Sidebar";
-import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 import "./SearchComponents.css";
 
 const SearchComponent = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query"); // Get the search query from the URL
- 
-   const bigvideoData = useSelector((state) => state.videos.originalData);
+
+  const bigvideoData = useSelector((state) => state.videos.originalData);
   // const bigvideoData = useSelector((state) => state.videos.userVideos);
 
   const [videos, setVideos] = useState([...bigvideoData]);
@@ -43,10 +40,8 @@ const SearchComponent = () => {
 
   return (
     <div>
-      <Header />
-      <Sidebar />
-      <ScrollMenu />
-      
+      {/* <ScrollMenu /> */}
+
       <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video, index) => {

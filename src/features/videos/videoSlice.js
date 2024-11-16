@@ -174,7 +174,10 @@ const videoSlice = createSlice({
 
     userVideos: [],
 
-    userShortsVideos:[],
+    userShortsVideos: [],
+
+    bigVideosIds: [],
+    shortsIds: [],
 
     // shortvideoData: [
     //   {
@@ -270,6 +273,14 @@ const videoSlice = createSlice({
     setStatus(state, action) {
       state.status = action.payload; // Update status based on action payload
     },
+    // Add reducers for bigVideosIds and shortsIds
+    setBigVideosIds(state, action) {
+      state.bigVideosIds = action.payload;
+    },
+
+    setShortsIds(state, action) {
+      state.shortsIds = action.payload;
+    },
   },
 });
 
@@ -298,6 +309,8 @@ export const {
   setStatus,
   setuserVideos,
   setuserShortsVideos,
+  setBigVideosIds,
+  setShortsIds,
   // setBigVideoData1,
 } = videoSlice.actions;
 

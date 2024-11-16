@@ -1,3 +1,10 @@
+/* Disable scrolling */
+.no-scroll {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll; /* Only allow scroll if absolutely necessary */
+}
+
 .maincontent {
   width: 100vw;
   margin-left: 2%; /* Width of the sidebar*/
@@ -214,4 +221,11 @@ video {
   /* width: 35vw; Match this with the width of the video */
   margin-top: 100px; /* Adjust this space as needed */
   /* Ensure it is positioned correctly above the video component */
+}
+
+/* When the menu is open */
+.app-container.menu-open .maincontent.disabled {
+  pointer-events: none; /* Disable interactions */
+  opacity: 0.5; /* Dim the content */
+  transition: opacity 0.3s ease, pointer-events 0.3s ease; /* Smooth transition */
 }
