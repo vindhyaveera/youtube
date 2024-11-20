@@ -36,6 +36,7 @@ const Header = () => {
     }
   };
 
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -43,6 +44,7 @@ const Header = () => {
       navigate(`/search?query=${searchQuery}`);
     }
   };
+
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

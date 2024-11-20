@@ -3,16 +3,54 @@
   top: 15%;
   left: 7%;
   display: flex;
-  width: 90vw;
-  height: 7%;
-  /* background-color: blanchedalmond; */
+  width: 88vw;
+  height: auto;
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling */
+  gap:20px;
+  background-color: blanchedalmond; 
 }
+
 .WatchContainer.menu-open {
   /* position: relative; */
-  width: 85vw;
+  width: 75vw;
   left: 21%;
 } 
 
+
+.videos-list {
+  width:88vw;
+  height:80vh;
+  /* max-height: 400px; Set a height limit for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: Add a border to make it visually clear */
+  background-color: #f9f9f9; /* Optional: Background for better appearance */
+}
+
+.video-item {
+  display: flex;
+  width:80vw;
+  margin-bottom: 15px; /* Add some spacing between items */
+}
+
+.leftvideo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.descvideos h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.descvideos p {
+  font-size: 14px;
+  color: #666;
+}
 .menuwatch {
   display: flex; /* Aligns children (buttons) in a row */
   gap: 10px;
@@ -30,5 +68,6 @@
 /* Hover effect */
 .all:hover {
     background-color: grey; /* Background color when hovered */
+ 
     
 }

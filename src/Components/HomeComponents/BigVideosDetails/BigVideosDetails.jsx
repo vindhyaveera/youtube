@@ -15,7 +15,6 @@ import img22 from "../../../assets/descimg7.svg";
 import Profile_img from "../../../assets/channels4_profile.jpg";
 import { originalData } from "../../../features/videos/videoSlice";
 import { toggleMenu } from "../../../features/videos/videoSlice";
-
 import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 
 const BigVideosDetails = () => {

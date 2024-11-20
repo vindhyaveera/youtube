@@ -17,12 +17,21 @@ const NavBar = () => {
     // alert(".../")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
-      const response = await fetch("http://localhost:4000/watchlater/viewAll", {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      // Assume userID is stored in the Redux state or localStorage after login
+      const userID = localStorage.getItem("id"); // Or fetch from Redux state
+      if (!userID) {
+        alert("User not logged in");
+        return;
+      }
+      const response = await fetch(
+        `http://localhost:4000/watchlater/viewAll?userId=${userID}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       console.log("API Response for watchlater:", data);
       // Log the response to check its structure
@@ -53,7 +62,7 @@ const NavBar = () => {
       } else {
         console.error("Expected an array but received:", data.data);
       }
-      console.log(data.data);
+      console.log("ALL",data.data);
       // if (Array.isArray(data.data)) {
       //   dispatch(setoriginalData(data.data)); // Set to the correct
       //   console.log(videos);
