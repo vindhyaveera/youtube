@@ -1,8 +1,12 @@
 // LoginForm.js
 import React, { useState } from "react";
 import "./LoginComponents.css"; // Import the CSS file
+import { useDispatch } from "react-redux";
+import { setUserID } from "../../../features/videos/videoSlice";
 
 const LoginForm = ({ onClose }) => {
+  const dispatch = useDispatch();
+
   const [isRegister, setIsRegister] = useState(false);
   const [status, setStatus] = useState("");
   const [formData, setFormData] = useState({
@@ -12,7 +16,6 @@ const LoginForm = ({ onClose }) => {
     password: "",
   });
 
-  
   const toggleForm = () => {
     setIsRegister(!isRegister);
     setFormData({
@@ -23,7 +26,6 @@ const LoginForm = ({ onClose }) => {
     });
   };
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -65,10 +67,12 @@ const LoginForm = ({ onClose }) => {
 
       const data = await response.json();
       console.log(data);
-      
+
       if (response.ok) {
         localStorage.setItem("id", data.token.id);
         localStorage.setItem("token", data.token.token);
+        const ID = localStorage.getItem("id", data.token.id);
+        dispatch(setUserID(ID)); // Store it in Redux
       }
       setStatus(data.message);
     } catch (error) {
@@ -77,7 +81,6 @@ const LoginForm = ({ onClose }) => {
       alert("Login Failed");
     }
   }
-
 
   async function createUser(formData) {
     // alert(".../")
@@ -100,7 +103,6 @@ const LoginForm = ({ onClose }) => {
     }
   }
 
-  
   return (
     <div className="form-container">
       <h2>{isRegister ? "Register" : "Login"}</h2>

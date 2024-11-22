@@ -38,6 +38,8 @@ const assets = {
 const videoSlice = createSlice({
   name: "videos",
   initialState: {
+    userID: null, // Initial state for userID
+
     // bigvideoData: [],
     originalData: [],
 
@@ -178,6 +180,8 @@ const videoSlice = createSlice({
 
     bigVideosIds: [],
     shortsIds: [],
+    bigVideos: [],
+    shorts: [],
 
     // shortvideoData: [
     //   {
@@ -234,6 +238,9 @@ const videoSlice = createSlice({
   },
 
   reducers: {
+    setUserID: (state, action) => {
+      state.userID = action.payload; // Update userID in state
+    },
     setoriginalData(state, action) {
       state.originalData = action.payload;
     },
@@ -281,6 +288,12 @@ const videoSlice = createSlice({
     setShortsIds(state, action) {
       state.shortsIds = action.payload;
     },
+    setBigVideos(state, action) {
+      state.bigVideos = action.payload;
+    },
+    setShorts(state, action) {
+      state.shorts = action.payload;
+    },
   },
 });
 
@@ -311,6 +324,9 @@ export const {
   setuserShortsVideos,
   setBigVideosIds,
   setShortsIds,
+  setBigVideos,
+  setShorts,
+  setUserID,
   // setBigVideoData1,
 } = videoSlice.actions;
 
