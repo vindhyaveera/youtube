@@ -9,7 +9,7 @@ import { addVideoData } from "../../../../src/features/videos/videoSlice"; // Im
 import dotsSvg from "../../../assets/dots.svg";
 import "./AdminComponents.css"; // Create this CSS file for styling the popup
 
-const AdminComponents = ({ isVisible, onClose }) => {
+const AdminComponents = () => {
   const dispatch = useDispatch();
   const userId = localStorage.getItem("id");
 
@@ -163,14 +163,14 @@ const AdminComponents = ({ isVisible, onClose }) => {
     // onClose(); // Call the onClose prop to close the popup
   };
 
-  if (!isVisible) return null;
+  // if (!isVisible) return null;
 
   return (
     <div className="popup-overlay">
       <div className="popup-content">
-        <button className="close-btn" onClick={onClose}>
+        {/* <button className="close-btn" onClick={onClose}>
           ×
-        </button>
+        </button> */}
         <h2>Admin Form</h2>
         <form onSubmit={(e) => handleSubmit(e, "big")}>
           <label>

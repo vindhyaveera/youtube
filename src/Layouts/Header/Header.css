@@ -1,19 +1,22 @@
 .container {
-  width: 97.5vw;
+  width: 99vw;
   height: 10vh;
   display: flex;
   position: fixed;
   top: 0;
   z-index: 1000;
   background-color: rgb(255, 255, 255);
+  /* background-color: black; */
 }
 
+
 .start {
-  width: 15vw;
+  width: 14vw;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: rgb(168, 154, 154); */
 }
 .startinner {
   width: 80%;
@@ -62,10 +65,10 @@
 
 .searchimg {
   position: absolute;
-  right: 0px;
-  top: 1%;
+  right: 1px;
+  top:7%;
   width: 9%;
-  height: 95%;
+  height: 86%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,14 +97,14 @@
   
 }
 .end {
-  width: 20vw;
+  width: 22.5vw;
   height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
   gap: 20px;
   padding: 10px;
-  /* background-color: brown; */
+  /* background-color: brown;  */
 }
 .profileimg {
   width: 35px;

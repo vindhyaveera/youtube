@@ -13,14 +13,8 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
   const navigate = useNavigate(); // To programmatically navigate to the search results
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-
-  const toggleForm = () => {
-    setIsFormVisible(!isFormVisible);
-  };
-
- 
+  // const [isVisible, setIsVisible] = useState(false);
+  const [isLoginFormVisible, setLoginFormVisible] = useState(false); // State to control visibility of login form
 
   const dispatch = useDispatch();
 
@@ -28,14 +22,17 @@ const Header = () => {
   console.log(isMenuOpen);
 
   const toggleFormVisibility = () => {
+    // dispatch(isMenuOpen(false)); // Update Redux state
+
     const token = localStorage.getItem("token");
     if (token) {
-      setIsVisible((prev) => !prev); // Toggle visibility of AdminComponents if token is present
+      navigate("/admin"); // Replace '/admin' with the desired route
+
+      // setIsVisible((prev) => !prev); // Toggle visibility of AdminComponents if token is present
     } else {
       alert("You need to log in to access the admin features."); // Handle the case where no token is found
     }
   };
-
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -44,7 +41,6 @@ const Header = () => {
       navigate(`/search?query=${searchQuery}`);
     }
   };
-
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -59,7 +55,17 @@ const Header = () => {
     // console.log(isMenuOpen)
   };
 
-  
+  const handleNavigateToProfile = () => {
+    if (userid) {
+      // Navigate to the profile page based on the userid
+      navigate(`/profile/${userid}`);
+    } else {
+      // If no user ID, navigate to login page (optional)
+      // navigate("/login");
+      setLoginFormVisible(true);
+    }
+  };
+
   const userid = localStorage.getItem("id");
   console.log(userid);
 
@@ -173,15 +179,14 @@ const Header = () => {
               <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>
             </svg>
           </button>
-          {/* Popup Form Component */}
+          {/* Popup Form Component
           {isVisible && (
             <AdminComponents
               isVisible={isVisible}
               onClose={toggleFormVisibility}
             />
-          )}
-          {/* <AdminComponents>
-</AdminComponents> */}
+          )} */}
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             enable-background="new 0 0 24 24"
@@ -197,25 +202,17 @@ const Header = () => {
           <img
             className="profileimg"
             src={Profile_img}
-            onClick={toggleForm}
-          ></img>
-          {isFormVisible &&
-            (userid ? (
-              <ProfileForm onClose={toggleForm} /> // Show profile form or other form
-            ) : (
-              <LoginForm onClose={toggleForm} /> // Show login form
-            ))}
-          {/* <LoginForm onClose={toggleForm} />} */}
+            onClick={handleNavigateToProfile} // Navigate when the image is clicked
+            alt="Profile"
+          />
+
+          {isLoginFormVisible && (
+            <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
+          )}
         </div>
       </div>
-      {/* {console.log(isMenuOpen)} // Add this inside the Header component to track state change */}
 
-      {/* {menuOpen && <NavBar />} */}
       {isMenuOpen && <NavBar />}
-      {/* <div className={`navbar ${isMenuOpen ? 'open' : ''}`}>
-      <NavBar />
-    </div>
-     */}
     </div>
   );
 };

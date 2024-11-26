@@ -2,20 +2,19 @@ import React from "react";
 import "./ProfileForm.css";
 import { useSelector } from "react-redux";
 
-const ProfileForm = ({ onClose }) => {
+const ProfileForm = () => {
   const bigvideoData = useSelector((state) => state.videos.userVideos);
   const shortsvideoData = useSelector((state) => state.videos.userShortsVideos);
+  const isMenuOpen = useSelector((state) => state.videos.menuOpen);
 
-  console.log("This is Shortsvideosofuser",shortsvideoData)
+  console.log("This is Shortsvideosofuser", shortsvideoData);
 
   return (
+    // <div className={`profile-form-overlay  ${isMenuOpen ? "menu-open" : ""}`}>
     <div className="profile-form-overlay">
       <div className="profile-form-container">
-        <button className="close-btn" onClick={onClose}>
-          ×
-        </button>
-          <h1>Channels Content</h1>
-        <div className="video-list">
+        <div className={`video-list-profile  ${isMenuOpen ? "menu-open" : ""}`}>
+          {/* <div className="video-list-profile"> */}
           {bigvideoData.length > 0 ? (
             bigvideoData.map((video, index) => {
               const imagePath = `/assets/${video.img}`;
@@ -23,7 +22,11 @@ const ProfileForm = ({ onClose }) => {
               return (
                 <div key={index} className="video-item">
                   <div className="leftvideo">
-                    <img className="leftbigvideos" src={imagePath} alt={video.name} />
+                    <img
+                      className="leftbigvideos"
+                      src={imagePath}
+                      alt={video.name}
+                    />
                   </div>
                   <div className="video-content">
                     <h3>{video.name}</h3>
@@ -38,14 +41,18 @@ const ProfileForm = ({ onClose }) => {
             <p>No Bigvideos found</p>
           )}
 
-           {shortsvideoData.length > 0 ? (
+          {shortsvideoData.length > 0 ? (
             shortsvideoData.map((video, index) => {
               const imagePath = `/assets/${video.img}`;
               // const videoPath = `/assets/${filteredVideos.source}`;
               return (
                 <div key={index} className="video-item">
                   <div className="leftshortvideo">
-                    <img className="shortimage" src={imagePath} alt={video.name} />
+                    <img
+                      className="shortimage"
+                      src={imagePath}
+                      alt={video.name}
+                    />
                   </div>
                   <div className="video-content">
                     <h3>{video.name}</h3>
@@ -59,8 +66,6 @@ const ProfileForm = ({ onClose }) => {
           ) : (
             <p>No Shortsvideos found</p>
           )}
-
-
         </div>
       </div>
     </div>

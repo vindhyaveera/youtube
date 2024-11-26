@@ -1,28 +1,29 @@
 /* PopupForm.css */
 .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   overflow: hidden;
   box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: #4caf50; */
 }
 
 .popup-content {
   justify-content: center;
   align-items: center;
-  background: white;
+  background: #f4f5f7; /* Soft gray for a modern, clean look */
   padding: 20px;
   border-radius: 8px;
   width: 60vw;
-  height: 100vh;
+  height: 89vh;
   max-width: 90%;
-  position: relative;
+  /* background-color: aquamarine; */
+  /* Smooth box shadow for highlighting */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  /* Optional: Add a subtle border for more contrast */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .close-btn {
@@ -65,9 +66,6 @@ form textarea {
   margin-left: 0; /* Adjust as needed for spacing */
 }
 
-
-
-
 form textarea {
   height: 100px; /* Adjust based on your preference */
   resize: vertical;
@@ -88,7 +86,7 @@ form button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-form button[type='button']{
+form button[type="button"] {
   margin-top: 20px;
   padding: 10px 15px;
   background-color: blue;

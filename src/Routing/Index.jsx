@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,26 +13,36 @@ import WatchLaterPage from "../Components/HomeComponents/WatchLaterPage/WatchLat
 import Header from "../Layouts/Header/Header";
 import Sidebar from "../Layouts/Sidebar/Sidebar";
 import ScrollMenu from "../Layouts/ScrollMenu/ScrollMenu";
-
+import Profile from "../Components/HomeComponents/ProileForm/ProfileForm";
+import AdminPage from '../Components/HomeComponents/AdminComponents/AdminComponents'
 
 const AppContent = () => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const location = useLocation();
 
   // List of routes where the sidebar should NOT be displayed
+  // const noSidebarRoutes = ["/details/:id"];
+
+  // List of routes where ScrollMenu should NOT be displayed
   const noSidebarRoutes = ["/details/:id"];
 
-  // Determine if Sidebar should be hidden for specific routes
-  const shouldShowSidebar =
-    location.pathname === "/search" || // Sidebar should always show on SearchComponent
-    (!noSidebarRoutes.some((route) => {
-      const routeBase = route.split("/:")[0];
-      return location.pathname.startsWith(routeBase);
-    }) &&
-      !isMenuOpen);
+  const shouldShowSidebar = useMemo(() => {
+    return (
+      location.pathname === "/search" || // Sidebar should always show on SearchComponent
+      location.pathname.startsWith("/profile/") || // Sidebar should show on profile pages
+      (!noSidebarRoutes.some((route) =>
+        location.pathname.startsWith(route.split("/:")[0])
+      ) &&
+        !isMenuOpen)
+    );
+  }, [location.pathname, noSidebarRoutes, isMenuOpen]);
 
-  // Check if ScrollMenu should be shown
-  const shouldShowScrollMenu = ["/", "/search"].includes(location.pathname);
+  const shouldShowScrollMenu = useMemo(
+    () => ["/", "/search"].includes(location.pathname),
+    [location.pathname]
+  );
+
+  console.log("Scroll:", shouldShowScrollMenu);
 
   return (
     <div>
@@ -45,6 +55,8 @@ const AppContent = () => {
         <Route path="/details/:id" element={<BigVideosDetails />} />
         <Route path="/search" element={<SearchComponent />} />
         <Route path="/watchlater" element={<WatchLaterPage />} />
+        <Route path="/profile/:userid" element={<Profile />} />
+        <Route path="/admin" element={<AdminPage />} /> {/* Define the route */}
       </Routes>
     </div>
   );

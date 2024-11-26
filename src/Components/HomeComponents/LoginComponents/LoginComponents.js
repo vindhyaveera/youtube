@@ -71,8 +71,8 @@ const LoginForm = ({ onClose }) => {
       if (response.ok) {
         localStorage.setItem("id", data.token.id);
         localStorage.setItem("token", data.token.token);
-        const ID = localStorage.getItem("id", data.token.id);
-        dispatch(setUserID(ID)); // Store it in Redux
+        // const ID = localStorage.getItem("id", data.token.id);
+        // dispatch(setUserID(ID)); // Store it in Redux
       }
       setStatus(data.message);
     } catch (error) {
