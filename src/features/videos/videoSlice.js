@@ -38,140 +38,8 @@ const assets = {
 const videoSlice = createSlice({
   name: "videos",
   initialState: {
-    userID: null, // Initial state for userID
-
-    // bigvideoData: [],
     originalData: [],
 
-    // bigvideoData_1: [
-    //   // Previous 6 entries...
-    //   {
-    //     img: assets.img7,
-    //     name: "Introduction to Python Programming",
-    //     desc: "A beginner's guide to coding in Python.",
-    //     dots: assets.img6,
-    //     rates: "2.3M views • 3 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img8,
-    //     name: "Top 5 Productivity Hacks for Remote Workers",
-    //     desc: "Boost your productivity with these simple tips.",
-    //     dots: assets.img6,
-    //     rates: "1.1M views • 2 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img9,
-    //     name: "Exploring the Wonders of Space",
-    //     desc: "Join us on a journey through the cosmos.",
-    //     dots: assets.img6,
-    //     rates: "950k views • 1 year ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img10,
-    //     name: "The Ultimate Guide to Investing in Stocks",
-    //     desc: "Learn how to make smart investments and grow your wealth.",
-    //     dots: assets.img6,
-    //     rates: "650k views • 4 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img11,
-    //     name: "Yoga for Beginners: Easy Poses to Start",
-    //     desc: "Improve flexibility and reduce stress with these beginner yoga poses.",
-    //     dots: assets.img6,
-    //     rates: "800k views • 2 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img12,
-    //     name: "Top 10 Must-Read Books for Entrepreneurs",
-    //     desc: "Discover the books that can inspire and guide etp journey.",
-    //     dots: assets.img6,
-    //     rates: "1.8M views • 5 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img13,
-    //     name: "Learning Data Science: A Step-by-Step Approach",
-    //     desc: "Master data science with practical examples and tutorials.",
-    //     dots: assets.img6,
-    //     rates: "1.6M views • 3 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img14,
-    //     name: "The Rise of Electric Vehicles",
-    //     desc: "How electric vehicles are shaping the future of transportation.",
-    //     dots: assets.img6,
-    //     rates: "1.2M views • 1 year ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    //   {
-    //     img: assets.img15,
-    //     name: "Cooking with Spices: Flavorful Recipes to Try",
-    //     desc: "Enhance your meals with these spice-filled recipes.",
-    //     dots: assets.img6,
-    //     rates: "400k views • 4 years ago",
-    //     source: assets.video3,
-    //     channel: "Gourmet Chef",
-    //     subscribers: "3.2M subscribers",
-    //     likes: "12k",
-    //     dislikes: "400",
-    //     fullDescription:
-    //       "Cooking the perfect steak is an art that every food lover should master. In this video, we'll teach you the secrets to preparing a steak that's juicy, tender, and full of flavor. From selecting the right cut of meat to mastering the cooking technique, you'll learn everything you need to know to impress your guests with a restaurant-quality steak.",
-    //   },
-    // ],
     shortvideoData: [],
 
     userVideos: [],
@@ -183,64 +51,25 @@ const videoSlice = createSlice({
     bigVideos: [],
     shorts: [],
 
-    // shortvideoData: [
-    //   {
-    //     img: Img1,
-    //     name: "Quick Cloud Tips - Boost Performance in 60 Seconds",
-    //     dots: Img6,
-    //     rates: "305k views • 4 years ago",
-    //   },
-    //   {
-    //     img: Img2,
-    //     name: "JavaScript Basics in Under a Minute",
-    //     dots: Img6,
-    //     rates: "1.2M views • 2 years ago",
-    //   },
-    //   {
-    //     img: Img3,
-    //     name: "CSS Tricks for Responsive Design 😀 Minute Guide",
-    //     dots: Img6,
-    //     rates: "850k views • 1 year ago",
-    //   },
-    //   {
-    //     img: Img4,
-    //     name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
-    //     dots: Img6,
-    //     rates: "500k views • 3 years ago",
-    //   },
-    //   {
-    //     img: Img5,
-    //     name: "SEO Tips for Fast Websites - 1 Minute Insight",
-    //     dots: Img6,
-    //     rates: "600k views • 5 months ago",
-    //   },
-    //   {
-    //     img: Img7,
-    //     name: "CSS Tricks for Responsive Design 😀 Minute Guide",
-    //     dots: Img6,
-    //     rates: "850k views • 1 year ago",
-    //   },
-    //   {
-    //     img: Img8,
-    //     name: "Flexbox vs. Grid 👍 Which is Better? 60 Seconds",
-    //     dots: Img6,
-    //     rates: "500k views • 3 years ago",
-    //   },
-    //   {
-    //     img: Img9,
-    //     name: "SEO Tips for Fast Websites - 1 Minute Insight",
-    //     dots: Img6,
-    //     rates: "600k views • 5 months ago",
-    //   },
-    // ],
+    userId: null, // Ensure `userId` is initialized to null
+    token: null, // Ensure `token` is initialized to null
+
     menuOpen: false,
     status: "",
   },
 
   reducers: {
-    setUserID: (state, action) => {
-      state.userID = action.payload; // Update userID in state
+    setUserId(state, action) {
+      state.userId = action.payload;
     },
+    setToken(state, action) {
+      state.token = action.payload;
+    },
+    logout(state) {
+      state.userId = null;
+      state.token = null;
+    },
+
     setoriginalData(state, action) {
       state.originalData = action.payload;
     },
@@ -326,7 +155,9 @@ export const {
   setShortsIds,
   setBigVideos,
   setShorts,
-  setUserID,
+  setUserId,
+  setToken,
+  logout,
   // setBigVideoData1,
 } = videoSlice.actions;
 

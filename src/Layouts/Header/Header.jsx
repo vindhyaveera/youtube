@@ -12,6 +12,8 @@ import ProfileForm from "../../Components/HomeComponents/ProileForm/ProfileForm"
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
   const navigate = useNavigate(); // To programmatically navigate to the search results
+  const userid = useSelector((store) => store.videos.userId);
+  const token = useSelector((store) => store.videos.token);
 
   // const [isVisible, setIsVisible] = useState(false);
   const [isLoginFormVisible, setLoginFormVisible] = useState(false); // State to control visibility of login form
@@ -24,7 +26,8 @@ const Header = () => {
   const toggleFormVisibility = () => {
     // dispatch(isMenuOpen(false)); // Update Redux state
 
-    const token = localStorage.getItem("token");
+    console.log(token);
+
     if (token) {
       navigate("/admin"); // Replace '/admin' with the desired route
 
@@ -66,8 +69,8 @@ const Header = () => {
     }
   };
 
-  const userid = localStorage.getItem("id");
-  console.log(userid);
+  // const userid = localStorage.getItem("id");
+  // console.log(userid);
 
   return (
     <div>

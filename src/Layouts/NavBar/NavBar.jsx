@@ -11,6 +11,7 @@ import "./NavBar.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Initialize useNavigate
+  const userID = useSelector((store) => store.videos.userId);
   const status = useSelector((state) => state.videos.status);
 
   const handleWatchLaterClick = async function viewAllVideos() {
@@ -18,7 +19,8 @@ const NavBar = () => {
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
       // Assume userID is stored in the Redux state or localStorage after login
-      const userID = localStorage.getItem("id"); // Or fetch from Redux state
+
+      // const userID = localStorage.getItem("id"); // Or fetch from Redux state
       if (!userID) {
         alert("User not logged in");
         return;
@@ -62,7 +64,7 @@ const NavBar = () => {
       } else {
         console.error("Expected an array but received:", data.data);
       }
-      console.log("ALL",data.data);
+      console.log("ALL", data.data);
       // if (Array.isArray(data.data)) {
       //   dispatch(setoriginalData(data.data)); // Set to the correct
       //   console.log(videos);

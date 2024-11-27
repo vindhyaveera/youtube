@@ -2,7 +2,11 @@
 import React, { useState } from "react";
 import "./LoginComponents.css"; // Import the CSS file
 import { useDispatch } from "react-redux";
-import { setUserID } from "../../../features/videos/videoSlice";
+import {
+  setToken,
+  setUserId,
+  setUserID,
+} from "../../../features/videos/videoSlice";
 
 const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -69,8 +73,11 @@ const LoginForm = ({ onClose }) => {
       console.log(data);
 
       if (response.ok) {
-        localStorage.setItem("id", data.token.id);
-        localStorage.setItem("token", data.token.token);
+        // localStorage.setItem("id", data.token.id);
+        // localStorage.setItem("token", data.token.token);
+
+        dispatch(setUserId(data.token.id));
+        dispatch(setToken(data.token.token));
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
       }

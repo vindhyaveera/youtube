@@ -1,13 +1,13 @@
 // src/app/store.js
 
-import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // Defaults to localStorage for web
-import videoReducer from '../features/videos/videoSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
+import videoReducer from "../features/videos/videoSlice";
 
 // Persist configuration for videos slice
 const persistConfig = {
-  key: 'videos',
+  key: "videos",
   storage,
 };
 
