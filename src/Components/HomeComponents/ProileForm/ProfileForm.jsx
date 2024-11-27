@@ -7,6 +7,7 @@ const ProfileForm = () => {
   const shortsvideoData = useSelector((state) => state.videos.userShortsVideos);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
 
+  console.log("This is Bigvideosofuser", bigvideoData);
   console.log("This is Shortsvideosofuser", shortsvideoData);
 
   return (
@@ -20,7 +21,7 @@ const ProfileForm = () => {
               const imagePath = `/assets/${video.img}`;
               // const videoPath = `/assets/${filteredVideos.source}`;
               return (
-                <div key={index} className="video-item">
+                <div key={index} className="video-item-profile">
                   <div className="leftvideo">
                     <img
                       className="leftbigvideos"

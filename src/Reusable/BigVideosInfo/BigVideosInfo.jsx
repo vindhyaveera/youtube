@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import img from "../../../src/assets/bigimg2.jpg";
 
 const BigVideosInfo = (props) => {
-  const isMenuOpen = useSelector((state) => state.videos.menuOpen);
+  // const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   // const imagePath = require(`../../../src/assets/${props.img}`);
-  const imagePath1 = `${process.env.PUBLIC_URL}/assets/${props.img}`;
+  // const imagePath1 = `${process.env.PUBLIC_URL}/assets/${props.img}`;
   const imagePath = `/assets/${props.img}`; 
 
 

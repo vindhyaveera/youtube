@@ -17,8 +17,10 @@ import { Link } from "react-router-dom";
 const BigVideos = () => {
   const videos = useSelector((state) => state.videos.originalData);
   const userVideos = useSelector((state) => state.videos.userVideos);
+  const userId = useSelector((state) => state.videos.userId);
 
-  const [userId, setUserId] = useState(localStorage.getItem("id")); // Get the initial userId from localStorage
+
+  // const [userId, setUserId] = useState(localStorage.getItem("id")); // Get the initial userId from localStorage
 
   // const bigvideoData_1 = useSelector((state) => state.videos.bigvideoData_1);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
@@ -48,21 +50,21 @@ const BigVideos = () => {
     }
   }, [userId]); // Dependency array includes userId
 
-  // Update userId when it changes in localStorage
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const newUserId = localStorage.getItem("id");
-      setUserId(newUserId); // Update the state when localStorage changes
-    };
+  // // Update userId when it changes in localStorage
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const newUserId = localStorage.getItem("id");
+  //     setUserId(newUserId); // Update the state when localStorage changes
+  //   };
 
-    // Listen for changes to localStorage
-    window.addEventListener("storage", handleStorageChange);
+  //   // Listen for changes to localStorage
+  //   window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+  //   // Cleanup listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, []);
 
   useEffect(() => {
     viewAllUser(); // Fetch data when component mounts

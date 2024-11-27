@@ -30,6 +30,8 @@ const BigVideosDetails = () => {
 
   // const combinedVideoData = useSelector(selectCombinedVideoData);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
+  const userId = useSelector((state) => state.videos.userId);
+
 
   const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
   //  // / Split the first 5 items into bigvideoData
@@ -83,7 +85,7 @@ const BigVideosDetails = () => {
   }, [isMenuOpen]); // Run whenever the `isMenuOpen` state changes
 
   const handleWatchLater = async function createUser() {
-    const userId = localStorage.getItem("id");
+    // const userId = localStorage.getItem("id");
     const videoId = id; // Assuming `video.id` is the current video's ID
 
     try {
