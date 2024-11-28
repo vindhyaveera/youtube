@@ -2,14 +2,18 @@
 import React, { useState } from "react";
 import "./LoginComponents.css"; // Import the CSS file
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   setToken,
   setUserId,
-  setUserID,
+  setuserName,
 } from "../../../features/videos/videoSlice";
 
 const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.videos.userId);
+
+
 
   const [isRegister, setIsRegister] = useState(false);
   const [status, setStatus] = useState("");
@@ -78,6 +82,9 @@ const LoginForm = ({ onClose }) => {
 
         dispatch(setUserId(data.token.id));
         dispatch(setToken(data.token.token));
+        dispatch(setuserName(data.firstName )); // Adjust this based on your API response
+
+
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
       }
@@ -109,6 +116,8 @@ const LoginForm = ({ onClose }) => {
       alert("Register Failed");
     }
   }
+
+  
 
   return (
     <div className="form-container">

@@ -1,72 +1,113 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileForm.css";
 import { useSelector } from "react-redux";
+import Profile_img from "../../../assets/channels4_profile.jpg";
 
 const ProfileForm = () => {
   const bigvideoData = useSelector((state) => state.videos.userVideos);
   const shortsvideoData = useSelector((state) => state.videos.userShortsVideos);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
+  const user = useSelector((state) => state.videos.userName);
 
-  console.log("This is Bigvideosofuser", bigvideoData);
-  console.log("This is Shortsvideosofuser", shortsvideoData);
+  const [showAllBigVideos, setShowAllBigVideos] = useState(false);
+  const [showAllShortsVideos, setShowAllShortsVideos] = useState(false);
+
+  const handleToggleBigVideos = () => setShowAllBigVideos(!showAllBigVideos);
+  const handleToggleShortsVideos = () =>
+    setShowAllShortsVideos(!showAllShortsVideos);
+
+  const displayedBigVideos = showAllBigVideos
+    ? bigvideoData
+    : bigvideoData.slice(0, 5); // Show first 5 by default
+  const displayedShortsVideos = showAllShortsVideos
+    ? shortsvideoData
+    : shortsvideoData.slice(0, 5); // Show first 5 by default
 
   return (
-    // <div className={`profile-form-overlay  ${isMenuOpen ? "menu-open" : ""}`}>
     <div className="profile-form-overlay">
-      <div className="profile-form-container">
-        <div className={`video-list-profile  ${isMenuOpen ? "menu-open" : ""}`}>
-          {/* <div className="video-list-profile"> */}
-          {bigvideoData.length > 0 ? (
-            bigvideoData.map((video, index) => {
-              const imagePath = `/assets/${video.img}`;
-              // const videoPath = `/assets/${filteredVideos.source}`;
-              return (
-                <div key={index} className="video-item-profile">
-                  <div className="leftvideo">
-                    <img
-                      className="leftbigvideos"
-                      src={imagePath}
-                      alt={video.name}
-                    />
-                  </div>
-                  <div className="video-content">
-                    <h3>{video.name}</h3>
-                    <p>{video.desc}</p>
-                    <p>{video.rates}</p>
-                    <p>Channel: {video.channel}</p>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <p>No Bigvideos found</p>
-          )}
+      <div
+        className={`profile-form-container ${isMenuOpen ? "menu-open" : ""}`}
+      >
+        <div className="profile-header">
+          <img
+            src={Profile_img}
+            alt={`${user}'s profile`}
+            className="profile-image"
+          />
+          <h2 className="profile-username">{`${user}'s profile`}</h2>
+        </div>
 
-          {shortsvideoData.length > 0 ? (
-            shortsvideoData.map((video, index) => {
-              const imagePath = `/assets/${video.img}`;
-              // const videoPath = `/assets/${filteredVideos.source}`;
-              return (
-                <div key={index} className="video-item">
-                  <div className="leftshortvideo">
-                    <img
-                      className="shortimage"
-                      src={imagePath}
-                      alt={video.name}
-                    />
-                  </div>
-                  <div className="video-content">
-                    <h3>{video.name}</h3>
-                    <p>{video.desc}</p>
-                    <p>{video.rates}</p>
-                    {/* <p>Channel: {video.channel}</p> */}
-                  </div>
+        {/* Big Videos Section */}
+        <div className="profile-big-videos-section">
+          <h3 className="profile-big-section-header">
+            <span>Big Videos</span>
+            {bigvideoData.length > 5 && (
+              <button
+                onClick={handleToggleBigVideos}
+                className="profile-big-view-all-btn"
+              >
+                {showAllBigVideos ? "Show Less" : "View All"}
+              </button>
+            )}
+          </h3>
+          <div
+            className={`profile-big-videos ${
+              showAllBigVideos ? "profile-big-show-all" : "profile-big-show-limited"
+            }`}
+          >
+            {displayedBigVideos.map((video, index) => (
+              <div key={index} className="profile-big-item">
+                <img
+                  src={`/assets/${video.img}`}
+                  alt={video.name}
+                  className="profile-big-image"
+                />
+                <div className="profile-big-content">
+                  <h4 className="profile-big-title">{video.name}</h4>
+                  {/* <p className="profile-big-desc">{video.desc}</p> */}
+                  {/* <p className="profile-big-rates">{video.rates}</p> */}
+                  <p className="profile-big-channel">Channel: {video.channel}</p>
                 </div>
-              );
-            })
-          ) : (
-            <p>No Shortsvideos found</p>
-          )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Shorts Videos Section */}
+        <div className="profile-shorts-videos-section">
+          <h3 className="profile-shorts-section-header">
+            <span>Shorts Videos</span>
+            {shortsvideoData.length > 5 && (
+              <button
+                onClick={handleToggleShortsVideos}
+                className="profile-shorts-view-all-btn"
+              >
+                {showAllShortsVideos ? "Show Less" : "View All"}
+              </button>
+            )}
+          </h3>
+          <div
+            className={`profile-shorts-videos ${
+              showAllShortsVideos
+                ? "profile-shorts-show-all"
+                : "profile-shorts-show-limited"
+            }`}
+          >
+            {displayedShortsVideos.map((video, index) => (
+              <div key={index} className="profile-shorts-item">
+                <img
+                  src={`/assets/${video.img}`}
+                  alt={video.name}
+                  className="profile-shorts-image"
+                />
+                <div className="profile-shorts-content">
+                  <h4 className="profile-shorts-title">{video.name}</h4>
+                  <p className="profile-shorts-desc">{video.desc}</p>
+                  <p className="profile-shorts-rates">{video.rates}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import Sidebar from "../Layouts/Sidebar/Sidebar";
 import ScrollMenu from "../Layouts/ScrollMenu/ScrollMenu";
 import Profile from "../Components/HomeComponents/ProileForm/ProfileForm";
 import AdminPage from '../Components/HomeComponents/AdminComponents/AdminComponents'
+// import Test from '../Components/HomeComponents/Test'
 
 const AppContent = () => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
@@ -49,7 +50,6 @@ const AppContent = () => {
       <Header />
       {shouldShowSidebar && <Sidebar />}
       {shouldShowScrollMenu && <ScrollMenu />}
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/details/:id" element={<BigVideosDetails />} />

@@ -39,13 +39,9 @@ const videoSlice = createSlice({
   name: "videos",
   initialState: {
     originalData: [],
-
     shortvideoData: [],
-
     userVideos: [],
-
     userShortsVideos: [],
-
     bigVideosIds: [],
     shortsIds: [],
     bigVideos: [],
@@ -54,21 +50,30 @@ const videoSlice = createSlice({
     userId: null, // Ensure `userId` is initialized to null
     token: null, // Ensure `token` is initialized to null
 
-    menuOpen: false,
+    menuOpen:false,
+    profileOpen:false,
     status: "",
+    userName: "", // Replace with actual username
   },
 
   reducers: {
     setUserId(state, action) {
       state.userId = action.payload;
     },
+
     setToken(state, action) {
       state.token = action.payload;
     },
+
     logout(state) {
       state.userId = null;
       state.token = null;
     },
+
+     // Define other reducers as needed
+     setuserName(state, action) {
+      state.userName = action.payload; // Set new user data
+    }, 
 
     setoriginalData(state, action) {
       state.originalData = action.payload;
@@ -96,6 +101,10 @@ const videoSlice = createSlice({
 
     toggleMenu: (state) => {
       state.menuOpen = !state.menuOpen; // Toggle menuOpen state
+    },
+
+    profileopen: (state) => {
+      state.profileOpen = !state.profileOpen; 
     },
 
     closeMenu: (state) => {
@@ -147,6 +156,7 @@ export const {
   addVideoData,
   toggleMenu,
   closeMenu,
+  profileopen,
   openMenu,
   setStatus,
   setuserVideos,
@@ -158,6 +168,8 @@ export const {
   setUserId,
   setToken,
   logout,
+  setuserName,
+  setprofileOpen,
   // setBigVideoData1,
 } = videoSlice.actions;
 

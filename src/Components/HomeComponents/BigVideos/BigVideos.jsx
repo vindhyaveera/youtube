@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   setoriginalData,
   setuserVideos,
-  setuserShortsVideos,
+  setuserShortsVideos
 } from "../../../features/videos/videoSlice";
 import { setShortVideoData } from "../../../features/videos/videoSlice";
 import { setStatus } from "../../../features/videos/videoSlice";
@@ -19,7 +19,7 @@ const BigVideos = () => {
   const userVideos = useSelector((state) => state.videos.userVideos);
   const userId = useSelector((state) => state.videos.userId);
 
-
+  console.log("Biguser:",userId);
   // const [userId, setUserId] = useState(localStorage.getItem("id")); // Get the initial userId from localStorage
 
   // const bigvideoData_1 = useSelector((state) => state.videos.bigvideoData_1);

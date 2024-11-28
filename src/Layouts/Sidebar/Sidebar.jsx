@@ -1,7 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Sidebar.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setuserName } from "../../features/videos/videoSlice";
 
 const Sidebar = () => {
+  const navigate = useNavigate(); // To programmatically navigate to the search results
+  const userid = useSelector((store) => store.videos.userId);
+  const token = useSelector((store) => store.videos.token);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.videos.userName);
+
+  useEffect(() => {
+    if (userid) {
+      getuser();
+    }
+  }, [userid]); // Dependency array includes userId
+
+  const handleNavigateToProfile = () => {
+    if (userid) {
+      // Navigate to the profile page based on the userid
+      navigate(`/profile/${userid}`);
+    } else {
+      alert("Please sign in to your account to access your profile.");
+
+      // If no user ID, navigate to login page (optional)
+      // navigate("/login");
+      // setLoginFormVisible(true);
+    }
+  };
+
+  async function getuser() {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/users/viewOne/${userid}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      // Check if the response contains the Bigvideosuser array
+      // const bigUserVideos = data?.data?.Bigvideosuser;
+      console.log("API Response from getuser:", data);
+      if (data?.data?.firstName) {
+        dispatch(setuserName(data.data.firstName));
+        // console.log("User:", user);
+      } else {
+        console.error("Expected an array but received:", data.data);
+      }
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to get  data for user");
+    }
+  }
+
   return (
     <div>
       <div className="sidebar">
@@ -61,6 +117,7 @@ const Sidebar = () => {
               width="24"
               focusable="false"
               aria-hidden="true"
+              onClick={handleNavigateToProfile}
             >
               <path d="m11 7 6 3.5-6 3.5V7zm7 13H4V6H3v15h15v-1zm3-2H6V3h15v15zM7 17h13V4H7v13z"></path>
             </svg>
