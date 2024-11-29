@@ -14,7 +14,7 @@
     /* left:-10%;
     top:-40%; */
     left:69%;
-    top:15%;
+    top:10%;
     overflow-x: auto;
     gap: 10px;
     white-space: nowrap;
@@ -50,10 +50,10 @@
   }
   
   .nav-button-small {
-    position: fixed;
-    width:30px;
-    height:30px;
-    top:17%;
+    position: absolute;
+    width:35px;
+    height:35px;
+    top:0%;
     /* top: 11.6%; */
     background-color: white; 
     border: none;
@@ -70,11 +70,11 @@
   }
   
   .prev-button-small {
-    left: 67%;
+    left: 0%;
   }
   
   .next-button-small {
-    right: 3%;
+    right: 7%;
   }
   
   

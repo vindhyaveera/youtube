@@ -1,32 +1,31 @@
-.videoinfo{
-    height:17vh;
-    width:30vw;
-    /* background-color: rgb(14, 224, 224); */
-    display:flex;
-    gap:7px;
+.videoinfo {
+  height: 18vh;
+  width: 35vw;
+  /* background-color: rgb(31, 224, 14); */
+  display: flex;
+  gap: 3px;
 }
 
-.image{
-    width:20vw;
-    height:15vh;
-    border-radius: 10px;
-    object-fit: cover;
-    /* background-color: black; */
-
+.video-image {
+  width: 95%;
+  height: 100px;
+  border-radius: 15px;
+  object-fit: cover;
+  /* background-color: black; */
 }
-.image-desc{
-    width:30vw;
-    height:15vh;
-    /* background-color: rgb(27, 38, 194); */
+.image-desc {
+  width: 15vw;
+  height: 15vh;
+  /* background-color: rgb(27, 38, 194); */
 }
-.dots{
-    width:3.5vw;
-    height:3.5vh;
-    /* background-color: azure; */
+.dots {
+  width: 1.5vw;
+  height: 5vh;
+  /* background-color: azure; */
 }
-.image-desc h4{
-    font-size: 14px;
+.image-desc h4 {
+  font-size: 14px;
 }
-.image-desc p{
-    font-size: small;
+.image-desc p {
+  font-size: small;
 }

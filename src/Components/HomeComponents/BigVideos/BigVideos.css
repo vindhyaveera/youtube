@@ -1,7 +1,7 @@
 .main-content {
   width: 100vw;
   position: absolute;
-  top: 150px;
+  top: 140px;
   left: 7%;
   /* margin-left: 7%; /* Width of the sidebar
   /* margin-top: 150px; Height of the header  */
@@ -23,14 +23,14 @@
   width: 90%;
   height: auto;
   display: grid;
-  grid-column-gap: 10px; /* 20px gap between columns */
-  grid-row-gap: 70px; /* 15px gap between rows */
+  grid-column-gap: 16px; /* 20px gap between columns */
+  grid-row-gap: 30px; /* 15px gap between rows */
   grid-template-columns: repeat(3, 1fr);
   font-family: Roboto,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
 
-  /* background-color: rgb(140, 0, 255); */
+   /* background-color: rgb(140, 0, 255);  */
 }
 
 /* .bigvideogrid.menu-open {

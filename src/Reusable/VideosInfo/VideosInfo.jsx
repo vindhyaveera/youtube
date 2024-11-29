@@ -9,7 +9,7 @@ const VideosInfo = (props) => {
     <div>
       <div className="videoinfo">
         <Link to={`/video/${props.id}`}>
-          <img className="image" src={imagePath}></img>
+          <img className="video-image" src={imagePath}></img>
         </Link>
 
         <div className="image-desc">

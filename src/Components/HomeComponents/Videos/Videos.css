@@ -3,7 +3,7 @@
   height: auto;
   display: grid;
   grid-template-columns: repeat(1, 1fr); /* Single column layout */
- 
+  /* background-color: aqua; */
 }
 
 .scrollmenu {

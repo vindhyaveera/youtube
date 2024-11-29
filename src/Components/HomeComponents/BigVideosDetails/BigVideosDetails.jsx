@@ -32,7 +32,6 @@ const BigVideosDetails = () => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const userId = useSelector((state) => state.videos.userId);
 
-
   const combinedVideoData = useSelector((state) => state.videos.originalData); // Access originalData from Redux state
   //  // / Split the first 5 items into bigvideoData
   //  const bigvideoData = combinedVideoData.slice(0, 6);
@@ -69,7 +68,6 @@ const BigVideosDetails = () => {
       dispatch(toggleMenu(false)); // Close the menu by setting `isMenuOpen` to false
     }
   };
-  
 
   useEffect(() => {
     // Toggle body scroll when menu opens or closes

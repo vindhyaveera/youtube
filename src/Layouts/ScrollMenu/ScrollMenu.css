@@ -16,7 +16,7 @@
   /* left:67%; */
   /* top:15%; */
   left: 8%; 
-  top: 13%;
+  top: 11%;
   overflow-x: auto;
   gap: 10px;
   white-space: nowrap;
@@ -69,10 +69,10 @@
 
 .nav-button {
   position: fixed;
-  width:50px;
-  height:50px;
+  width:48px;
+  height:48px;
   /* top:13.6%; */
-  top: 11.6%;
+  top: 10%;
   background-color: white; 
   border: none;
   cursor: pointer;
