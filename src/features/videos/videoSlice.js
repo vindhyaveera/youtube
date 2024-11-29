@@ -46,12 +46,12 @@ const videoSlice = createSlice({
     shortsIds: [],
     bigVideos: [],
     shorts: [],
-
     userId: null, // Ensure `userId` is initialized to null
     token: null, // Ensure `token` is initialized to null
-
-    menuOpen:false,
-    profileOpen:false,
+    isLoggedIn: false,
+    menuOpen: false,
+    signIn: false,
+    profileOpen: false,
     status: "",
     userName: "", // Replace with actual username
   },
@@ -82,6 +82,7 @@ const videoSlice = createSlice({
     addVideoData: (state, action) => {
       state.originalData.push(action.payload);
     },
+    
 
     setuserVideos(state, action) {
       state.userVideos = action.payload;
@@ -93,6 +94,7 @@ const videoSlice = createSlice({
 
     // setBigVideoData1(state, action) {
     //   state.bigvideoData_1 = action.payload;
+
     // },
 
     setShortVideoData(state, action) {
@@ -101,6 +103,14 @@ const videoSlice = createSlice({
 
     toggleMenu: (state) => {
       state.menuOpen = !state.menuOpen; // Toggle menuOpen state
+    },
+
+    signIn (state) {
+      state.signIn = !state.signIn; // Toggle menuOpen state
+    },
+
+    toggleLogin (state)  {
+      state.isLoggedIn = !state.isLoggedIn; // Toggle login state
     },
 
     profileopen: (state) => {
@@ -155,6 +165,7 @@ export const {
   setShortVideoData,
   addVideoData,
   toggleMenu,
+  toggleLogin,
   closeMenu,
   profileopen,
   openMenu,
@@ -170,6 +181,7 @@ export const {
   logout,
   setuserName,
   setprofileOpen,
+  signIn,
   // setBigVideoData1,
 } = videoSlice.actions;
 

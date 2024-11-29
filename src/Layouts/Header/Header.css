@@ -9,7 +9,6 @@
   /* background-color: black; */
 }
 
-
 .start {
   width: 14vw;
   height: 100%;
@@ -45,7 +44,7 @@
 .searchbox input {
   width: 85%;
   height: 90%;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
@@ -56,7 +55,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  display:flex;
+  display: flex;
   justify-content: end;
   align-items: center;
   overflow: hidden;
@@ -66,14 +65,14 @@
 .searchimg {
   position: absolute;
   right: 1px;
-  top:7%;
+  top: 7%;
   width: 9%;
   height: 86%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-left: 1px solid lightgrey;
-  background-color: #E9E9E9;
+  background-color: #e9e9e9;
   border-top-right-radius: 50px; /* Top right corner rounded */
   border-bottom-right-radius: 50px; /* Bottom right corner rounded */
 }
@@ -93,8 +92,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  background-color: #E9E9E9;
-  
+  background-color: #e9e9e9;
 }
 .end {
   width: 22.5vw;
@@ -111,14 +109,13 @@
   height: 35px;
   border-radius: 50px;
 }
-.end button{
-  border:none;
+.end button {
+  border: none;
   background-color: white;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .open-form-button {
   background: none;
@@ -166,4 +163,31 @@
 
 .navbar.open {
   display: block;
+}
+/* styles.css */
+.signin-button {
+  display: flex;
+  align-items: center; /* Vertically centers the image and text */
+  padding: 10px 20px; /* Adds padding to the button */
+  border: 2px solid #add8e6; /* Light blue border */
+  border-radius: 50px; /* Rounded corners for the button */
+  background-color: #fff; /* White background */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  box-shadow: 2px 2px 5px rgba(173, 216, 230, 0.5); /*Light blue shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  color: blue;
+}
+
+.signin-button img {
+  width: 25px; /* Adjust image width */
+  height: 25px; /* Adjust image height */
+  margin-right: 10px; /* Space between image and text */
+  filter: invert(33%) sepia(85%) saturate(7460%) hue-rotate(180deg); /* Custom filter to make the image blue */
+}
+
+.svg-img {
+  /* filter: invert(45%) sepia(100%) saturate(750%) hue-rotate(180deg); */
+}
+.signin-button:hover {
+  box-shadow: 4px 4px 10px rgba(173, 216, 230, 0.7); /* Darker shadow on hover */
 }

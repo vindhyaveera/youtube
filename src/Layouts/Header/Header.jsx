@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../../features/videos/videoSlice";
+import { toggleMenu, toggleLogin, signIn } from "../../features/videos/videoSlice";
 import "./Header.css";
 import AdminComponents from "../../Components/HomeComponents/AdminComponents/AdminComponents";
 import Profile_img from "../../assets/channels4_profile.jpg";
+import Sign_img from '../../assets/button-signin.svg';
 import NavBar from "../NavBar/NavBar";
+import userProfileMenu from "../userProfileMenu/userProfileMenu";
 import LoginForm from "../../Components/HomeComponents/LoginComponents/LoginComponents";
 import ProfileForm from "../../Components/HomeComponents/ProileForm/ProfileForm";
 
@@ -14,15 +16,39 @@ const Header = () => {
   const navigate = useNavigate(); // To programmatically navigate to the search results
   const userid = useSelector((store) => store.videos.userId);
   const token = useSelector((store) => store.videos.token);
+  const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
+  const dispatch = useDispatch();
+
+  const isMenuOpen = useSelector((state) => state.videos.menuOpen);
+  const issignIn = useSelector((state) => state.videos.signIn);
+
+  console.log(isMenuOpen);
+
 
   // const [isVisible, setIsVisible] = useState(false);
   const [isLoginFormVisible, setLoginFormVisible] = useState(false); // State to control visibility of login form
 
-  const dispatch = useDispatch();
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
 
-  const isMenuOpen = useSelector((state) => state.videos.menuOpen);
-  console.log(isMenuOpen);
+   const userid1 = null;
 
+  useEffect(() => {
+    // Check if there's a valid userId
+    if (userid) {
+      dispatch(toggleLogin()); // Dispatch the toggleLogin action
+    } else {
+    }
+  }, [userid]); // Runs when `userid1` changes (in real scenarios, you might check localStorage/sessionStorage)
+
+  const handleLogin = () => {
+    setLoginFormVisible(true); // Close login form
+  };
+
+  const handleLogout = () => {
+    // setIsLoggedIn(false); // Log the user out
+  };
+
+ 
   const toggleFormVisibility = () => {
     // dispatch(isMenuOpen(false)); // Update Redux state
 
@@ -58,16 +84,10 @@ const Header = () => {
     // console.log(isMenuOpen)
   };
 
-  const handleNavigateToProfile = () => {
-    if (userid) {
-      // Navigate to the profile page based on the userid
-      navigate(`/profile/${userid}`);
-    } else {
-      // If no user ID, navigate to login page (optional)
-      // navigate("/login");
-      setLoginFormVisible(true);
-    }
-  };
+  const handleProfileClick = () => {
+    console.log("Hi")
+    dispatch(signIn());
+     };
 
   // const userid = localStorage.getItem("id");
   // console.log(userid);
@@ -170,19 +190,30 @@ const Header = () => {
         </div>
 
         <div className="end">
-          <button onClick={toggleFormVisibility} aria-label="Admin Menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>
-            </svg>
-          </button>
-          {/* Popup Form Component
+          {!isLoggedIn ? (
+            <button onClick={handleLogin} className="signin-button">
+              <img
+                src={Sign_img} // Replace with your image URL
+                alt="Sign In Icon"
+                className="svg-img"
+              />
+              Sign In
+            </button>
+          ) : (
+            <>
+              <button onClick={toggleFormVisibility} aria-label="Admin Menu">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  focusable="false"
+                  aria-hidden="true"
+                >
+                  <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>
+                </svg>
+              </button>
+              {/* Popup Form Component
           {isVisible && (
             <AdminComponents
               isVisible={isVisible}
@@ -190,24 +221,26 @@ const Header = () => {
             />
           )} */}
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            focusable="false"
-            aria-hidden="true"
-          >
-            <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z"></path>
-          </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                enable-background="new 0 0 24 24"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                focusable="false"
+                aria-hidden="true"
+              >
+                <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z"></path>
+              </svg>
 
-          <img
-            className="profileimg"
-            src={Profile_img}
-            onClick={handleNavigateToProfile} // Navigate when the image is clicked
-            alt="Profile"
-          />
+              <img
+                className="profileimg"
+                src={Profile_img}
+                onClick={handleProfileClick} // Navigate when the image is clicked
+                alt="Profile"
+              />
+            </>
+          )}
 
           {isLoginFormVisible && (
             <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
@@ -216,6 +249,7 @@ const Header = () => {
       </div>
 
       {isMenuOpen && <NavBar />}
+      {issignIn && <userProfileMenu/>}
     </div>
   );
 };
