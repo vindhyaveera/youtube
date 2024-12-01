@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu, toggleLogin, signIn } from "../../features/videos/videoSlice";
+import { toggleMenu, toggleLogin, toggleSignIn, } from "../../features/videos/videoSlice";
 import "./Header.css";
 import AdminComponents from "../../Components/HomeComponents/AdminComponents/AdminComponents";
 import Profile_img from "../../assets/channels4_profile.jpg";
 import Sign_img from '../../assets/button-signin.svg';
 import NavBar from "../NavBar/NavBar";
-import userProfileMenu from "../userProfileMenu/userProfileMenu";
+import UserProfileMenu from "../UserProfileMenu/UserProfileMenu";
 import LoginForm from "../../Components/HomeComponents/LoginComponents/LoginComponents";
 import ProfileForm from "../../Components/HomeComponents/ProileForm/ProfileForm";
 
@@ -15,6 +15,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
   const navigate = useNavigate(); // To programmatically navigate to the search results
   const userid = useSelector((store) => store.videos.userId);
+  // const userid="null";
   const token = useSelector((store) => store.videos.token);
   const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
   const dispatch = useDispatch();
@@ -30,18 +31,18 @@ const Header = () => {
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
 
-   const userid1 = null;
 
   useEffect(() => {
     // Check if there's a valid userId
     if (userid) {
       dispatch(toggleLogin()); // Dispatch the toggleLogin action
-    } else {
-    }
-  }, [userid]); // Runs when `userid1` changes (in real scenarios, you might check localStorage/sessionStorage)
+    } 
+  }, [userid]); 
 
+  
   const handleLogin = () => {
     setLoginFormVisible(true); // Close login form
+    console.log("Hi");
   };
 
   const handleLogout = () => {
@@ -77,6 +78,12 @@ const Header = () => {
     }
   };
 
+  const handleProfileClick = () => {
+    // console.log("Hi")
+    dispatch(toggleSignIn());
+     };
+
+
   // Toggle the NavBar open and close on image click
   const handleImageClick = () => {
     // setMenuOpen((prevMenuOpen) => !prevMenuOpen);
@@ -84,11 +91,7 @@ const Header = () => {
     // console.log(isMenuOpen)
   };
 
-  const handleProfileClick = () => {
-    console.log("Hi")
-    dispatch(signIn());
-     };
-
+ 
   // const userid = localStorage.getItem("id");
   // console.log(userid);
 
@@ -247,9 +250,9 @@ const Header = () => {
           )}
         </div>
       </div>
+      {issignIn && <UserProfileMenu/>}
 
       {isMenuOpen && <NavBar />}
-      {issignIn && <userProfileMenu/>}
     </div>
   );
 };

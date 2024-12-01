@@ -9,6 +9,8 @@ import videoReducer from "../features/videos/videoSlice";
 const persistConfig = {
   key: "videos",
   storage,
+  stateReconciler: (inboundState, originalState) => 
+    inboundState ? { ...originalState, ...inboundState } : originalState,
 };
 
 // Wrap the videoReducer with persistReducer

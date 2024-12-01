@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,10 +6,12 @@ import { setuserName } from "../../features/videos/videoSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate(); // To programmatically navigate to the search results
-  const userid = useSelector((store) => store.videos.userId);
+  // const userid = useSelector((store) => store.videos.userId);
+  const userid = null;
   const token = useSelector((store) => store.videos.token);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.videos.userName);
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   useEffect(() => {
     if (userid) {
@@ -22,11 +24,8 @@ const Sidebar = () => {
       // Navigate to the profile page based on the userid
       navigate(`/profile/${userid}`);
     } else {
-      alert("Please sign in to your account to access your profile.");
-
-      // If no user ID, navigate to login page (optional)
-      // navigate("/login");
-      // setLoginFormVisible(true);
+      navigate(`/profile/${userid}`);
+      setShowLoginMessage(true); // Show the login message
     }
   };
 
@@ -139,6 +138,27 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+      {/* Login Message */}
+      {showLoginMessage && (
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "10%",
+            padding: "20px",
+            border: "0.1px solid #ADD8E6",
+            borderRadius: "10px",
+            boxShadow:
+              "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
+            backgroundColor: "#f0f8ff",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "50%",
+          }}
+        >
+          <h1>Welcome to the App</h1>
+          <p>Please log in to access your account.</p>
+        </div>
+      )}
     </div>
   );
 };

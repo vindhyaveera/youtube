@@ -37,6 +37,7 @@ const assets = {
 
 const videoSlice = createSlice({
   name: "videos",
+
   initialState: {
     originalData: [],
     shortvideoData: [],
@@ -57,6 +58,7 @@ const videoSlice = createSlice({
   },
 
   reducers: {
+    
     setUserId(state, action) {
       state.userId = action.payload;
     },
@@ -92,10 +94,7 @@ const videoSlice = createSlice({
       state.userShortsVideos = action.payload;
     },
 
-    // setBigVideoData1(state, action) {
-    //   state.bigvideoData_1 = action.payload;
-
-    // },
+   
 
     setShortVideoData(state, action) {
       state.shortvideoData = action.payload;
@@ -105,8 +104,9 @@ const videoSlice = createSlice({
       state.menuOpen = !state.menuOpen; // Toggle menuOpen state
     },
 
-    signIn (state) {
-      state.signIn = !state.signIn; // Toggle menuOpen state
+
+    toggleSignIn(state) {
+      state.signIn = !state.signIn;
     },
 
     toggleLogin (state)  {
@@ -181,8 +181,7 @@ export const {
   logout,
   setuserName,
   setprofileOpen,
-  signIn,
-  // setBigVideoData1,
+  toggleSignIn,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;

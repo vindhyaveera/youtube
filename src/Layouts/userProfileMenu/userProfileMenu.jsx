@@ -1,5 +1,5 @@
 import React from 'react'
-import './userProfileMenu.css'
+import './UserProfileMenu.css'
 
 const userProfileMenu = () => {
   return (
