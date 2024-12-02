@@ -36,20 +36,46 @@ const BigVideos = () => {
   // Split the next 5 items into bigvideoData1
   const bigvideoData_1 = videos.slice(6);
 
+  
+  // useEffect(() => {
+  //   viewAllUser(); // Fetch data when component mounts
+  //   viewAllShorts();
+  //   getuserVideos();
+  //   getuserShortsVideos();
+  // }, []);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      await viewAllUser();
+      await viewAllShorts();
+    };
+    fetchVideos();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (userId) {
+      const fetchUserVideos = async () => {
+        await getuserVideos();
+        await getuserShortsVideos();
+      };
+      fetchUserVideos();
+    }
+  }, [userId, dispatch]);
+
   console.log("All User Videos:", userVideos);
   console.log("Original Data from redux array", videos);
   console.log("Original array of bigvideodata", bigvideoData);
   console.log("Original array of bigvideodata1", bigvideoData_1);
 
 
-  // useEffect to listen for changes in the userId and call getuserVideos whenever it changes
-  useEffect(() => {
-    if (userId) {
-      getuserVideos();
-      getuserShortsVideos();
-      // Call the function when userId changes
-    }
-  }, [userId]); // Dependency array includes userId
+  // // useEffect to listen for changes in the userId and call getuserVideos whenever it changes
+  // useEffect(() => {
+  //   if (userId) {
+  //     getuserVideos();
+  //     getuserShortsVideos();
+  //     // Call the function when userId changes
+  //   }
+  // }, [userId,dispatch]); // Dependency array includes userId
 
   // // Update userId when it changes in localStorage
   // useEffect(() => {
@@ -68,20 +94,13 @@ const BigVideos = () => {
   // }, []);
 
   useEffect(() => {
-    viewAllUser(); // Fetch data when component mounts
-    viewAllShorts();
-    getuserVideos();
-    getuserShortsVideos();
-  }, []);
-
-  useEffect(() => {
     console.log("Updated bigvideoData:", videos);
   }, [videos]); // This will log whenever bigvideoData changes
 
   async function getuserVideos() {
     try {
       const response = await fetch(
-        `http://localhost:4000/users//getuserVideos/${userId}`,
+        `http://localhost:4000/users/getuserVideos/${userId}`,
         {
           method: "GET",
           headers: {
@@ -108,7 +127,7 @@ const BigVideos = () => {
   async function getuserShortsVideos() {
     try {
       const response = await fetch(
-        `http://localhost:4000/users//getuserShortsVideos/${userId}`,
+        `http://localhost:4000/users/getuserShortsVideos/${userId}`,
         {
           method: "GET",
           headers: {
@@ -133,7 +152,7 @@ const BigVideos = () => {
   }
 
   async function viewAllUser() {
-    // alert(".../")
+    alert("Welcome")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
       const response = await fetch("http://localhost:4000/bigvideos/viewAll", {
@@ -142,17 +161,24 @@ const BigVideos = () => {
           "content-type": "application/json",
         },
       });
+
+      // Check if the response status is OK (200)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
       const data = await response.json();
       console.log("API Response:", data);
       // Log the response to check its structure
 
       console.log(data.data);
       if (Array.isArray(data.data)) {
+        console.log("Hello World");
         dispatch(setoriginalData(data.data)); // Set to the correct
-        console.log(videos);
+        // console.log(videos);
       } else {
         console.error("Expected an array but received:", data.data);
-        dispatch(setoriginalData([data.data])); // Handle unexpected data
+        // dispatch(setoriginalData([data.data])); // Handle unexpected data
       }
       dispatch(setStatus(data.message)); // Update status with the response message
     } catch (error) {
@@ -182,10 +208,10 @@ const BigVideos = () => {
       console.log(data.data);
       if (Array.isArray(data.data)) {
         dispatch(setShortVideoData(data.data)); // Set to the correct
-        console.log(videos);
+        // console.log(videos);
       } else {
         console.error("Expected an array but received:", data.data);
-        dispatch(setShortVideoData([data.data])); // Handle unexpected data
+        // dispatch(setShortVideoData([data.data])); // Handle unexpected data
       }
       dispatch(setStatus(data.message)); // Update status with the response message
     } catch (error) {
@@ -208,15 +234,16 @@ const BigVideos = () => {
       {/* <div className="main-content"> */}
       <div className={`main-content  ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="bigvideogrid">
-          {Array.isArray(bigvideoData) && bigvideoData.length > 0 ? (
+          {bigvideoData && bigvideoData.length > 0 ? (
             bigvideoData.map((video) => (
               <Link
                 to={`/details/${video.id}`}
                 className="no-style-link"
                 // key={index}
+                key={video.id}
+
               >
                 <BigVideosInfo
-                  key={video.id}
                   img={video.img}
                   name={video.name}
                   desc={video.desc}
@@ -237,10 +264,9 @@ const BigVideos = () => {
             <Link
               to={`/details/${video.id}`}
               className="no-style-link"
-              // key={index}
-            >
+              key={video.id}
+              >
               <BigVideosInfo
-                key={video.id}
                 img={video.img}
                 name={video.name}
                 desc={video.desc}

@@ -37,9 +37,7 @@ const assets = {
 
 const videoSlice = createSlice({
   name: "videos",
-
   initialState: {
-    originalData: [],
     shortvideoData: [],
     userVideos: [],
     userShortsVideos: [],
@@ -47,12 +45,15 @@ const videoSlice = createSlice({
     shortsIds: [],
     bigVideos: [],
     shorts: [],
+    originalData: [],
+
     userId: null, // Ensure `userId` is initialized to null
     token: null, // Ensure `token` is initialized to null
-    isLoggedIn: false,
+
     menuOpen: false,
-    signIn: false,
+    // signIn: false,
     profileOpen: false,
+
     status: "",
     userName: "", // Replace with actual username
   },
@@ -104,14 +105,15 @@ const videoSlice = createSlice({
       state.menuOpen = !state.menuOpen; // Toggle menuOpen state
     },
 
+    
 
-    toggleSignIn(state) {
-      state.signIn = !state.signIn;
-    },
+    // toggleSignIn(state) {
+    //   state.signIn = !state.signIn;
+    // },
 
-    toggleLogin (state)  {
-      state.isLoggedIn = !state.isLoggedIn; // Toggle login state
-    },
+    // toggleLogin (state)  {
+    //   state.isLoggedIn = !state.isLoggedIn; // Toggle login state
+    // },
 
     profileopen: (state) => {
       state.profileOpen = !state.profileOpen; 
@@ -165,7 +167,7 @@ export const {
   setShortVideoData,
   addVideoData,
   toggleMenu,
-  toggleLogin,
+  // toggleLogin,
   closeMenu,
   profileopen,
   openMenu,
@@ -181,7 +183,7 @@ export const {
   logout,
   setuserName,
   setprofileOpen,
-  toggleSignIn,
+  // toggleSignIn,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;

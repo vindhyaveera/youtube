@@ -6,8 +6,8 @@ import { setuserName } from "../../features/videos/videoSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate(); // To programmatically navigate to the search results
-  // const userid = useSelector((store) => store.videos.userId);
-  const userid = null;
+  const userid = useSelector((store) => store.videos.userId);
+  // const userid = null;
   const token = useSelector((store) => store.videos.token);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.videos.userName);

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu, toggleLogin, toggleSignIn, } from "../../features/videos/videoSlice";
+import {
+  toggleMenu,
+  toggleLogin,
+ 
+} from "../../features/videos/videoSlice";
 import "./Header.css";
 import AdminComponents from "../../Components/HomeComponents/AdminComponents/AdminComponents";
 import Profile_img from "../../assets/channels4_profile.jpg";
-import Sign_img from '../../assets/button-signin.svg';
+import Sign_img from "../../assets/button-signin.svg";
 import NavBar from "../NavBar/NavBar";
 import UserProfileMenu from "../UserProfileMenu/UserProfileMenu";
 import LoginForm from "../../Components/HomeComponents/LoginComponents/LoginComponents";
@@ -15,41 +19,37 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Store the search query
   const navigate = useNavigate(); // To programmatically navigate to the search results
   const userid = useSelector((store) => store.videos.userId);
-  // const userid="null";
   const token = useSelector((store) => store.videos.token);
   const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
   const dispatch = useDispatch();
 
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
-  const issignIn = useSelector((state) => state.videos.signIn);
+  // const issignIn = useSelector((state) => state.videos.signIn);
 
   console.log(isMenuOpen);
 
-
+  // alert(`Logged In: ${isLoggedIn}`);
   // const [isVisible, setIsVisible] = useState(false);
   const [isLoginFormVisible, setLoginFormVisible] = useState(false); // State to control visibility of login form
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
 
+  // useEffect(() => {
+  //   // Check if there's a valid userId
+  //   if (userid) {
+  //     dispatch(toggleLogin()); // Dispatch the toggleLogin action
+  //   }
+  // }, [userid]);
+  // console.log("From Header",isLoggedIn)
 
-  useEffect(() => {
-    // Check if there's a valid userId
-    if (userid) {
-      dispatch(toggleLogin()); // Dispatch the toggleLogin action
-    } 
-  }, [userid]); 
-
-  
   const handleLogin = () => {
     setLoginFormVisible(true); // Close login form
-    console.log("Hi");
   };
 
   const handleLogout = () => {
     // setIsLoggedIn(false); // Log the user out
   };
 
- 
   const toggleFormVisibility = () => {
     // dispatch(isMenuOpen(false)); // Update Redux state
 
@@ -80,9 +80,8 @@ const Header = () => {
 
   const handleProfileClick = () => {
     // console.log("Hi")
-    dispatch(toggleSignIn());
-     };
-
+    // dispatch(toggleSignIn());
+  };
 
   // Toggle the NavBar open and close on image click
   const handleImageClick = () => {
@@ -91,7 +90,6 @@ const Header = () => {
     // console.log(isMenuOpen)
   };
 
- 
   // const userid = localStorage.getItem("id");
   // console.log(userid);
 
@@ -193,7 +191,7 @@ const Header = () => {
         </div>
 
         <div className="end">
-          {!isLoggedIn ? (
+          {!userid ? (
             <button onClick={handleLogin} className="signin-button">
               <img
                 src={Sign_img} // Replace with your image URL
@@ -250,7 +248,8 @@ const Header = () => {
           )}
         </div>
       </div>
-      {issignIn && <UserProfileMenu/>}
+
+      {/* {issignIn && <UserProfileMenu />} */}
 
       {isMenuOpen && <NavBar />}
     </div>

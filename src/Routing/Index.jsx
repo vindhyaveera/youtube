@@ -17,12 +17,14 @@ import Profile from "../Components/HomeComponents/ProileForm/ProfileForm";
 import AdminPage from "../Components/HomeComponents/AdminComponents/AdminComponents";
 
 const AppContent = () => {
-  const isLoggedIn = useSelector((state) => state.videos.isLoggedIn); // Login status
+  // const isLoggedIn = useSelector((state) => state.videos.isLoggedIn); // Login status
+  const userid = useSelector((state) => state.videos.userId);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const location = useLocation();
 
   const noSidebarRoutes = ["/details/:id"];
 
+  console.log("userid from index", userid);
   const shouldShowSidebar = useMemo(() => {
     return (
       location.pathname === "/search" ||
@@ -39,33 +41,33 @@ const AppContent = () => {
     [location.pathname]
   );
 
-  const handleStartImageClick = () => {
-    if (!isLoggedIn) {
-      alert("You need to sign in to access this feature!");
-    } else {
-      // Perform your actual functionality for the start image here
-      console.log("Start image clicked!");
-    }
-  };
+  // const handleStartImageClick = () => {
+  //   if (!isLoggedIn) {
+  //     console.log("Hi Hello")
+  //     alert("You need to sign in to access this feature!");
+  //   } else {
+  //     // Perform your actual functionality for the start image here
+  //     console.log("Start image clicked!");
+  //   }
+  // };
 
   return (
     <div>
-      <Header onStartImageClick={handleStartImageClick} />
+      {/* onStartImageClick={handleStartImageClick} */}
+      {/* <Header onStartImageClick={handleStartImageClick} /> */}
+      <Header />
       {shouldShowSidebar && <Sidebar />}
       {shouldShowScrollMenu && <ScrollMenu />}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/details/:id" element={<BigVideosDetails />} />
-
         {/* Search is accessible to everyone */}
+        <Route path="/details/:id" element={<BigVideosDetails />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchComponent />} />
-        <Route path="/watchlater" element={<WatchLaterPage />} />
-
-        {/* Content restricted to logged-in users */}
-        {isLoggedIn ? (
+        {userid ? (
           <>
             <Route path="/profile/:userid" element={<Profile />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/watchlater" element={<WatchLaterPage />} />
           </>
         ) : (
           // Placeholder content for unauthenticated users

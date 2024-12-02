@@ -1,5 +1,5 @@
 // LoginForm.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginComponents.css"; // Import the CSS file
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -8,12 +8,31 @@ import {
   setUserId,
   setuserName,
 } from "../../../features/videos/videoSlice";
+import { toggleLogin } from "../../../features/videos/videoSlice";
 
 const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.videos.userId);
+  const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
 
+  // Update isLoggedIn state based on userid changes
+  // useEffect(() => {
+  //   if (userId === null) {
+  //     dispatch(toggleLogin()); // Dispatch action to toggle login state when user is logged out
+  //   } else {
+  //     dispatch(toggleLogin()); // Dispatch action to toggle login state when user is logged out
+  //   }
+  // }, [userId, dispatch]); // The effect runs when userid changes
 
+  // // Function to handle the start image click
+  // const handleStartImageClick = () => {
+  //   if (!isLoggedIn) {
+  //     alert("You need to sign in to access this feature!");
+  //   } else {
+  //     // Perform your actual functionality for the start image here
+  //     console.log("Start image clicked!");
+  //   }
+  // };
 
   const [isRegister, setIsRegister] = useState(false);
   const [status, setStatus] = useState("");
@@ -82,8 +101,7 @@ const LoginForm = ({ onClose }) => {
 
         dispatch(setUserId(data.token.id));
         dispatch(setToken(data.token.token));
-        dispatch(setuserName(data.firstName )); // Adjust this based on your API response
-
+        dispatch(setuserName(data.firstName)); // Adjust this based on your API response
 
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
@@ -116,8 +134,6 @@ const LoginForm = ({ onClose }) => {
       alert("Register Failed");
     }
   }
-
-  
 
   return (
     <div className="form-container">
