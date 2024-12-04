@@ -1,4 +1,5 @@
 // src/app/store.js
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
@@ -9,8 +10,7 @@ import videoReducer from "../features/videos/videoSlice";
 const persistConfig = {
   key: "videos",
   storage,
-  stateReconciler: (inboundState, originalState) => 
-    inboundState ? { ...originalState, ...inboundState } : originalState,
+  stateReconciler: autoMergeLevel2,
 };
 
 // Wrap the videoReducer with persistReducer
@@ -23,5 +23,17 @@ export const store = configureStore({
   },
 });
 
+
 // Create a persistor instance
 export const persistor = persistStore(store);
+
+
+// import { configureStore } from "@reduxjs/toolkit";
+// import videoReducer from "../features/videos/videoSlice";
+
+// // Create the store without Redux Persist
+// export const store = configureStore({
+//   reducer: {
+//     videos: videoReducer,
+//   },
+// });

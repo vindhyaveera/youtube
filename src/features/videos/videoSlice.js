@@ -38,6 +38,7 @@ const assets = {
 const videoSlice = createSlice({
   name: "videos",
   initialState: {
+    originalData: [],
     shortvideoData: [],
     userVideos: [],
     userShortsVideos: [],
@@ -45,21 +46,20 @@ const videoSlice = createSlice({
     shortsIds: [],
     bigVideos: [],
     shorts: [],
-    originalData: [],
 
     userId: null, // Ensure `userId` is initialized to null
     token: null, // Ensure `token` is initialized to null
 
     menuOpen: false,
-    // signIn: false,
+    isLoggedIn:false,
+    signIn: false,
     profileOpen: false,
 
     status: "",
     userName: "", // Replace with actual username
   },
-
   reducers: {
-    
+
     setUserId(state, action) {
       state.userId = action.payload;
     },
@@ -79,6 +79,7 @@ const videoSlice = createSlice({
     }, 
 
     setoriginalData(state, action) {
+      // console.log("User videos payload:", action.payload); // Log the payload
       state.originalData = action.payload;
     },
     // New reducer to add video data dynamically
@@ -101,19 +102,20 @@ const videoSlice = createSlice({
       state.shortvideoData = action.payload;
     },
 
+
     toggleMenu: (state) => {
       state.menuOpen = !state.menuOpen; // Toggle menuOpen state
     },
 
     
 
-    // toggleSignIn(state) {
-    //   state.signIn = !state.signIn;
-    // },
+    toggleSignIn(state) {
+      state.signIn = !state.signIn;
+    },
 
-    // toggleLogin (state)  {
-    //   state.isLoggedIn = !state.isLoggedIn; // Toggle login state
-    // },
+    toggleLogin (state)  {
+      state.isLoggedIn = !state.isLoggedIn; // Toggle login state
+    },
 
     profileopen: (state) => {
       state.profileOpen = !state.profileOpen; 
@@ -163,11 +165,12 @@ const videoSlice = createSlice({
 // ];
 
 export const {
+  
   setoriginalData,
   setShortVideoData,
   addVideoData,
   toggleMenu,
-  // toggleLogin,
+  toggleLogin,
   closeMenu,
   profileopen,
   openMenu,
@@ -183,7 +186,7 @@ export const {
   logout,
   setuserName,
   setprofileOpen,
-  // toggleSignIn,
+  toggleSignIn,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;

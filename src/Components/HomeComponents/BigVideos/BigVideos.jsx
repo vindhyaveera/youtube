@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setoriginalData,
   setuserVideos,
@@ -18,15 +17,9 @@ const BigVideos = () => {
   const videos = useSelector((state) => state.videos.originalData);
   const userVideos = useSelector((state) => state.videos.userVideos);
   const userId = useSelector((state) => state.videos.userId);
-
-  console.log("Biguser:", userId);
-  // const [userId, setUserId] = useState(localStorage.getItem("id")); // Get the initial userId from localStorage
-
-  // const bigvideoData_1 = useSelector((state) => state.videos.bigvideoData_1);
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const status = useSelector((state) => state.videos.status);
   const dispatch = useDispatch();
-  // const userId = localStorage.getItem("id");
 
   const bigvideosRef = useRef(null);
 
@@ -36,7 +29,6 @@ const BigVideos = () => {
   // Split the next 5 items into bigvideoData1
   const bigvideoData_1 = videos.slice(6);
 
-  
   // useEffect(() => {
   //   viewAllUser(); // Fetch data when component mounts
   //   viewAllShorts();
@@ -66,7 +58,6 @@ const BigVideos = () => {
   console.log("Original Data from redux array", videos);
   console.log("Original array of bigvideodata", bigvideoData);
   console.log("Original array of bigvideodata1", bigvideoData_1);
-
 
   // // useEffect to listen for changes in the userId and call getuserVideos whenever it changes
   // useEffect(() => {
@@ -152,7 +143,6 @@ const BigVideos = () => {
   }
 
   async function viewAllUser() {
-    alert("Welcome")
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
       const response = await fetch("http://localhost:4000/bigvideos/viewAll", {
@@ -166,7 +156,7 @@ const BigVideos = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       console.log("API Response:", data);
       // Log the response to check its structure
@@ -240,10 +230,9 @@ const BigVideos = () => {
                 to={`/details/${video.id}`}
                 className="no-style-link"
                 // key={index}
-                key={video.id}
-
               >
                 <BigVideosInfo
+                  key={video.id}
                   img={video.img}
                   name={video.name}
                   desc={video.desc}
@@ -260,22 +249,23 @@ const BigVideos = () => {
         </div>
         <ShortsVideos bigvideosRef={bigvideosRef} />
         <div ref={bigvideosRef} className="bigvideogrid bigvideodata2">
-          {bigvideoData_1.map((video) => (
-            <Link
-              to={`/details/${video.id}`}
-              className="no-style-link"
-              key={video.id}
-              >
-              <BigVideosInfo
-                img={video.img}
-                name={video.name}
-                desc={video.desc}
-                dots={video.dots}
-                rates={video.rates}
-                showButtons={video.showButtons}
-              />
-            </Link>
-          ))}
+          {bigvideoData_1 && bigvideoData_1.length > 0 ? (
+            bigvideoData_1.map((video) => (
+              <Link to={`/details/${video.id}`} className="no-style-link">
+                <BigVideosInfo
+                  key={video.id}
+                  img={video.img}
+                  name={video.name}
+                  desc={video.desc}
+                  dots={video.dots}
+                  rates={video.rates}
+                  showButtons={video.showButtons}
+                />
+              </Link>
+            ))
+          ) : (
+            <p>No videos available</p> // Fallback for when no videos are present
+          )}
         </div>
       </div>
     </div>

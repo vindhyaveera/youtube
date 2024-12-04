@@ -11,7 +11,7 @@ const Sidebar = () => {
   const token = useSelector((store) => store.videos.token);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.videos.userName);
-  const [showLoginMessage, setShowLoginMessage] = useState(false);
+  // const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   useEffect(() => {
     if (userid) {
@@ -20,13 +20,10 @@ const Sidebar = () => {
   }, [userid]); // Dependency array includes userId
 
   const handleNavigateToProfile = () => {
-    if (userid) {
+    // if (userid) {
       // Navigate to the profile page based on the userid
       navigate(`/profile/${userid}`);
-    } else {
-      navigate(`/profile/${userid}`);
-      setShowLoginMessage(true); // Show the login message
-    }
+    // }
   };
 
   async function getuser() {
@@ -138,27 +135,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      {/* Login Message */}
-      {showLoginMessage && (
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "10%",
-            padding: "20px",
-            border: "0.1px solid #ADD8E6",
-            borderRadius: "10px",
-            boxShadow:
-              "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
-            backgroundColor: "#f0f8ff",
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "50%",
-          }}
-        >
-          <h1>Welcome to the App</h1>
-          <p>Please log in to access your account.</p>
-        </div>
-      )}
+     
     </div>
   );
 };

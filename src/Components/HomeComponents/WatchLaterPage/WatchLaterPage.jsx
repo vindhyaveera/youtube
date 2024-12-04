@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Link } from "react-router-dom";
 import "./WatchLaterPage.css";
 import { setBigVideos, setShorts } from "../../../features/videos/videoSlice"; // Update the path as needed
@@ -8,18 +7,9 @@ import { setBigVideos, setShorts } from "../../../features/videos/videoSlice"; /
 const WatchLaterPage = () => {
   const isMenuOpen = useSelector((state) => state.videos.menuOpen);
   const userID = useSelector((state) => state.videos.userId); // Get userID from Redux
-  // const userID=null;
- 
-  //  console.log("UserID:",userID);
-  // const userID = localStorage.getItem("id");
   const dispatch = useDispatch();
   const bigVideos = useSelector((state) => state.videos.bigVideos);
   const shorts = useSelector((state) => state.videos.shorts);
-  const [showLoginMessage, setShowLoginMessage] = useState(false);
-
-
-  // const [bigVideos, setBigVideos] = useState([]); // Big videos
-  // const [shorts, setShorts] = useState([]); // Short videos
   const [filter, setFilter] = useState("all"); // Current filter
 
   // Fetch All Videos from viewAllAssociate API
@@ -77,8 +67,6 @@ const WatchLaterPage = () => {
           rates: item.ShortsVideo.rates,
         }));
 
-      // setBigVideos(bigVideosList);
-      // setShorts(shortsList);
       dispatch(setBigVideos(bigVideosList));
       dispatch(setShorts(shortsList));
     } catch (error) {
@@ -87,10 +75,8 @@ const WatchLaterPage = () => {
   };
 
   useEffect(() => {
-    if (!userID) {
-      setShowLoginMessage(true); // Show the login message if userID is null
-    } else {
-      fetchViewAllAssociate(); // Otherwise, fetch the videos
+    if (userID) {
+      fetchViewAllAssociate(); // Fetch videos only if the user is logged in
     }
   }, [userID]);
 
@@ -102,32 +88,31 @@ const WatchLaterPage = () => {
       ? bigVideos
       : shorts;
 
-  return (
-    <div>
-           {/* Display the login message if userID is null */}
-      {showLoginMessage && (
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "10%",
-            padding: "20px",
-            border: "0.1px solid #ADD8E6",
-            borderRadius: "10px",
-            boxShadow:
-              "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
-            backgroundColor: "#f0f8ff",
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "50%",
-          }}
-        >
-          <h1>Welcome to the App</h1>
-          <p>Please log in to access your account.</p>
-        </div>
-      )}
-
-      {/* Display videos list if user is logged in */}
-      {!showLoginMessage && (
+  // Render the welcome message if userID is missing
+  if (userID === null) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "10%",
+          padding: "20px",
+          border: "0.1px solid #ADD8E6",
+          borderRadius: "10px",
+          boxShadow:
+            "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
+          backgroundColor: "#f0f8ff",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%",
+        }}
+      >
+        <h1>Welcome to the App</h1>
+        <p>Please log in to access your account.</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
         <div className={`WatchContainer ${isMenuOpen ? "menu-open" : ""}`}>
           <h1>Watch Later</h1>
 
@@ -149,16 +134,21 @@ const WatchLaterPage = () => {
             {filteredVideos.length > 0 ? (
               filteredVideos.map((video, index) => {
                 const imagePath = `/assets/${video.img}`;
-
                 return (
                   <div key={index} className="video-item">
                     <div className="leftvideo">
-                      <Link to={`/details/${video.id}`} className="no-style-link">
+                      <Link
+                        to={`/details/${video.id}`}
+                        className="no-style-link"
+                      >
                         <img src={imagePath} alt={video.name} />
                       </Link>
                     </div>
                     <div className="descvideos">
-                      <Link to={`/details/${video.id}`} className="no-style-link">
+                      <Link
+                        to={`/details/${video.id}`}
+                        className="no-style-link"
+                      >
                         <h3>{video.desc}</h3>
                         <p>{video.name}</p>
                       </Link>
@@ -171,9 +161,30 @@ const WatchLaterPage = () => {
             )}
           </div>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default WatchLaterPage;
+
+// {!userID && (
+//   <div
+//     style={{
+//       textAlign: "center",
+//       marginTop: "10%",
+//       padding: "20px",
+//       border: "0.1px solid #ADD8E6",
+//       borderRadius: "10px",
+//       boxShadow:
+//         "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
+//       backgroundColor: "#f0f8ff",
+//       marginLeft: "auto",
+//       marginRight: "auto",
+//       width: "50%",
+//     }}
+//   >
+//     <h1>Welcome to the App</h1>
+//     <p>Please log in to access your account.</p>
+//   </div>
+// )}

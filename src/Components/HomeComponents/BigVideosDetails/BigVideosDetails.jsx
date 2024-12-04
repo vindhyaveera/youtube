@@ -21,6 +21,8 @@ const BigVideosDetails = () => {
   const { id } = useParams(); // Get the dynamic ID from the URL
   const menuRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   // const combinedVideoData = useSelector(
   //   (state) => state.videos.selectCombinedVideoData
@@ -69,6 +71,10 @@ const BigVideosDetails = () => {
     }
   };
 
+  const handleChannelClick = () => {
+    navigate(`/channel/${video.channel}`);
+  };
+
   useEffect(() => {
     // Toggle body scroll when menu opens or closes
     if (isMenuOpen) {
@@ -112,6 +118,7 @@ const BigVideosDetails = () => {
     }
   };
 
+
   const convertTextToHtml = (text) => {
     // Replace newlines with <br> for line breaks
     let formattedText = text.replace(/\n/g, "<br/>");
@@ -151,7 +158,7 @@ const BigVideosDetails = () => {
                 <img className="roundimage" src={imagePath} />
 
                 <div>
-                  <h5>{video.channel}</h5>
+                  <h5 onClick={handleChannelClick} style={{ cursor: 'pointer', color: 'blue' }}>{video.channel}</h5>
                   <p>{video.subscribers}</p>
                 </div>
                 <button class="image-button1">Subscribe</button>

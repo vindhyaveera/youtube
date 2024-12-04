@@ -21,10 +21,11 @@ const NavBar = () => {
       // Assume userID is stored in the Redux state or localStorage after login
 
       // const userID = localStorage.getItem("id"); // Or fetch from Redux state
-      if (!userID) {
-        alert("User not logged in");
-        return;
-      }
+      // if (!userID) {
+        
+      //   // alert("User not logged in");
+      //   return;
+      // }
       const response = await fetch(
         `http://localhost:4000/watchlater/viewAll?userId=${userID}`,
         {
@@ -165,3 +166,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
