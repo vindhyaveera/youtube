@@ -57,7 +57,7 @@ const AppContent = () => {
         <Route path="/profile/:userid" element={<Profile />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/watchlater" element={<WatchLaterPage />} />
-        <Route path="/channel" element={<UserChannel/>}/>
+        <Route path="/channel/:channelname" element={<UserChannel/>}/>
       </Routes>
     </div>
   );
