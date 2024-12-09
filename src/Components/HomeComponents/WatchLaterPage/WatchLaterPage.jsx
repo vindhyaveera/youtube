@@ -77,73 +77,88 @@ const WatchLaterPage = () => {
       ? bigVideos
       : shorts;
 
+  // Render the welcome message if userID is missing
   if (userID === null) {
     return (
-      <div className="welcome-container">
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "10%",
+          padding: "20px",
+          border: "0.1px solid #ADD8E6",
+          borderRadius: "10px",
+          boxShadow:
+            "8px 0 8px rgba(173, 216, 230, 0.5), -8px 0 8px rgba(173, 216, 230, 0.5)",
+          backgroundColor: "#f0f8ff",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%",
+        }}
+      >
         <h1>Welcome to the App</h1>
         <p>Please log in to access your account.</p>
       </div>
     );
-  }
-
-  return (
-    <div>
-      <div className={`WatchContainer ${isMenuOpen ? "menu-open" : ""}`}>
-        <h1>Watch Later</h1>
-        <div className="menuwatch">
-          <button className="all" onClick={() => setFilter("all")}>
-            All
-          </button>
-          <button className="all" onClick={() => setFilter("videos")}>
-            Videos
-          </button>
-          <button className="all" onClick={() => setFilter("shorts")}>
-            Shorts
-          </button>
-        </div>
-        <div className="videos-list">
-          {filteredVideos.length > 0 ? (
-            filteredVideos.map((video, index) => {
-              const imagePath = `/assets/${video.img}`;
-              return (
-                <div key={index} className="video-item">
-                  <div className="leftvideo">
-                    <Link to={`/details/${video.id}`} className="no-style-link">
-                      <img src={imagePath} alt={video.name} />
-                    </Link>
+  } else {
+    return (
+      <div>
+        <div className={`WatchContainer ${isMenuOpen ? "menu-open" : ""}`}>
+          <h1>Watch Later</h1>
+          <div className="menuwatch">
+            <button className="all" onClick={() => setFilter("all")}>
+              All
+            </button>
+            <button className="all" onClick={() => setFilter("videos")}>
+              Videos
+            </button>
+            <button className="all" onClick={() => setFilter("shorts")}>
+              Shorts
+            </button>
+          </div>
+          <div className="videos-list">
+            {filteredVideos.length > 0 ? (
+              filteredVideos.map((video, index) => {
+                const imagePath = `/assets/${video.img}`;
+                return (
+                  <div key={index} className="video-item">
+                    <div className="leftvideo">
+                      <Link to={`/details/${video.id}`} className="no-style-link">
+                        <img src={imagePath} alt={video.name} />
+                      </Link>
+                    </div>
+                    <div className="descvideos">
+                      <Link to={`/details/${video.id}`} className="no-style-link">
+                        <div className="videos-content">
+                          <h3>{video.desc}</h3>
+                          <p>{video.name}</p>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="video-button">
+                      <button
+                        className="remove-button"
+                        onClick={() =>
+                          deleteVideo(
+                            userID,
+                            video.id,
+                            bigVideos.includes(video) ? "big" : "short"
+                          )
+                        }
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
-                  <div className="descvideos">
-                    <Link to={`/details/${video.id}`} className="no-style-link">
-                      <div className="videos-content">
-                        <h3>{video.desc}</h3>
-                        <p>{video.name}</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="video-button">
-                    <button
-                      className="remove-button"
-                      onClick={() =>
-                        deleteVideo(
-                          userID,
-                          video.id,
-                          bigVideos.includes(video) ? "big" : "short"
-                        )
-                      }
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <p className="empty-state">No videos to display.</p>
-          )}
+                );
+              })
+            ) : (
+              <p className="empty-state">No videos to display.</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default WatchLaterPage;
