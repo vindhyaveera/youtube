@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { setStatus } from "../../../features/videos/videoSlice";
+
 import Header from "../../../Layouts/Header/Header";
 import "./BigVideosDetails.css";
 import Videos from "../../../Components/HomeComponents/Videos/Videos";
@@ -13,7 +15,7 @@ import img20 from "../../../assets/descimg5.svg";
 import img21 from "../../../assets/descimg6.svg";
 import img22 from "../../../assets/descimg7.svg";
 import Profile_img from "../../../assets/channels4_profile.jpg";
-import { originalData } from "../../../features/videos/videoSlice";
+import { originalData, setchannelsVideos } from "../../../features/videos/videoSlice";
 import { toggleMenu } from "../../../features/videos/videoSlice";
 import ScrollMenu from "../../../Layouts/ScrollMenu/ScrollMenu";
 
@@ -22,6 +24,8 @@ const BigVideosDetails = () => {
   const menuRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const status = useSelector((state) => state.videos.status);
+
 
 
   // const combinedVideoData = useSelector(
@@ -72,8 +76,11 @@ const BigVideosDetails = () => {
   };
 
   const handleChannelClick = () => {
+    viewChannels()
     navigate(`/channel/${video.channel}`);
   };
+
+
 
   useEffect(() => {
     // Toggle body scroll when menu opens or closes
@@ -117,6 +124,42 @@ const BigVideosDetails = () => {
       alert("Failed to store bigvideos data in watchlater");
     }
   };
+
+  async function viewChannels() {
+    dispatch(setStatus("Please wait")); // Set status to "Please wait"
+    try {
+      const response = await fetch(`http://localhost:4000/bigvideos/viewChannels/${video.channel}`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+
+      // Check if the response status is OK (200)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("API Response:", data);
+      // Log the response to check its structure
+
+      console.log(data.data);
+      if (Array.isArray(data.data)) {
+        console.log("Hello World");
+        dispatch(setchannelsVideos(data.data)); // Set to the correct
+        // console.log(videos);
+      } else {
+        console.error("Expected an array but received:", data.data);
+        // dispatch(setoriginalData([data.data])); // Handle unexpected data
+      }
+      dispatch(setStatus(data.message)); // Update status with the response message
+    } catch (error) {
+      console.log(error.message);
+      console.log(error);
+      alert("Failed to get bigvideos data");
+    }
+  }
 
 
   const convertTextToHtml = (text) => {

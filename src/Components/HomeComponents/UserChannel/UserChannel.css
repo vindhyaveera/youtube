@@ -81,7 +81,7 @@
   color: #666;
 }
 
-.nav-button {
+.userchannelnav-button {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
@@ -97,11 +97,11 @@
   cursor: pointer;
 }
 
-.prev-button {
+.userchannelprev-button {
   left: 10px;
 }
 
-.next-button {
+.userchannelnext-button {
   right: 10px;
 }
 

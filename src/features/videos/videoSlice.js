@@ -41,6 +41,7 @@ const videoSlice = createSlice({
     originalData: [],
     shortvideoData: [],
     userVideos: [],
+    channelsVideos:[],
     userShortsVideos: [],
     bigVideosIds: [],
     shortsIds: [],
@@ -90,6 +91,10 @@ const videoSlice = createSlice({
 
     setuserVideos(state, action) {
       state.userVideos = action.payload;
+    },
+
+    setchannelsVideos(state, action) {
+      state.channelsVideos = action.payload;
     },
 
     setuserShortsVideos(state, action) {
@@ -177,6 +182,7 @@ export const {
   setStatus,
   setuserVideos,
   setuserShortsVideos,
+  setchannelsVideos,
   setBigVideosIds,
   setShortsIds,
   setBigVideos,

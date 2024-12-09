@@ -7,13 +7,13 @@ import "./UserChannel.css";
 
 const UserChannel = () => {
   const { channelname } = useParams(); // Extract channel name from the URL params
-  const bigvideoData = useSelector((state) => state.videos.userVideos);
+  const channelvideoData = useSelector((state) => state.videos.channelsVideos);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
   const channelVideoWrapperRef = useRef(null);
 
   // Filter videos by channel name
-  const filteredVideos = bigvideoData.filter(
+  const filteredVideos = channelvideoData.filter(
     (video) => video.channel === decodeURIComponent(channelname)
   );
 
@@ -49,7 +49,7 @@ const UserChannel = () => {
       <div className="channel-video-wrapper">
         {showPrev && (
           <button
-            className="nav-button prev-button"
+            className="userchannelnav-button userchannelprev-button"
             onClick={() => handleScroll("left")}
           >
             <FontAwesomeIcon icon={faChevronLeft} />
@@ -78,7 +78,7 @@ const UserChannel = () => {
         </div>
         {showNext && (
           <button
-            className="nav-button next-button"
+            className="userchannelnav-button userchannelnext-button"
             onClick={() => handleScroll("right")}
           >
             <FontAwesomeIcon icon={faChevronRight} />

@@ -3,25 +3,24 @@
   top: 15%;
   left: 7%;
   display: flex;
-  width: 88vw;
+  width: 50vw;
   height: auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
   overflow-y: auto; /* Enable vertical scrolling */
-  gap:20px;
-  background-color: blanchedalmond; 
+  gap: 20px;
+  background-color: blanchedalmond;
 }
 
 .WatchContainer.menu-open {
   /* position: relative; */
-  width: 75vw;
+  width: 70vw;
   left: 21%;
-} 
-
+}
 
 .videos-list {
-  width:88vw;
-  height:80vh;
+  width: 90vw;
+  height: 80vh;
   /* max-height: 400px; Set a height limit for the container */
   overflow-y: auto; /* Enable vertical scrolling */
   padding: 10px;
@@ -31,22 +30,53 @@
 
 .video-item {
   display: flex;
-  width:80vw;
+  width: 70vw;
+  height: auto;
+  column-gap: 15px;
   margin-bottom: 15px; /* Add some spacing between items */
+  /* background-color: aqua; */
 }
 
 .leftvideo img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: 90%;
+  object-fit: cover;
   border-radius: 10px;
 }
 
+.descvideos {
+  display: flex;
+  width: 45%;
+  height: auto;
+  /* background-color: #ccc; */
+}
 .descvideos h3 {
   font-size: 16px;
   margin: 0;
 }
-
+.video-button {
+  width: 80%;
+  height: auto;
+  /* background-color: black; */
+}
+.remove-button {
+   /* height: 30%; */
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border:none;
+  background-color: #e6dfdf;
+  padding: 10px 10px;
+}
+.remove-button:hover{
+  background-color: rgb(201, 218, 174);
+  cursor:pointer;
+}
+.videos-Content {
+  width: 40%;
+  height: 40%;
+  background-color: black;
+}
 .descvideos p {
   font-size: 14px;
   color: #666;
@@ -55,19 +85,17 @@
   display: flex; /* Aligns children (buttons) in a row */
   gap: 10px;
 }
-.all{
-    padding: 10px 20px; /* Adjust padding as needed */
-    border: none;
-    background-color:rgb(102, 99, 99); /* Button background color */
-    color: white; /* Button text color */
-    font-size: 16px; /* Font size */
-    cursor: pointer;
-    border-radius: 5px; /* Optional: rounded corners */
-    transition: background-color 0.3s; /* Smooth transition */  
+.all {
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none;
+  background-color: rgb(102, 99, 99); /* Button background color */
+  color: white; /* Button text color */
+  font-size: 16px; /* Font size */
+  cursor: pointer;
+  border-radius: 5px; /* Optional: rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
 }
 /* Hover effect */
 .all:hover {
-    background-color: grey; /* Background color when hovered */
- 
-    
+  background-color: grey; /* Background color when hovered */
 }
