@@ -27,7 +27,7 @@ const NavBar = () => {
       //   return;
       // }
       const response = await fetch(
-        `http://localhost:4000/watchlater/viewAll?userId=${userID}`,
+        `https://youtube-sequelize-server.onrender.com/watchlater/viewAll?userId=${userID}`,
         {
           method: "GET",
           headers: {

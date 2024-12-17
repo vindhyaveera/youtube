@@ -96,7 +96,7 @@ const AdminComponents = () => {
     dispatch(setStatus("Please wait")); // Set initial status
     try {
       const response = await fetch(
-        "http://localhost:4000/bigvideos/createbigvideos",
+        "https://youtube-sequelize-server.onrender.com/bigvideos/createbigvideos",
         {
           method: "POST",
           headers: {
@@ -120,7 +120,7 @@ const AdminComponents = () => {
     dispatch(setStatus("Please wait")); // Set initial status
     try {
       const response = await fetch(
-        "http://localhost:4000/shortsvideos/createshortsvideos",
+        "https://youtube-sequelize-server.onrender.com/shortsvideos/createshortsvideos",
         {
           method: "POST",
           headers: {

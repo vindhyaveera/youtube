@@ -91,7 +91,7 @@ const BigVideos = () => {
   async function getuserVideos() {
     try {
       const response = await fetch(
-        `http://localhost:4000/users/getuserVideos/${userId}`,
+        `https://youtube-sequelize-server.onrender.com/users/getuserVideos/${userId}`,
         {
           method: "GET",
           headers: {
@@ -118,7 +118,7 @@ const BigVideos = () => {
   async function getuserShortsVideos() {
     try {
       const response = await fetch(
-        `http://localhost:4000/users/getuserShortsVideos/${userId}`,
+        `https://youtube-sequelize-server.onrender.com/users/getuserShortsVideos/${userId}`,
         {
           method: "GET",
           headers: {
@@ -145,7 +145,7 @@ const BigVideos = () => {
   async function viewAllUser() {
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
-      const response = await fetch("http://localhost:4000/bigvideos/viewAll", {
+      const response = await fetch("https://youtube-sequelize-server.onrender.com/bigvideos/viewAll", {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -183,7 +183,7 @@ const BigVideos = () => {
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
       const response = await fetch(
-        "http://localhost:4000/shortsvideos/viewAll",
+        "https://youtube-sequelize-server.onrender.com/shortsvideos/viewAll",
         {
           method: "GET",
           headers: {

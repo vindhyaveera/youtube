@@ -101,7 +101,7 @@ const BigVideosDetails = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/watchlater/createwatch",
+        "https://youtube-sequelize-server.onrender.com/watchlater/createwatch",
         {
           method: "POST",
           headers: {
@@ -128,7 +128,7 @@ const BigVideosDetails = () => {
   async function viewChannels() {
     dispatch(setStatus("Please wait")); // Set status to "Please wait"
     try {
-      const response = await fetch(`http://localhost:4000/bigvideos/viewChannels/${video.channel}`, {
+      const response = await fetch(`https://youtube-sequelize-server.onrender.com/bigvideos/viewChannels/${video.channel}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

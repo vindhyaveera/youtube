@@ -84,7 +84,7 @@ const LoginForm = ({ onClose }) => {
   async function loginUser(loginData) {
     setStatus("Please wait");
     try {
-      const response = await fetch("http://localhost:4000/users/login", {
+      const response = await fetch("https://youtube-sequelize-server.onrender.com/users/login", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -118,7 +118,7 @@ const LoginForm = ({ onClose }) => {
     // alert(".../")
     setStatus("Please wait");
     try {
-      const response = await fetch("http://localhost:4000/users/create", {
+      const response = await fetch("https://youtube-sequelize-server.onrender.com/users/create", {
         method: "POST",
         headers: {
           "content-type": "application/json",

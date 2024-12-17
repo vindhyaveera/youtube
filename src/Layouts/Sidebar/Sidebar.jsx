@@ -34,7 +34,7 @@ const Sidebar = () => {
   async function getuser() {
     try {
       const response = await fetch(
-        `http://localhost:4000/users/viewOne/${userid}`,
+        `https://youtube-sequelize-server.onrender.com/users/viewOne/${userid}`,
         {
           method: "GET",
           headers: {

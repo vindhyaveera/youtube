@@ -20,7 +20,7 @@ const WatchLaterPage = () => {
   const fetchViewAllAssociate = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/watchlater/viewAllAssociate/${userID}`
+        `https://youtube-sequelize-server.onrender.com/watchlater/viewAllAssociate/${userID}`
       );
       if (!response.ok) throw new Error("Failed to fetch videos.");
       const data = await response.json();
@@ -47,7 +47,7 @@ const WatchLaterPage = () => {
   const deleteVideo = async (userid, videosid, type) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/watchlater/delete/${userid}/${videosid}/${type}`,
+        `https://youtube-sequelize-server.onrender.com/watchlater/delete/${userid}/${videosid}/${type}`,
         { method: "DELETE" }
       );
       const result = await response.json();
