@@ -40,7 +40,7 @@
   display: flex;
   /* flex-wrap: nowrap; Ensure items stay in one row */
   gap: 7px;
-  width: 100%;
+  width: 50%;
   height: auto; /* Automatically adjust height based on content */
 
   /* height: 100%; */
