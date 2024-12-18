@@ -56,7 +56,7 @@
   text-decoration: none; /* Remove default link styles */
   color: inherit; /*Inherit text color */
   display: inline-block; /*Ensure Link wraps correctly */
-  width:100%;
+  /* width:100%; */
   height:auto;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .channel-video-item {
-  flex: 0 0 19.6%; /*Fixed width for items*/
+  flex: 0 0 30%; /*Fixed width for items*/
   /* max-width: 300px; Optional: To prevent oversized items */
   height: auto; /* Automatically adjust height based on content */
 
