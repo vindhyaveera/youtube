@@ -59,7 +59,7 @@
   /* border-radius: 8px;
   overflow: hidden; */ 
   flex: 0 0 auto; /* Prevent items from shrinking or growing */
-  width: 200px; /* Adjust the width as needed */
+  width: 1000px; /* Adjust the width as needed */
 }
 
 .no-style-link-channel {
