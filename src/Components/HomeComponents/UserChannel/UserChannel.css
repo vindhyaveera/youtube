@@ -49,6 +49,12 @@
   /* background-color: aquamarine;  */
 }
 
+.no-style-link-channel {
+  text-decoration: none; /* Remove default link styles */
+  color: inherit; /* Inherit text color */
+  display: inline-block; /* Ensure Link wraps correctly */
+}
+
 .channel-video-list::-webkit-scrollbar {
   display: none; /* Hide default scrollbar */
 }
