@@ -9,7 +9,6 @@ import {
 import "./UserChannel.css";
 import { Link } from "react-router-dom";
 
-
 const UserChannel = () => {
   const { channelname } = useParams(); // Extract channel name from the URL params
   const channelvideoData = useSelector((state) => state.videos.channelsVideos);
@@ -63,25 +62,26 @@ const UserChannel = () => {
         <div className="channel-video-list" ref={channelVideoWrapperRef}>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video, index) => (
-              <Link
-                to={`/details/${video.id}`}
-                // className="no-style-link"
-                // key={index}
-              >
-                <div key={index} className="channel-video-item">
+              <div key={index} className="channel-video-item">
+                <Link
+                  to={`/details/${video.id}`}
+                  // className="no-style-link"
+                  // key={index}
+                >
                   <img
                     src={`/assets/${video.img}`}
                     alt={video.name}
                     className="channel-video-thumbnail"
                   />
-                  <div className="channel-video-info">
-                    <p className="channel-video-title">{video.name}</p>
-                    <p className="channel-video-channel-name">
-                      Channel: {video.channel}
-                    </p>
-                  </div>
+                </Link>
+
+                <div className="channel-video-info">
+                  <p className="channel-video-title">{video.name}</p>
+                  <p className="channel-video-channel-name">
+                    Channel: {video.channel}
+                  </p>
                 </div>
-              </Link>
+              </div>
             ))
           ) : (
             <p className="no-videos-message">
