@@ -10,7 +10,7 @@ import {
 } from "../../../features/videos/videoSlice";
 import { toggleLogin } from "../../../features/videos/videoSlice";
 
-const LoginForm = ({ onClose }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.videos.userId);
   const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
