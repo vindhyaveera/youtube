@@ -45,6 +45,8 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
+
   border: 1px solid green;
 }
 
@@ -60,6 +62,7 @@
 
 .channel-video-item {
   flex: 0 0 19.6%; /*Fixed width for items*/
+  max-width: 300px; /* Optional: To prevent oversized items */
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid blue;
