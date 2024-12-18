@@ -57,7 +57,7 @@
   color: inherit; /*Inherit text color */
   display: inline-block; /*Ensure Link wraps correctly */
   /* width:100%; */
-  height:auto;
+  /* height:auto; */
 }
 
 .channel-video-list::-webkit-scrollbar {
