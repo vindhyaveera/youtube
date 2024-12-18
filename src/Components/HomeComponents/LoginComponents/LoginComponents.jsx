@@ -78,7 +78,7 @@ const LoginForm = ({ onClose }) => {
       await loginUser(loginData);
       // Add login logic (e.g., API call)
     }
-    onClose(); // Close form after submission (optional)
+    // onClose(); // Close form after submission (optional)
   };
 
   async function loginUser(loginData) {
