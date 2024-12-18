@@ -48,11 +48,11 @@
   background-color: rgb(28, 19, 153);
 }
 
-/* .no-style-link-channel {
+.no-style-link-channel {
   text-decoration: none; /* Remove default link styles */
-  /* color: inherit; Inherit text color */
-  /* display: inline-block; Ensure Link wraps correctly */
-/* }  */
+  color: inherit; /*Inherit text color */
+  display: inline-block; /*Ensure Link wraps correctly */
+ } 
 
 .channel-video-list::-webkit-scrollbar {
   display: none; /* Hide default scrollbar */
