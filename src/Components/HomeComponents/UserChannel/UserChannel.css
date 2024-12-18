@@ -41,7 +41,9 @@
   /* flex-wrap: nowrap; Ensure items stay in one row */
   gap: 7px;
   width: 100%;
-  height: 100%;
+  height: auto; /* Automatically adjust height based on content */
+
+  /* height: 100%; */
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px;
@@ -54,7 +56,7 @@
   text-decoration: none; /* Remove default link styles */
   color: inherit; /*Inherit text color */
   display: inline-block; /*Ensure Link wraps correctly */
- } 
+}
 
 .channel-video-list::-webkit-scrollbar {
   display: none; /* Hide default scrollbar */
@@ -63,10 +65,11 @@
 .channel-video-item {
   flex: 0 0 19.6%; /*Fixed width for items*/
   max-width: 300px; /* Optional: To prevent oversized items */
+  height: auto; /* Automatically adjust height based on content */
+
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid blue;
-
 }
 
 .channel-video-thumbnail {
