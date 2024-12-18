@@ -33,31 +33,23 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-  border: 1px solid red;
 }
 
 .channel-video-list {
   display: flex;
-  /* flex-wrap: nowrap; Ensure items stay in one row */
   gap: 7px;
   width: 100%;
   height: auto; /* Automatically adjust height based on content */
-
-  /* height: 100%; */
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px;
   box-sizing: border-box; /* Include padding in width calculation */
-
-  border: 1px solid green;
 }
 
 .no-style-link-channel {
   text-decoration: none; /* Remove default link styles */
   color: inherit; /*Inherit text color */
   display: inline-block; /*Ensure Link wraps correctly */
-  /* width:100%; */
-  height:auto;
 }
 
 .channel-video-list::-webkit-scrollbar {
@@ -71,7 +63,6 @@
 
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid blue;
 }
 
 .channel-video-thumbnail {
