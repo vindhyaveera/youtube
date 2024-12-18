@@ -58,7 +58,7 @@ const LoginForm = ({ onClose }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Handle login or registration logic here
     if (isRegister) {
@@ -75,7 +75,7 @@ const LoginForm = ({ onClose }) => {
         email: formData.email,
         password: formData.password,
       });
-      loginUser(loginData);
+      await loginUser(loginData);
       // Add login logic (e.g., API call)
     }
     onClose(); // Close form after submission (optional)
@@ -109,10 +109,10 @@ const LoginForm = ({ onClose }) => {
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
         setStatus("Login Successful!");
-        alert("Loginvindhya")
-        // setTimeout(() => {
-          onClose(); // Close the form after successful login
-        // }, 1000); // Optional delay for user feedback
+        alert("Loginvindhya");
+        setTimeout(() => {
+        onClose(); // Close the form after successful login
+        }, 1000); // Optional delay for user feedback
       } else {
         setStatus(data.message || "Login Failed");
       }
