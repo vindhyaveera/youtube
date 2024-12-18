@@ -65,7 +65,7 @@
 }
 
 .channel-video-item {
-  flex: 0 0 90%; /*Fixed width for items*/
+  flex: 0 0 50%; /*Fixed width for items*/
   /* max-width: 300px; Optional: To prevent oversized items */
   height: auto; /* Automatically adjust height based on content */
 
