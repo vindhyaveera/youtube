@@ -109,6 +109,7 @@ const LoginForm = ({ onClose }) => {
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
         setStatus("Login Successful!");
+        alert("Login")
         // setTimeout(() => {
           onClose(); // Close the form after successful login
         // }, 1000); // Optional delay for user feedback
