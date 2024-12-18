@@ -88,6 +88,10 @@ const Header = () => {
     // console.log(isMenuOpen)
   };
 
+  const handleClose = () => {
+    setLoginFormVisible(false); // Hide the login form
+  };
+
   // const userid = localStorage.getItem("id");
   // console.log(userid);
 
@@ -242,11 +246,13 @@ const Header = () => {
           )}
 
           {isLoginFormVisible && (
-            <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
+            <LoginForm onClose={handleClose} /> // Pass the close function to LoginForm
+
+            // <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
           )}
         </div>
       </div>
-      {isLoggedIn && <UserProfileMenu />} 
+      {isLoggedIn && <UserProfileMenu />}
       {isMenuOpen && <NavBar />}
     </div>
   );
