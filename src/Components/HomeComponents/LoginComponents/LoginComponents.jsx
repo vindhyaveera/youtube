@@ -84,13 +84,16 @@ const LoginForm = ({ onClose }) => {
   async function loginUser(loginData) {
     setStatus("Please wait");
     try {
-      const response = await fetch("https://youtube-sequelize-server.onrender.com/users/login", {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
+      const response = await fetch(
+        "https://youtube-sequelize-server.onrender.com/users/login",
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        }
+      );
 
       const data = await response.json();
       console.log(data);
@@ -105,12 +108,19 @@ const LoginForm = ({ onClose }) => {
 
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
+        setStatus("Login Successful!");
+        setTimeout(() => {
+          onClose(); // Close the form after successful login
+        }, 1000); // Optional delay for user feedback
+      } else {
+        setStatus(data.message || "Login Failed");
       }
-      setStatus(data.message);
     } catch (error) {
+      // setStatus(data.message);
       console.log(error.message);
       console.log(error);
-      alert("Login Failed");
+      // alert("Login Failed");
+      setStatus("Login Failed");
     }
   }
 
@@ -118,20 +128,30 @@ const LoginForm = ({ onClose }) => {
     // alert(".../")
     setStatus("Please wait");
     try {
-      const response = await fetch("https://youtube-sequelize-server.onrender.com/users/create", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://youtube-sequelize-server.onrender.com/users/create",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
       console.log(data);
-      setStatus(data.message);
+      if (response.ok) {
+        setStatus("Registration Successful!");
+        setTimeout(() => {
+          onClose(); // Close the form after successful registration
+        }, 1000); // Optional delay for user feedback
+      } else {
+        setStatus(data.message || "Registration Failed");
+      }
     } catch (error) {
       console.log(error.message);
       console.log(error);
-      alert("Register Failed");
+      setStatus("Registration Failed");
     }
   }
 
