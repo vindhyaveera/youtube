@@ -10,7 +10,7 @@ import {
 } from "../../../features/videos/videoSlice";
 import { toggleLogin } from "../../../features/videos/videoSlice";
 
-const LoginForm = () => {
+const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.videos.userId);
   const isLoggedIn = useSelector((store) => store.videos.isLoggedIn);
@@ -78,7 +78,7 @@ const LoginForm = () => {
       loginUser(loginData);
       // Add login logic (e.g., API call)
     }
-    // onClose(); // Close form after submission (optional)
+    onClose(); // Close form after submission (optional)
   };
 
   async function loginUser(loginData) {
