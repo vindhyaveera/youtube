@@ -59,9 +59,9 @@
 }
 
 .channel-video-item {
-  flex: 0 0 25%; /* Fixed width for items */
+  flex: 0 0 35%; /* Fixed width for items */
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .channel-video-thumbnail {
