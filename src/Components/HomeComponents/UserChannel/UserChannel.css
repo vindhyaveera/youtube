@@ -40,7 +40,7 @@
   display: flex;
   /* flex-wrap: nowrap; Ensure items stay in one row */
   gap: 7px;
-  width: 50%;
+  width: 100%;
   height: auto; /* Automatically adjust height based on content */
 
   /* height: 100%; */
@@ -57,7 +57,7 @@
   color: inherit; /*Inherit text color */
   display: inline-block; /*Ensure Link wraps correctly */
   /* width:100%; */
-  /* height:auto; */
+  height:auto;
 }
 
 .channel-video-list::-webkit-scrollbar {
@@ -65,7 +65,7 @@
 }
 
 .channel-video-item {
-  flex: 0 0 50%; /*Fixed width for items*/
+  flex: 0 0 19.6%; /*Fixed width for items*/
   /* max-width: 300px; Optional: To prevent oversized items */
   height: auto; /* Automatically adjust height based on content */
 
