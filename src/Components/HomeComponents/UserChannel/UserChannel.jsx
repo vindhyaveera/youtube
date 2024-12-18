@@ -59,36 +59,38 @@ const UserChannel = () => {
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
         )}
-        <div className="channel-video-list" ref={channelVideoWrapperRef}>
-          {filteredVideos.length > 0 ? (
-            filteredVideos.map((video, index) => (
-              <div key={index} className="channel-video-item">
-                {/* <Link
-                  to={`/details/${video.id}`}
-                  // className="no-style-link"
-                  // key={index}
-                > */}
+
+        <Link
+          to={`/details/${video.id}`}
+          // className="no-style-link"
+          // key={index}
+        >
+          <div className="channel-video-list" ref={channelVideoWrapperRef}>
+            {filteredVideos.length > 0 ? (
+              filteredVideos.map((video, index) => (
+                <div key={index} className="channel-video-item">
                   <img
                     src={`/assets/${video.img}`}
                     alt={video.name}
                     className="channel-video-thumbnail"
                   />
-                {/* </Link> */}
 
-                <div className="channel-video-info">
-                  <p className="channel-video-title">{video.name}</p>
-                  <p className="channel-video-channel-name">
-                    Channel: {video.channel}
-                  </p>
+                  <div className="channel-video-info">
+                    <p className="channel-video-title">{video.name}</p>
+                    <p className="channel-video-channel-name">
+                      Channel: {video.channel}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            <p className="no-videos-message">
-              No videos found for this channel.
-            </p>
-          )}
-        </div>
+              ))
+            ) : (
+              <p className="no-videos-message">
+                No videos found for this channel.
+              </p>
+            )}
+          </div>
+        </Link>
+
         {showNext && (
           <button
             className="userchannelnav-button userchannelnext-button"
