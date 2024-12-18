@@ -7,6 +7,8 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "./UserChannel.css";
+import { Link } from "react-router-dom";
+
 
 const UserChannel = () => {
   const { channelname } = useParams(); // Extract channel name from the URL params
