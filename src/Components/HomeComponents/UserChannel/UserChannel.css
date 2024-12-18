@@ -14,13 +14,13 @@
 .user-channel h1 {
   width: 100%;
   height: 20%;
-  display:flex;
+  display: flex;
   align-items: end;
   /* align-items: center; */
   font-size: 24px;
   color: #333;
-   /* background-color: rgb(19, 158, 158);  */
-   margin-bottom: 3%; 
+  /* background-color: rgb(19, 158, 158);  */
+  margin-bottom: 3%;
 }
 
 .user-channel {
@@ -30,15 +30,15 @@
 .channel-video-wrapper {
   display: flex;
   align-items: center;
-  width: 100%;
-  height:auto;
+  /* width: 100%; */
+  position: relative;
+  /* height:auto; */
   /* height:50%; */
-  overflow: hidden;
-   /* background-color: rgb(24, 167, 36);  */
+  overflow-x: hidden;
+  /* background-color: rgb(24, 167, 36);  */
 }
 
 .channel-video-list {
-  
   display: flex;
   gap: 7px;
   width: 100%;
@@ -54,8 +54,10 @@
 }
 
 .channel-video-item {
-  flex: 0 0 19.6%; /* Fixed width for items */
-   border-radius: 8px;
+  /* flex: 0 0 19.6%; Fixed width for items */
+  flex: 0 0 auto;
+
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -104,4 +106,3 @@
 .userchannelnext-button {
   right: 10px;
 }
-
