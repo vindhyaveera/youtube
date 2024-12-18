@@ -62,12 +62,12 @@ const UserChannel = () => {
         <div className="channel-video-list" ref={channelVideoWrapperRef}>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video, index) => (
-              <Link
-                to={`/details/${video.id}`}
-                className="no-style-link-channel channel-video-item"
-                // key={index}
-              >
-                <div key={index} className="channel-video-item">
+              <div key={index} className="channel-video-item">
+                <Link
+                  to={`/details/${video.id}`}
+                  className="no-style-link-channel"
+                  // key={index}
+                >
                   <img
                     src={`/assets/${video.img}`}
                     alt={video.name}
@@ -80,8 +80,8 @@ const UserChannel = () => {
                       Channel: {video.channel}
                     </p>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))
           ) : (
             <p className="no-videos-message">
