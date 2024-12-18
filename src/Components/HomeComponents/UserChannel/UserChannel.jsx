@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./UserChannel.css";
 
-
 const UserChannel = () => {
   const { channelname } = useParams(); // Extract channel name from the URL params
   const channelvideoData = useSelector((state) => state.videos.channelsVideos);
@@ -63,11 +62,11 @@ const UserChannel = () => {
         <div className="channel-video-list" ref={channelVideoWrapperRef}>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video, index) => (
-              // <Link
-              //   to={`/details/${video.id}`}
-              //   className="no-style-link-channel"
-              //   // key={index}
-              // >
+              <Link
+                to={`/details/${video.id}`}
+                className="no-style-link-channel"
+                // key={index}
+              >
                 <div key={index} className="channel-video-item">
                   <img
                     src={`/assets/${video.img}`}
@@ -82,7 +81,7 @@ const UserChannel = () => {
                     </p>
                   </div>
                 </div>
-              // </Link>
+              </Link>
             ))
           ) : (
             <p className="no-videos-message">
