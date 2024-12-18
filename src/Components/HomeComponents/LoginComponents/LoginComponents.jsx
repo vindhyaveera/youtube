@@ -109,9 +109,9 @@ const LoginForm = ({ onClose }) => {
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
         setStatus("Login Successful!");
-        setTimeout(() => {
+        // setTimeout(() => {
           onClose(); // Close the form after successful login
-        }, 1000); // Optional delay for user feedback
+        // }, 1000); // Optional delay for user feedback
       } else {
         setStatus(data.message || "Login Failed");
       }
@@ -142,10 +142,10 @@ const LoginForm = ({ onClose }) => {
       console.log(data);
       if (response.ok) {
         setStatus("Registration Successful!");
-        setTimeout(() => {
-          onClose(); // Close the form after successful registration
-        }, 1000); // Optional delay for user feedback
-      } else {
+        // setTimeout(() => {
+        onClose(); // Close the form after successful registration
+      } //, 1000); // Optional delay for user feedback
+      else {
         setStatus(data.message || "Registration Failed");
       }
     } catch (error) {
