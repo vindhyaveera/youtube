@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./UserChannel.css";
 
+
 const UserChannel = () => {
   const { channelname } = useParams(); // Extract channel name from the URL params
   const channelvideoData = useSelector((state) => state.videos.channelsVideos);
@@ -16,36 +17,33 @@ const UserChannel = () => {
   const channelVideoWrapperRef = useRef(null);
 
   // Filter videos by channel name
-  const filteredVideos =
-    channelvideoData.filter(
-      (video) => video.channel === decodeURIComponent(channelname)
-    ) || [];
-
-  useEffect(() => {
-    if (channelVideoWrapperRef.current) {
-      const { scrollWidth, clientWidth } = channelVideoWrapperRef.current;
-      setShowNext(scrollWidth > clientWidth);
-    }
-  }, [filteredVideos]);
+  const filteredVideos = channelvideoData.filter(
+    (video) => video.channel === decodeURIComponent(channelname)
+  );
 
   const handleScroll = (direction) => {
     if (channelVideoWrapperRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        channelVideoWrapperRef.current;
-      const newScrollPosition =
-        direction === "left" ? scrollLeft - 300 : scrollLeft + 300;
-
-      channelVideoWrapperRef.current.scrollTo({
-        left: newScrollPosition,
+      channelVideoWrapperRef.current.scrollBy({
+        left: direction === "left" ? -300 : 300, // Adjust scroll distance as needed
         behavior: "smooth",
       });
 
-      setTimeout(() => {
-        const { scrollLeft: updatedScrollLeft } =
-          channelVideoWrapperRef.current;
-        setShowPrev(updatedScrollLeft > 0);
-        setShowNext(updatedScrollLeft < scrollWidth - clientWidth);
-      }, 300);
+      // Update visibility of navigation buttons
+      const newScrollLeft = channelVideoWrapperRef.current.scrollLeft;
+      const scrollWidth = channelVideoWrapperRef.current.scrollWidth;
+      const clientWidth = channelVideoWrapperRef.current.clientWidth;
+
+      if (direction === "left") {
+        setShowNext(true);
+        if (newScrollLeft <= 300) {
+          setShowPrev(false);
+        }
+      } else {
+        setShowPrev(true);
+        if (scrollWidth - newScrollLeft <= clientWidth + 300) {
+          setShowNext(false);
+        }
+      }
     }
   };
 
@@ -67,7 +65,7 @@ const UserChannel = () => {
             filteredVideos.map((video, index) => (
               <Link
                 to={`/details/${video.id}`}
-                className="no-style-link"
+                className="no-style-link-channel"
                 // key={index}
               >
                 <div key={index} className="channel-video-item">
