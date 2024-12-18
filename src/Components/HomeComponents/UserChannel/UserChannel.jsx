@@ -2,7 +2,10 @@ import React, { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import "./UserChannel.css";
 
 const UserChannel = () => {
@@ -58,22 +61,30 @@ const UserChannel = () => {
         <div className="channel-video-list" ref={channelVideoWrapperRef}>
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video, index) => (
-              <div key={index} className="channel-video-item">
-                <img
-                  src={`/assets/${video.img}`}
-                  alt={video.name}
-                  className="channel-video-thumbnail"
-                />
-                <div className="channel-video-info">
-                  <p className="channel-video-title">{video.name}</p>
-                  <p className="channel-video-channel-name">
-                    Channel: {video.channel}
-                  </p>
+              <Link
+                to={`/details/${video.id}`}
+                className="no-style-link"
+                // key={index}
+              >
+                <div key={index} className="channel-video-item">
+                  <img
+                    src={`/assets/${video.img}`}
+                    alt={video.name}
+                    className="channel-video-thumbnail"
+                  />
+                  <div className="channel-video-info">
+                    <p className="channel-video-title">{video.name}</p>
+                    <p className="channel-video-channel-name">
+                      Channel: {video.channel}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
-            <p className="no-videos-message">No videos found for this channel.</p>
+            <p className="no-videos-message">
+              No videos found for this channel.
+            </p>
           )}
         </div>
         {showNext && (
