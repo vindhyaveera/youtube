@@ -39,9 +39,9 @@
 
 .channel-video-list {
   display: flex;
-  flex-wrap: nowrap; /* Ensure items stay in one row */
+  /* flex-wrap: nowrap; Ensure items stay in one row */
 
-  gap: 7px;
+  gap: 20px;
   width: 100%;
   height: 100%;
   overflow-x: auto;
