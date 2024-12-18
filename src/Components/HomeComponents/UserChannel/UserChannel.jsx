@@ -65,7 +65,7 @@ const UserChannel = () => {
             filteredVideos.map((video, index) => (
               <Link
                 to={`/details/${video.id}`}
-                className="no-style-link"
+                // className="no-style-link"
                 // key={index}
               >
                 <div key={index} className="channel-video-item">
