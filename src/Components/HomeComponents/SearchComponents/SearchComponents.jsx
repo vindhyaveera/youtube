@@ -44,7 +44,7 @@ const SearchComponent = () => {
 
       <Link
         to={`/details/${video.id}`}
-        className="no-style-link-search"
+        className="no-style-link"
         // key={index}
       >
         <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
