@@ -98,7 +98,7 @@ const LoginForm = ({ onClose }) => {
       const data = await response.json();
       console.log(data);
 
-      if (data.ok) {
+      if (response.ok) {
         // localStorage.setItem("id", data.token.id);
         // localStorage.setItem("token", data.token.token);
 
