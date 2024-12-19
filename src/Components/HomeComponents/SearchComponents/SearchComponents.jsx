@@ -42,12 +42,12 @@ const SearchComponent = () => {
     <div>
       {/* <ScrollMenu /> */}
 
-      <Link
-        to={`/details/${video.id}`}
-        className="no-style-link"
-        // key={index}
-      >
-        <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
+      <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
+        <Link
+          to={`/details/${video.id}`}
+          className="no-style-link"
+          // key={index}
+        >
           {filteredVideos.length > 0 ? (
             filteredVideos.map((video, index) => {
               const imagePath = `/assets/${video.img}`;
@@ -71,8 +71,8 @@ const SearchComponent = () => {
           ) : (
             <p>No videos found</p>
           )}
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };
