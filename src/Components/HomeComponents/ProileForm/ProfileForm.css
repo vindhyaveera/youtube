@@ -205,3 +205,8 @@
   font-size: 0.9rem;
   margin: 0.3rem 0;
 }
+
+.no-style-link-profile{
+  text-decoration: none; /* Remove default link styles */ 
+  color: inherit; /*Inherit text color */
+}

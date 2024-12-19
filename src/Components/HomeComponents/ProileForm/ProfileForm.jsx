@@ -85,7 +85,7 @@ const ProfileForm = () => {
               {displayedBigVideos.map((video, index) => (
                 <Link
                   to={`/details/${video.id}`}
-                  className="no-style-link-search"
+                  className="no-style-link-profile"
                   // key={index}
                 >
                   <div key={index} className="profile-big-item">
