@@ -246,9 +246,9 @@ const Header = () => {
           )}
 
           {isLoginFormVisible && (
-            <LoginForm onClose={handleClose} /> // Pass the close function to LoginForm
+            // <LoginForm onClose={handleClose} /> // Pass the close function to LoginForm
 
-            // <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
+            <LoginForm onClose={() => setLoginFormVisible(false)} /> // Show login form
           )}
         </div>
       </div>
