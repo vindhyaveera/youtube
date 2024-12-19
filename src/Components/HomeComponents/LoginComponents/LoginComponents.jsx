@@ -206,9 +206,7 @@ const LoginForm = ({ onClose }) => {
         </div>
         <h2>{status}</h2>
         <button type="submit">{isRegister ? "Register" : "Login"}</button>
-        <button type="button" onClick={onClose}>
-          Close
-        </button>
+        
       </form>
       <p>
         {isRegister ? "Already have an account?" : "Don't have an account?"}
