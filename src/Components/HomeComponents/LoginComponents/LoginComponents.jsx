@@ -141,14 +141,14 @@ const LoginForm = ({ onClose }) => {
       );
       const data = await response.json();
       console.log(data);
-      if (response.ok) {
-        setStatus("Registration Successful!");
-        // setTimeout(() => {
-        onClose(); // Close the form after successful registration
-      } //, 1000); // Optional delay for user feedback
-      else {
-        setStatus(data.message || "Registration Failed");
-      }
+      // if (response.ok) {
+      setStatus("Registration Successful!");
+      // setTimeout(() => {
+      onClose(); // Close the form after successful registration
+      // } //, 1000); // Optional delay for user feedback
+      // else {
+      // setStatus(data.message || "Registration Failed");
+      // }
     } catch (error) {
       console.log(error.message);
       console.log(error);
