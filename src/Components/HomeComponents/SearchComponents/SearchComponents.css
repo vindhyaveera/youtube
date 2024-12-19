@@ -58,8 +58,8 @@
   width: 30%;
 }
 
-.no-style-link-search {
-  text-decoration: none; /* Remove default link styles */
+
+.no-style-link-search{
+  text-decoration: none; /* Remove default link styles */ 
   color: inherit; /*Inherit text color */
-  display: inline-block; /*Ensure Link wraps correctly */
 }
