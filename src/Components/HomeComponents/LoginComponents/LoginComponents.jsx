@@ -113,9 +113,9 @@ const LoginForm = ({ onClose }) => {
 
       onClose();
       // alert("Loginvindhya");
-      // setTimeout(() => {
-      // onClose(); // Close the form after successful login
-      // }, 1000); // Optional delay for user feedback
+      setTimeout(() => {
+      onClose(); // Close the form after successful login
+      }, 1000); // Optional delay for user feedback
     } catch (error) {
       // setStatus(data.message);
       console.log(error.message);
@@ -143,9 +143,9 @@ const LoginForm = ({ onClose }) => {
       console.log(data);
       // if (response.ok) {
       setStatus("Registration Successful!");
-      // setTimeout(() => {
+      setTimeout(() => {
       onClose(); // Close the form after successful registration
-      // } //, 1000); // Optional delay for user feedback
+      } , 1000); // Optional delay for user feedback
       // else {
       // setStatus(data.message || "Registration Failed");
       // }
