@@ -111,11 +111,11 @@ const LoginForm = ({ onClose }) => {
       setStatus("Login Successful!");
       console.log("Closing form..."); // Debugging
 
-      onClose();
+      // onClose();
       // alert("Loginvindhya");
       setTimeout(() => {
       onClose(); // Close the form after successful login
-      }, 2000); // Optional delay for user feedback
+      }, 1000); // Optional delay for user feedback
     } catch (error) {
       // setStatus(data.message);
       console.log(error.message);
