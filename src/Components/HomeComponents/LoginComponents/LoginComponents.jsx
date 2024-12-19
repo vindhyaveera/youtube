@@ -109,10 +109,11 @@ const LoginForm = ({ onClose }) => {
         // const ID = localStorage.getItem("id", data.token.id);
         // dispatch(setUserID(ID)); // Store it in Redux
         setStatus("Login Successful!");
-        alert("Loginvindhya");
-        setTimeout(() => {
-        onClose(); // Close the form after successful login
-        }, 1000); // Optional delay for user feedback
+        onClose();
+        // alert("Loginvindhya");
+        // setTimeout(() => {
+        // onClose(); // Close the form after successful login
+        // }, 1000); // Optional delay for user feedback
       } else {
         setStatus(data.message || "Login Failed");
       }
@@ -120,7 +121,7 @@ const LoginForm = ({ onClose }) => {
       // setStatus(data.message);
       console.log(error.message);
       console.log(error);
-      // alert("Login Failed");
+      // alert("Login Failed");`
       setStatus("Login Failed");
     }
   }
@@ -206,7 +207,9 @@ const LoginForm = ({ onClose }) => {
         </div>
         <h2>{status}</h2>
         <button type="submit">{isRegister ? "Register" : "Login"}</button>
-        
+        <button type="button" onClick={onClose}>
+          Close
+        </button>
       </form>
       <p>
         {isRegister ? "Already have an account?" : "Don't have an account?"}
