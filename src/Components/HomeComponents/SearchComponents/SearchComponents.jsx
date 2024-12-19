@@ -49,17 +49,23 @@ const SearchComponent = () => {
             // const videoPath = `/assets/${filteredVideos.source}`;
             return (
               <div key={index} className="video-item">
-                <div className="leftvideo">
-                  <img src={imagePath} alt={video.name} />
-                </div>
-                <div
-                  className={`video-content ${isMenuOpen ? "menu-open" : ""}`}
+                <Link
+                  to={`/details/${video.id}`}
+                  className="no-style-link-channel"
+                  // key={index}
                 >
-                  <h3>{video.name}</h3>
-                  <p>{video.desc}</p>
-                  <p>{video.rates}</p>
-                  <p>Channel: {video.channel}</p>
-                </div>
+                  <div className="leftvideo">
+                    <img src={imagePath} alt={video.name} />
+                  </div>
+                  <div
+                    className={`video-content ${isMenuOpen ? "menu-open" : ""}`}
+                  >
+                    <h3>{video.name}</h3>
+                    <p>{video.desc}</p>
+                    <p>{video.rates}</p>
+                    <p>Channel: {video.channel}</p>
+                  </div>
+                </Link>
               </div>
             );
           })
