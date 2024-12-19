@@ -52,7 +52,7 @@ const SearchComponent = () => {
             return (
               <Link
                 to={`/details/${video.id}`}
-                className="no-style-link"
+                className="no-style-link-search"
                 // key={index}
               >
                 <div key={index} className="video-item">
