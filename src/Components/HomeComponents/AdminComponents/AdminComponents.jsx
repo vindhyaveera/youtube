@@ -11,7 +11,9 @@ import "./AdminComponents.css"; // Create this CSS file for styling the popup
 
 const AdminComponents = () => {
   const dispatch = useDispatch();
-  const userId = localStorage.getItem("id");
+  // const userId = localStorage.getItem("id");
+  const userId = useSelector((state) => state.videos.userId);
+
 
   const status = useSelector((state) => state.videos.status);
 
