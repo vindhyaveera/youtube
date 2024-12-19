@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ProfileForm.css";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Profile_img from "../../../assets/channels4_profile.jpg";
 
@@ -82,21 +83,27 @@ const ProfileForm = () => {
               }`}
             >
               {displayedBigVideos.map((video, index) => (
-                <div key={index} className="profile-big-item">
-                  <img
-                    src={`/assets/${video.img}`}
-                    alt={video.name}
-                    className="profile-big-image"
-                  />
-                  <div className="profile-big-content">
-                    <h4 className="profile-big-title">{video.name}</h4>
-                    {/* <p className="profile-big-desc">{video.desc}</p> */}
-                    {/* <p className="profile-big-rates">{video.rates}</p> */}
-                    <p className="profile-big-channel">
-                      Channel: {video.channel}
-                    </p>
+                <Link
+                  to={`/details/${video.id}`}
+                  className="no-style-link-search"
+                  // key={index}
+                >
+                  <div key={index} className="profile-big-item">
+                    <img
+                      src={`/assets/${video.img}`}
+                      alt={video.name}
+                      className="profile-big-image"
+                    />
+                    <div className="profile-big-content">
+                      <h4 className="profile-big-title">{video.name}</h4>
+                      {/* <p className="profile-big-desc">{video.desc}</p> */}
+                      {/* <p className="profile-big-rates">{video.rates}</p> */}
+                      <p className="profile-big-channel">
+                        Channel: {video.channel}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
