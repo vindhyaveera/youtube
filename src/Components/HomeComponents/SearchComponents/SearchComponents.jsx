@@ -42,17 +42,17 @@ const SearchComponent = () => {
     <div>
       {/* <ScrollMenu /> */}
 
-      <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
-        {filteredVideos.length > 0 ? (
-          filteredVideos.map((video, index) => {
-            const imagePath = `/assets/${video.img}`;
-            // const videoPath = `/assets/${filteredVideos.source}`;
-            return (
-              <Link
-                to={`/details/${video.id}`}
-                // className="no-style-link-channel"
-                // key={index}
-              >
+      <Link
+        to={`/details/${video.id}`}
+        // className="no-style-link-channel"
+        // key={index}
+      >
+        <div className={`video-list  ${isMenuOpen ? "menu-open" : ""}`}>
+          {filteredVideos.length > 0 ? (
+            filteredVideos.map((video, index) => {
+              const imagePath = `/assets/${video.img}`;
+              // const videoPath = `/assets/${filteredVideos.source}`;
+              return (
                 <div key={index} className="video-item">
                   <div className="leftvideo">
                     <img src={imagePath} alt={video.name} />
@@ -66,13 +66,13 @@ const SearchComponent = () => {
                     <p>Channel: {video.channel}</p>
                   </div>
                 </div>
-              </Link>
-            );
-          })
-        ) : (
-          <p>No videos found</p>
-        )}
-      </div>
+              );
+            })
+          ) : (
+            <p>No videos found</p>
+          )}
+        </div>
+      </Link>
     </div>
   );
 };
