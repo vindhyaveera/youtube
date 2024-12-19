@@ -14,8 +14,11 @@ const AdminComponents = () => {
   // const userId = localStorage.getItem("id");
   const userId = useSelector((state) => state.videos.userId);
 
-
   const status = useSelector((state) => state.videos.status);
+
+  useEffect(() => {
+    dispatch(setStatus("")); // Reset status to empty on page load
+  }, [dispatch]);
 
   const [formData, setFormData] = useState(() => {
     console.log(userId);
