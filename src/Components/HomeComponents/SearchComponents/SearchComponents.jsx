@@ -48,12 +48,12 @@ const SearchComponent = () => {
             const imagePath = `/assets/${video.img}`;
             // const videoPath = `/assets/${filteredVideos.source}`;
             return (
-              <div key={index} className="video-item">
-                <Link
-                  to={`/details/${video.id}`}
-                  // className="no-style-link-channel"
-                  // key={index}
-                >
+              <Link
+                to={`/details/${video.id}`}
+                // className="no-style-link-channel"
+                // key={index}
+              >
+                <div key={index} className="video-item">
                   <div className="leftvideo">
                     <img src={imagePath} alt={video.name} />
                   </div>
@@ -65,8 +65,8 @@ const SearchComponent = () => {
                     <p>{video.rates}</p>
                     <p>Channel: {video.channel}</p>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </Link>
             );
           })
         ) : (
