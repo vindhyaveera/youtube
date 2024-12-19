@@ -98,27 +98,24 @@ const LoginForm = ({ onClose }) => {
       const data = await response.json();
       console.log(data);
 
-      if (response.ok) {
-        // localStorage.setItem("id", data.token.id);
-        // localStorage.setItem("token", data.token.token);
+      // if (data.ok) {
+      // localStorage.setItem("id", data.token.id);
+      // localStorage.setItem("token", data.token.token);
 
-        dispatch(setUserId(data.token.id));
-        dispatch(setToken(data.token.token));
-        dispatch(setuserName(data.firstName)); // Adjust this based on your API response
+      dispatch(setUserId(data.token.id));
+      dispatch(setToken(data.token.token));
+      dispatch(setuserName(data.firstName)); // Adjust this based on your API response
 
-        // const ID = localStorage.getItem("id", data.token.id);
-        // dispatch(setUserID(ID)); // Store it in Redux
-        setStatus("Login Successful!");
-        console.log("Closing form..."); // Debugging
+      // const ID = localStorage.getItem("id", data.token.id);
+      // dispatch(setUserID(ID)); // Store it in Redux
+      setStatus("Login Successful!");
+      console.log("Closing form..."); // Debugging
 
-        onClose();
-        // alert("Loginvindhya");
-        // setTimeout(() => {
-        // onClose(); // Close the form after successful login
-        // }, 1000); // Optional delay for user feedback
-      } else {
-        setStatus(data.message || "Login Failed");
-      }
+      onClose();
+      // alert("Loginvindhya");
+      // setTimeout(() => {
+      // onClose(); // Close the form after successful login
+      // }, 1000); // Optional delay for user feedback
     } catch (error) {
       // setStatus(data.message);
       console.log(error.message);
