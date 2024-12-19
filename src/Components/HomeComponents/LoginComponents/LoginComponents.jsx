@@ -115,7 +115,7 @@ const LoginForm = ({ onClose }) => {
       // alert("Loginvindhya");
       setTimeout(() => {
       onClose(); // Close the form after successful login
-      }, 1000); // Optional delay for user feedback
+      }, 2000); // Optional delay for user feedback
     } catch (error) {
       // setStatus(data.message);
       console.log(error.message);
