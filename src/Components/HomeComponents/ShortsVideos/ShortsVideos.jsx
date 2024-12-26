@@ -4,6 +4,7 @@ import "./ShortsVideos.css";
 import { useSelector } from "react-redux";
 import ShortImg from "../../../assets/shortsimg.svg";
 import CloseImg from "../../../assets/closeimg.svg";
+import { Link } from "react-router-dom";
 
 const ShortsVideos = ({ bigvideosRef }) => {
   const [showMore, setShowMore] = useState(false);
