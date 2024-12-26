@@ -69,7 +69,11 @@ const ShortsVideos = ({ bigvideosRef }) => {
               <h2 className="shorts">Shorts</h2>
             </div>
             <div className="img">
-              <img className="closeimage" src={CloseImg} onClick={handleClose} />
+              <img
+                className="closeimage"
+                src={CloseImg}
+                onClick={handleClose}
+              />
             </div>
           </div>
           <div
@@ -79,13 +83,19 @@ const ShortsVideos = ({ bigvideosRef }) => {
           >
             <div className={`shortvideogrid ${isMenuOpen ? "menu-open" : ""}`}>
               {videosToShow.map((video, index) => (
-                <ShortsVideosInfo
-                  key={index}
-                  img={video.img}
-                  name={video.name}
-                  dots={video.dots}
-                  rates={video.rates}
-                />
+                <Link
+                  to={`/shorts/${video.id}`}
+                  className="no-style-link"
+                  // key={index}
+                >
+                  <ShortsVideosInfo
+                    key={index}
+                    img={video.img}
+                    name={video.name}
+                    dots={video.dots}
+                    rates={video.rates}
+                  />
+                </Link>
               ))}
             </div>
           </div>

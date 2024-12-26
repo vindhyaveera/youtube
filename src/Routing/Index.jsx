@@ -8,6 +8,7 @@ import {
 import { useSelector } from "react-redux";
 import HomePage from "../Components/HomeComponents/BigVideos/BigVideos";
 import BigVideosDetails from "../Components/HomeComponents/BigVideosDetails/BigVideosDetails";
+import ShortsVideosDetails from "../Components/HomeComponents/ShortsVideosDetails/ShortsVideosDetails";
 import SearchComponent from "../Components/HomeComponents/SearchComponents/SearchComponents";
 import WatchLaterPage from "../Components/HomeComponents/WatchLaterPage/WatchLaterPage";
 import Header from "../Layouts/Header/Header";
@@ -52,12 +53,13 @@ const AppContent = () => {
       {shouldShowScrollMenu && <ScrollMenu />}
       <Routes>
         <Route path="/details/:id" element={<BigVideosDetails />} />
+        <Route path="/shorts/:id" element={<ShortsVideosDetails />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchComponent />} />
         <Route path="/profile/:userid" element={<Profile />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/watchlater" element={<WatchLaterPage />} />
-        <Route path="/channel/:channelname" element={<UserChannel/>}/>
+        <Route path="/channel/:channelname" element={<UserChannel />} />
       </Routes>
     </div>
   );
