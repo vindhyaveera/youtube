@@ -97,6 +97,7 @@ const ShortsVideos = ({ bigvideosRef }) => {
                     rates={video.rates}
                   />
                 </Link>
+                
               ))}
             </div>
           </div>
